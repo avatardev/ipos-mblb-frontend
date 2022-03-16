@@ -4,11 +4,11 @@ module.exports = {
   ],
   theme: {
     colors: {
-      sell: '#7fff00',
-      buy: '#f15858',
-      primary: '#121063',
-      secondary: '#78dcca',
-      background: '#ff77e9'
+      primary: '#34373b',
+      secondary: '#bac4d1',
+      active: '#33d450',
+      nonActive: '#f15858',
+      button: '#0b63e6'
     },
 },
   plugins: [],
