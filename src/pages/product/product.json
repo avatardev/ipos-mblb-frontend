@@ -1,0 +1,47 @@
+[
+    {
+        "no": 1,
+        "name": "Pasir",
+        "price": 200000,
+        "category": "Bangunan",
+        "taxt": 20,
+        "desc": "-",
+        "isActive": true
+    },
+    {
+        "no": 2,
+        "name": "Batako",
+        "price": 200000,
+        "category": "Bangunan",
+        "taxt": 20,
+        "desc": "-",
+        "isActive": true
+    },
+    {
+        "no": 3,
+        "name": "Coral",
+        "price": 200000,
+        "category": "Bangunan",
+        "taxt": 20,
+        "desc": "-",
+        "isActive": true
+    },
+    {
+        "no": 4,
+        "name": "Batu",
+        "price": 200000,
+        "category": "Bangunan",
+        "taxt": 20,
+        "desc": "-",
+        "isActive": true
+    },
+    {
+        "no": 5,
+        "name": "Semen",
+        "price": 200000,
+        "category": "Bangunan",
+        "taxt": 20,
+        "desc": "-",
+        "isActive": true
+    }
+]

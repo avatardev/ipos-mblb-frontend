@@ -6,7 +6,7 @@ import ProductModal from "../../components/product/ProductModal";
 import Pagination from "../../components/utility/Pagination";
 
 import product from "./product.json"
-const Product = () => {
+const MerchantProduct = () => {
 
     const [showModal, setShowModal] = useState(false);
     const [showProductModal, setShowProductModal] = useState(false);
@@ -19,9 +19,8 @@ const Product = () => {
             <div className="bg-secondary pl-5 pr-2 pb-3">
                 <h1 className="text-2xl py-3">Data Produk</h1>
                 <div className="bg-white h-fit px-3">
-                    <div className="flex justify-end gap-5 py-3">
-                        <button onClick={() => setShowModal(true)} className="py-1 px-2 border-2 rounded text-button">Kategori</button>
-                        <button onClick={() => setShowProductModal(true)} className="py-1 px-2 bg-button rounded text-white">+ Tambah Produk</button>
+                    <div className="text-center py-3">
+                        <h1 className="text-2xl font-semibold">Company Name</h1>
                     </div>
                     <hr />
                     <div className="md:flex md:justify-between py-3">
@@ -58,12 +57,6 @@ const Product = () => {
                                                         Harga
                                                     </th>
                                                     <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                                        Kategori
-                                                    </th>
-                                                    <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                                        Pajak(%)
-                                                    </th>
-                                                    <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                                         Keterangan 
                                                     </th>
                                                     <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
@@ -87,12 +80,6 @@ const Product = () => {
                                                             {item.price}
                                                         </td>
                                                         <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                            {item.category}
-                                                        </td>
-                                                        <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                            {item.taxt}
-                                                        </td>
-                                                        <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                             {item.desc}
                                                         </td>
                                                         <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
@@ -101,7 +88,6 @@ const Product = () => {
                                                         <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                             <div className="flex gap-3">
                                                                 <button className="text-button"><FiEdit /></button>
-                                                                <button className="text-nonActive"><MdOutlineDelete /></button>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -124,4 +110,4 @@ const Product = () => {
      );
 }
  
-export default Product;
+export default MerchantProduct;

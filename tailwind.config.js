@@ -9,6 +9,7 @@ module.exports = {
       button: "#0b63e6",
       white: "#fff",
       red: "#dc2626",
+
     },
     fontSize: {
       sm: ["14px", "20px"],
