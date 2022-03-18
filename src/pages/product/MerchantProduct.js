@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {FiEdit} from "react-icons/fi";
-import {MdOutlineDelete} from "react-icons/md"
 import Modal from "../../components/product/Modal";
 import ProductModal from "../../components/product/ProductModal";
 import Pagination from "../../components/utility/Pagination";
