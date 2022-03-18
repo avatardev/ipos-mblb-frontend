@@ -4,6 +4,16 @@ import Logo from "../elements/Logo";
 import BPDLogo from "../../assets/images/BPD.png";
 import KarangasemLogo from "../../assets/images/karangasem.png";
 import MenuItem from "../elements/MenuItem";
+import {
+  IoGitBranchOutline,
+  IoCubeOutline,
+  IoCartOutline,
+  IoSpeedometerOutline,
+  IoPricetagOutline,
+  IoPersonOutline,
+  IoLocationOutline,
+  IoFolderOpenOutline,
+} from "react-icons/io5";
 
 export default function Sidebar() {
   return (
@@ -14,13 +24,13 @@ export default function Sidebar() {
         <Logo img={BPDLogo} />
       </div>
       <Divider />
-      <MenuItem icon="speedometer-outline" name="Dashboard" href="/" />
+      <MenuItem icon={<IoSpeedometerOutline />} name="Dashboard" href="/" />
       <Divider />
-      <MenuItem icon="person-outline" name="Admin" href="/admin" />
-      <MenuItem icon="pricetag-outline" name="Penjual" href="/penjual" />
-      <MenuItem icon="cart-outline" name="Pembeli" href="/pembeli" />
+      <MenuItem icon={<IoPersonOutline />} name="Admin" href="/admin" />
+      <MenuItem icon={<IoPricetagOutline />} name="Penjual" href="/penjual" />
+      <MenuItem icon={<IoCartOutline />} name="Pembeli" href="/pembeli" />
       <MenuItem
-        icon="cube-outline"
+        icon={<IoCubeOutline />}
         name="Produk"
         pathParent="produk"
         isDropdown
@@ -28,16 +38,16 @@ export default function Sidebar() {
         <MenuItem name="Produk Master" href="/produk/master" />
         <MenuItem name="Produk Seller" href="/produk/seller" />
       </MenuItem>
-      <MenuItem icon="location-outline" name="Lokasi" href="/lokasi" />
+      <MenuItem icon={<IoLocationOutline />} name="Lokasi" href="/lokasi" />
       <MenuItem
-        icon="git-branch-outline"
+        icon={<IoGitBranchOutline />}
         name="Log Aktivitas"
         href="/log-aktivitas"
       />
 
       <Divider />
       <MenuItem
-        icon="folder-outline"
+        icon={<IoFolderOpenOutline />}
         name="Laporan"
         pathParent="laporan"
         isDropdown

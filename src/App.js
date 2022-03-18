@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/product" element={<Product />} />
+          <Route path="/produk/master" element={<Product />} />
           <Route path="/merchant-product" element={<MerchantProduct />} />
         </Routes>
       </BrowserRouter>

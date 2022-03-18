@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, BrowserRouter as Router } from "react-router-dom";
+import { IoChevronForwardOutline } from "react-icons/io5";
 
 export default function MenuItem(props) {
   const location = window.location.pathname;
@@ -23,7 +24,7 @@ export default function MenuItem(props) {
           onClick={dropdownHandler}
         >
           <div className="flex items-center gap-2">
-            <ion-icon name={props.icon}></ion-icon>
+            {props.icon}
             <p className="text-base">{props.name}</p>
           </div>
           <div
@@ -31,7 +32,7 @@ export default function MenuItem(props) {
               dropdown == "collapse" ? "rotate-90" : "rotate-0"
             } transition-transform`}
           >
-            <ion-icon name="chevron-forward-outline" size="xl"></ion-icon>
+            <IoChevronForwardOutline />
           </div>
         </div>
         <div
@@ -39,7 +40,7 @@ export default function MenuItem(props) {
             dropdown === "collapse" ? "" : "hidden"
           } flex mt-3`}
         >
-          <div className="border-l ml-2">{props.children}</div>
+          <div className="border-l pl-2">{props.children}</div>
         </div>
       </div>
     );
@@ -52,7 +53,7 @@ export default function MenuItem(props) {
       >
         <Link to={`${props.href}`}>
           <div className="flex items-center gap-2  text-lg cursor-pointer">
-            <ion-icon name={props.icon}></ion-icon>
+            {props.icon}
             <p className="text-base">{props.name}</p>
           </div>
         </Link>

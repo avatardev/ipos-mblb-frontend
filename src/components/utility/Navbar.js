@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { IoExitOutline } from "react-icons/io5";
 
 export default function Navbar() {
   const [showLogout, setShowLogout] = useState("hidden");
@@ -20,7 +21,8 @@ export default function Navbar() {
           className={`bg-white shadow-lg py-2 px-4 top-[64px] absolute text-red rounded-md ${showLogout}`}
         >
           <button className="flex items-center gap-1">
-            <ion-icon name="log-out-outline"></ion-icon>Logout
+            <IoExitOutline />
+            Logout
           </button>
         </div>
       </div>
