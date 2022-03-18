@@ -6,9 +6,9 @@ module.exports = {
       secondary: "#bac4d1",
       active: "#33d450",
       nonActive: "#f15858",
-      white: "#ffffff",
-      red: "#dc2626",
       button: "#0b63e6",
+      white: "#fff",
+      red: "#dc2626",
     },
     fontSize: {
       sm: ["14px", "20px"],

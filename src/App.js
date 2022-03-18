@@ -1,9 +1,16 @@
-import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MerchantProduct from "./pages/product/MerchantProduct";
+import Product from "./pages/product/Product";
 
 function App() {
   return (
     <div className="App">
-      <h1 className="text-primary text-center text-3xl">IPOS MBLB</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/product" element={<Product />} />
+          <Route path="/merchant-product" element={<MerchantProduct />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
