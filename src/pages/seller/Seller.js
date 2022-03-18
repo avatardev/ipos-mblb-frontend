@@ -1,11 +1,12 @@
 import { useState } from "react";
 import {FiEdit} from "react-icons/fi";
 import {MdOutlineDelete} from "react-icons/md";
-import {GrDocument} from "react-icons/gr";
+import {AiOutlineUserAdd} from "react-icons/ai";
 import Pagination from "../../components/utility/Pagination";
 import seller from "./seller.json"
 import SellerModal from "../../components/seller/SellerModal";
 import Layout from "../../components/layouts/Layout";
+import { Link } from "react-router-dom";
 const Seller = () => {
 
     const [showSellerModal, setShowSellerModal] = useState(false);
@@ -140,7 +141,7 @@ const Seller = () => {
                                                             </td>
                                                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                                 <div className="flex gap-3">
-                                                                    <button className="text-secondary"><GrDocument /></button>
+                                                                    <Link to={`/penjual/${item.no}`}><AiOutlineUserAdd /></Link>
                                                                     <button className="text-button"><FiEdit /></button>
                                                                     <button className="text-nonActive"><MdOutlineDelete /></button>
                                                                 </div>
