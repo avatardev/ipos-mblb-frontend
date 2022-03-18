@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MerchantProduct from "./pages/product/MerchantProduct";
 import Product from "./pages/product/Product";
+import Seller from "./pages/seller/Seller";
 
 function App() {
   return (
@@ -8,7 +9,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/produk/master" element={<Product />} />
-          <Route path="/merchant-product" element={<MerchantProduct />} />
+          <Route path="/produk/seller" element={<MerchantProduct />} />
+          <Route path="/penjual" element={<Seller />} />
         </Routes>
       </BrowserRouter>
     </div>

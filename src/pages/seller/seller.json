@@ -1,0 +1,50 @@
+[
+    {
+        "no": 1,
+        "name": "Pt. Aneka Tambang",
+        "telp": "081945795745",
+        "address": "Jl. Raya Kerobokan, Denpasar, Bali",
+        "kecamatan": "Denpasar Selatan",
+        "email": "admin@antam.com",
+        "pic": "Watson",
+        "pic_telp": "081945795745",
+        "npwp": "110152490289",
+        "ktp": "5103032708000001",
+        "iup": "05249",
+        "exp_date": "12-10-2025",
+        "desc": "Private Corp",
+        "isActive": true
+    },
+    {
+        "no": 2,
+        "name": "Pt. Aneka Tambang",
+        "telp": "081945795745",
+        "address": "Jl. Raya Kerobokan, Denpasar, Bali",
+        "kecamatan": "Denpasar Selatan",
+        "email": "admin@antam.com",
+        "pic": "Watson",
+        "pic_telp": "081945795745",
+        "npwp": "110152490289",
+        "ktp": "5103032708000001",
+        "iup": "05249",
+        "exp_date": "12-10-2025",
+        "desc": "Private Corp",
+        "isActive": true
+    },
+    {
+        "no": 3,
+        "name": "Pt. Aneka Tambang",
+        "telp": "081945795745",
+        "address": "Jl. Raya Kerobokan, Denpasar, Bali",
+        "kecamatan": "Denpasar Selatan",
+        "email": "admin@antam.com",
+        "pic": "Watson",
+        "pic_telp": "081945795745",
+        "npwp": "110152490289",
+        "ktp": "5103032708000001",
+        "iup": "05249",
+        "exp_date": "12-10-2025",
+        "desc": "Private Corp",
+        "isActive": true
+    }
+]
