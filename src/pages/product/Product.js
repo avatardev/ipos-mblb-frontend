@@ -15,9 +15,9 @@ const Product = () => {
 
   return (
     <Layout>
-      <div className="bg-secondary pl-5 pr-2 pb-3">
+      <div className="bg-secondary pl-5 pr-2 pb-3 w-[84vw]">
         <h1 className="text-2xl py-3">Data Produk</h1>
-        <div className="bg-white h-fit px-3">
+        <div className="bg-white h-fit px-3 overflow-x-auto">
           <div className="flex justify-end gap-5 py-3">
             <button
               onClick={() => setShowModal(true)}
@@ -55,7 +55,7 @@ const Product = () => {
 
           <div className="w-full">
             <div className="flex flex-col">
-              <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div className="sm:-mx-6 lg:-mx-8">
                 <div className="inline-block py-2 min-w-full sm:px-6 lg:px-8">
                   <div className="overflow-hidden shadow-md sm:rounded-lg">
                     <table className="min-w-full">
