@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {FiEdit} from "react-icons/fi";
+import Layout from "../../components/layouts/Layout";
 import Modal from "../../components/product/Modal";
 import ProductModal from "../../components/product/ProductModal";
 import Pagination from "../../components/utility/Pagination";
@@ -14,7 +15,7 @@ const MerchantProduct = () => {
 
     return (
         <>
-        
+        <Layout>
             <div className="bg-secondary pl-5 pr-2 pb-3">
                 <h1 className="text-2xl py-3">Data Produk</h1>
                 <div className="bg-white h-fit px-3">
@@ -105,6 +106,7 @@ const MerchantProduct = () => {
             </div>
             <Modal showModal={showModal} setShowModal={setShowModal} />
             <ProductModal showProductModal={showProductModal} setShowProductModal={setShowProductModal} />
+            </Layout>
         </> 
      );
 }

@@ -9,8 +9,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/produk/master" element={<Product />} />
-          <Route path="/merchant-product" element={<MerchantProduct />} />
-          <Route path="/seller" element={<Seller />} />
+          <Route path="/produk/seller" element={<MerchantProduct />} />
+          <Route path="/penjual" element={<Seller />} />
         </Routes>
       </BrowserRouter>
     </div>
