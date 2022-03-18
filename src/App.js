@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MerchantProduct from "./pages/product/MerchantProduct";
 import Product from "./pages/product/Product";
 
 function App() {
@@ -6,7 +7,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Product />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/merchant-product" element={<MerchantProduct />} />
         </Routes>
       </BrowserRouter>
     </div>
