@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { FiEdit } from "react-icons/fi";
 import { MdOutlineDelete } from "react-icons/md";
+import { Link } from "react-router-dom";
 import Layout from "../../components/layouts/Layout";
-import Modal from "../../components/product/Modal";
 import ProductModal from "../../components/product/ProductModal";
 import Pagination from "../../components/utility/Pagination";
 
 import product from "./product.json";
 const Product = () => {
-  const [showModal, setShowModal] = useState(false);
   const [showProductModal, setShowProductModal] = useState(false);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
@@ -19,12 +18,9 @@ const Product = () => {
         <h1 className="text-2xl py-3">Data Produk</h1>
         <div className="bg-white h-fit px-3 overflow-x-auto">
           <div className="flex justify-end gap-5 py-3">
-            <button
-              onClick={() => setShowModal(true)}
-              className="py-1 px-2 border-2 rounded text-button"
-            >
+            <Link to={'/produk/kategori'} className="py-1 px-2 border-2 rounded text-button">
               Kategori
-            </button>
+            </Link>
             <button
               onClick={() => setShowProductModal(true)}
               className="py-1 px-2 bg-button rounded text-white"
@@ -166,7 +162,6 @@ const Product = () => {
           />
         </div>
       </div>
-      <Modal showModal={showModal} setShowModal={setShowModal} />
       <ProductModal
         showProductModal={showProductModal}
         setShowProductModal={setShowProductModal}

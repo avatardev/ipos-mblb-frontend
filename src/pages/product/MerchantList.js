@@ -1,28 +1,23 @@
 import { useState } from "react";
 import {FiEdit} from "react-icons/fi";
-import {IoMdArrowRoundBack} from "react-icons/io";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Layout from "../../components/layouts/Layout";
 import Pagination from "../../components/utility/Pagination";
 
 import product from "./product.json"
-const MerchantProduct = () => {
+const MerchantList = () => {
 
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(10);
-    const {merchantId} = useParams();
 
     return (
         <>
         <Layout>
             <div className="bg-secondary pl-5 pr-2 pb-3 w-[84vw]">
-                <div className="flex items-center gap-2">
-                    <Link to={'/produk/seller'}><IoMdArrowRoundBack className="text-xl" /></Link>
-                    <h1 className="text-xl py-3 font-semibold">Data Produk Seller</h1>
-                </div>
+                <h1 className="text-2xl py-3 font-semibold">Data Seller</h1>
                 <div className="bg-white h-fit px-3 overflow-x-auto">
                     <div className="text-center py-3">
-                        <h1 className="text-2xl font-semibold">Company ID: {merchantId}</h1>
+                        <h1 className="text-2xl font-semibold">Company List</h1>
                     </div>
                     <hr />
                     <div className="md:flex md:justify-between py-3">
@@ -72,28 +67,30 @@ const MerchantProduct = () => {
                                             <tbody>
                                                 {product.map(item => (
                                                     <tr key={item.no} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                        <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
-                                                            {item.no}
-                                                        </td>
-                                                        <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                            {item.name}
-                                                        </td>
-                                                        <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                            {item.price}
-                                                        </td>
-                                                        <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                            {item.desc}
-                                                        </td>
-                                                        <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                            {item.isActive ? <p>True</p> : <p>False</p>}
-                                                        </td>
-                                                        <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                            <div className="flex gap-3">
-                                                                <button className="text-button"><FiEdit /></button>
-                                                            </div>
-                                                        </td>
+                                                            <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
+                                                                {item.no}
+                                                            </td>
+                                                            <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                                <Link to={`/produk/seller/${item.no}`}>
+                                                                {item.name}
+                                                                </Link>
+                                                            </td>
+                                                            <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                                {item.price}
+                                                            </td>
+                                                            <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                                {item.desc}
+                                                            </td>
+                                                            <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                                {item.isActive ? <p>True</p> : <p>False</p>}
+                                                            </td>
+                                                            <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                                <div className="flex gap-3">
+                                                                    <button className="text-button"><FiEdit /></button>
+                                                                </div>
+                                                            </td>
                                                     </tr>
-                                                ))}
+                                            ))}
                                             </tbody>
                                         </table>
                                     </div>
@@ -111,4 +108,4 @@ const MerchantProduct = () => {
      );
 }
  
-export default MerchantProduct;
+export default MerchantList;

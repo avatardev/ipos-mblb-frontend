@@ -1,12 +1,12 @@
-export default function Modal({showModal, setShowModal}) {
+export default function CategoryProductModal({showCategoryProductModal, setShowCategoryProductModal}) {
 
   const handleSubmitCategory = () => {
-    setShowModal(false);
+    setShowCategoryProductModal(false);
   }
 
   return (
     <>
-      {showModal ? (
+      {showCategoryProductModal ? (
         <>
           <div
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-white bg-opacity-30"
@@ -21,7 +21,7 @@ export default function Modal({showModal, setShowModal}) {
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-50 float-right text-2xl leading-none font-semibold outline-none focus:outline-none"
-                    onClick={() => setShowModal(false)}
+                    onClick={() => setShowCategoryProductModal(false)}
                   >
                     <span className="text-primary">x</span>
                   </button>
@@ -54,7 +54,7 @@ export default function Modal({showModal, setShowModal}) {
                   <button
                     className="text-red-500 background-transparent font-bold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
-                    onClick={() => setShowModal(false)}
+                    onClick={() => setShowCategoryProductModal(false)}
                   >
                     Tutup
                   </button>
