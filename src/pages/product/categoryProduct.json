@@ -1,0 +1,32 @@
+[
+    {
+        "no": 1,
+        "name": "Pasir",
+        "pajak": 20,
+        "isActive": true
+    },
+    {
+        "no": 2,
+        "name": "Coral",
+        "pajak": 10,
+        "isActive": true
+    },
+    {
+        "no": 3,
+        "name": "Paving",
+        "pajak": 20,
+        "isActive": true
+    },
+    {
+        "no": 4,
+        "name": "Semen",
+        "pajak": 20,
+        "isActive": true
+    },
+    {
+        "no": 5,
+        "name": "Batu",
+        "pajak": 20,
+        "isActive": true
+    }
+]

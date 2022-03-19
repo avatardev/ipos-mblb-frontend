@@ -1,9 +1,10 @@
 import { useState } from "react";
 import {FiEdit} from "react-icons/fi";
 import {MdOutlineDelete} from "react-icons/md";
+import {IoMdArrowRoundBack} from "react-icons/io";
 import Layout from "../../components/layouts/Layout";
 import Pagination from "../../components/utility/Pagination";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import sellerUser from "./sellerUser.json"
 import SellerUserModal from "../../components/seller/SellerUserModal";
@@ -18,9 +19,12 @@ const SellerUser = () => {
     return (
         <>
         <Layout>
-            <div className="bg-secondary pl-5 pr-2 pb-3">
-                <h1 className="text-2xl py-3">Data User</h1>
-                <div className="bg-white h-fit px-3">
+            <div className="bg-secondary pl-5 pr-2 pb-3 w-[84vw]">
+                <div className="flex items-center gap-2">
+                    <Link to={'/penjual'}><IoMdArrowRoundBack className="text-xl" /></Link>
+                    <h1 className="text-xl py-3 font-semibold">Data User</h1>
+                </div>
+                <div className="bg-white h-fit px-3 overflow-x-auto">
                     <div className="flex justify-end gap-5 py-3">
                             <button onClick={() => setShowSellerUserModal(true)} className="py-1 px-2 bg-button rounded text-white">+ Tambah User</button>
                         </div>
@@ -46,7 +50,7 @@ const SellerUser = () => {
 
                     <div className="w-full">
                     <div className="flex flex-col">
-                            <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                            <div className="sm:-mx-6 lg:-mx-8">
                                 <div className="inline-block py-2 min-w-full sm:px-6 lg:px-8">
                                     <div className="overflow-hidden shadow-md sm:rounded-lg">
                                         <table className="min-w-full">
