@@ -26,7 +26,15 @@ export default function Sidebar() {
       <Divider />
       <MenuItem icon={<IoSpeedometerOutline />} name="Dashboard" href="/" />
       <Divider />
-      <MenuItem icon={<IoPersonOutline />} name="Admin" href="/admin" />
+      <MenuItem
+        icon={<IoPersonOutline />}
+        name="User"
+        pathParent="user"
+        isDropdown
+      >
+        <MenuItem name="Admin" href="/user/admin" />
+        <MenuItem name="Checker" href="/user/checker" />
+      </MenuItem>
       <MenuItem icon={<IoPricetagOutline />} name="Penjual" href="/penjual" />
       <MenuItem icon={<IoCartOutline />} name="Pembeli" href="/pembeli" />
       <MenuItem

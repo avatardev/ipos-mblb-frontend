@@ -8,6 +8,8 @@ import MerchantProduct from "./pages/product/MerchantProduct";
 import Product from "./pages/product/Product";
 import Seller from "./pages/seller/Seller";
 import SellerUser from "./pages/seller/SellerUser";
+import AdminUser from "./pages/user/Admin";
+import CheckerUser from "./pages/user/Checker";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path="/pembeli" element={<Buyer />} />
           <Route path="/pembeli/kategori" element={<CategoryBuyer />} />
           <Route path="/pembeli/:corpId" element={<BuyerUser />} />
+          <Route path="/user/admin" element={<AdminUser />} />
+          <Route path="/user/checker" element={<CheckerUser />} />
         </Routes>
       </BrowserRouter>
     </div>
