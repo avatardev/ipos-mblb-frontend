@@ -1,0 +1,17 @@
+[
+    {
+        "no": 1,
+        "name": "Inkel",
+        "multy_product": true
+    },
+    {
+        "no": 2,
+        "name": "Puso",
+        "multy_product": false
+    },
+    {
+        "no": 3,
+        "name": "Carry",
+        "multy_product": true
+    }
+]

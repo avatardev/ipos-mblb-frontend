@@ -1,0 +1,67 @@
+[
+    {
+        "no": 1,
+        "plat": "DK 2708 MD",
+        "kategori": "Truk Besar",
+        "corp": "Pt. Aneka Tambang",
+        "telp": "081945795745",
+        "address": "Jl Raya Puputan Denpasar, Denpasar Utara",
+        "email": "admin@gmail.com",
+        "pic": "Watson Anderson",
+        "telp_pic": "081945795745",
+        "keterangan": "Kendaraan Pribadi",
+        "isActive": true
+    },
+    {
+        "no": 2,
+        "plat": "DK 2708 MD",
+        "kategori": "Truk Besar",
+        "corp": "Pt. Aneka Tambang",
+        "telp": "081945795745",
+        "address": "Jl Raya Puputan Denpasar, Denpasar Utara",
+        "email": "admin@gmail.com",
+        "pic": "Watson Anderson",
+        "telp_pic": "081945795745",
+        "keterangan": "Kendaraan Pribadi",
+        "isActive": true
+    },
+    {
+        "no": 3,
+        "plat": "DK 2708 MD",
+        "kategori": "Truk Besar",
+        "corp": "Pt. Aneka Tambang",
+        "telp": "081945795745",
+        "address": "Jl Raya Puputan Denpasar, Denpasar Utara",
+        "email": "admin@gmail.com",
+        "pic": "Watson Anderson",
+        "telp_pic": "081945795745",
+        "keterangan": "Kendaraan Pribadi",
+        "isActive": true
+    },
+    {
+        "no": 4,
+        "plat": "DK 2708 MD",
+        "kategori": "Truk Besar",
+        "corp": "Pt. Aneka Tambang",
+        "telp": "081945795745",
+        "address": "Jl Raya Puputan Denpasar, Denpasar Utara",
+        "email": "admin@gmail.com",
+        "pic": "Watson Anderson",
+        "telp_pic": "081945795745",
+        "keterangan": "Kendaraan Pribadi",
+        "isActive": true
+    },
+    {
+        "no": 5,
+        "plat": "DK 2708 MD",
+        "kategori": "Truk Besar",
+        "corp": "Pt. Aneka Tambang",
+        "telp": "081945795745",
+        "address": "Jl Raya Puputan Denpasar, Denpasar Utara",
+        "email": "admin@gmail.com",
+        "pic": "Watson Anderson",
+        "telp_pic": "081945795745",
+        "keterangan": "Kendaraan Pribadi",
+        "isActive": true
+    }
+]

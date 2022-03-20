@@ -6,11 +6,11 @@ import Layout from "../../components/layouts/Layout";
 import Pagination from "../../components/utility/Pagination";
 import { useParams, Link } from "react-router-dom";
 
-import sellerUser from "./sellerUser.json"
-import SellerUserModal from "../../components/seller/SellerUserModal";
-const SellerUser = () => {
+import buyerUser from "./buyerUser.json"
+import BuyerUserModal from "../../components/buyer/BuyerUserModal";
+const BuyerUser = () => {
 
-    const [showSellerUserModal, setShowSellerUserModal] = useState(false);
+    const [showBuyerUserModal, setShowBuyerUserModal] = useState(false);
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(10);
 
@@ -22,11 +22,11 @@ const SellerUser = () => {
             <div className="bg-secondary pl-5 pr-2 pb-3 w-[84vw]">
                 <div className="flex items-center gap-2">
                     <Link to={'/penjual'}><IoMdArrowRoundBack className="text-xl" /></Link>
-                    <h1 className="text-xl py-3 font-semibold">Data User Penjual</h1>
+                    <h1 className="text-xl py-3 font-semibold">Data User Pembeli</h1>
                 </div>
                 <div className="bg-white h-fit px-3 overflow-x-auto">
                     <div className="flex justify-end gap-5 py-3">
-                            <button onClick={() => setShowSellerUserModal(true)} className="py-1 px-2 bg-button rounded text-white">+ Tambah User</button>
+                            <button onClick={() => setShowBuyerUserModal(true)} className="py-1 px-2 bg-button rounded text-white">+ Tambah User</button>
                         </div>
                     <div className="text-center py-3">
                         <h1 className="text-2xl font-semibold">Company ID: {corpId}</h1>
@@ -68,7 +68,7 @@ const SellerUser = () => {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {sellerUser.map(item => (
+                                                {buyerUser.map(item => (
                                                     <tr key={item.no} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                                         <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
                                                             {item.no}
@@ -96,10 +96,10 @@ const SellerUser = () => {
                 
                 </div>
             </div>
-            <SellerUserModal showSellerUserModal={showSellerUserModal} setShowSellerUserModal={setShowSellerUserModal} />
+            <BuyerUserModal showBuyerUserModal={showBuyerUserModal} setShowBuyerUserModal={setShowBuyerUserModal} />
             </Layout>
         </> 
      );
 }
  
-export default SellerUser;
+export default BuyerUser;

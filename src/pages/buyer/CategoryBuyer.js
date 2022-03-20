@@ -1,35 +1,29 @@
 import { useState } from "react";
 import {FiEdit} from "react-icons/fi";
 import {MdOutlineDelete} from "react-icons/md";
-import {IoMdArrowRoundBack} from "react-icons/io";
+import CategoryBuyerModal from "../../components/buyer/CategoryBuyerModal";
 import Layout from "../../components/layouts/Layout";
 import Pagination from "../../components/utility/Pagination";
-import { useParams, Link } from "react-router-dom";
 
-import sellerUser from "./sellerUser.json"
-import SellerUserModal from "../../components/seller/SellerUserModal";
-const SellerUser = () => {
+import categoryBuyer from "./categoryBuyer.json"
+const CategoryBuyer = () => {
 
-    const [showSellerUserModal, setShowSellerUserModal] = useState(false);
+    const [showCategoryBuyerModal, setShowCategoryBuyerModal] = useState(false);
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(10);
 
-    const {corpId} = useParams();
 
     return (
         <>
         <Layout>
             <div className="bg-secondary pl-5 pr-2 pb-3 w-[84vw]">
-                <div className="flex items-center gap-2">
-                    <Link to={'/penjual'}><IoMdArrowRoundBack className="text-xl" /></Link>
-                    <h1 className="text-xl py-3 font-semibold">Data User Penjual</h1>
-                </div>
+                <h1 className="text-2xl py-3">Kategori Pembeli</h1>
                 <div className="bg-white h-fit px-3 overflow-x-auto">
                     <div className="flex justify-end gap-5 py-3">
-                            <button onClick={() => setShowSellerUserModal(true)} className="py-1 px-2 bg-button rounded text-white">+ Tambah User</button>
+                            <button onClick={() => setShowCategoryBuyerModal(true)} className="py-1 px-2 bg-button rounded text-white">+ Tambah Kategori</button>
                         </div>
                     <div className="text-center py-3">
-                        <h1 className="text-2xl font-semibold">Company ID: {corpId}</h1>
+                        <h1 className="text-2xl font-semibold">Company ID</h1>
                     </div>
                     <hr />
                     <div className="md:flex md:justify-between py-3">
@@ -60,7 +54,10 @@ const SellerUser = () => {
                                                         No
                                                     </th>
                                                     <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                                        Username
+                                                        Nama Kategori
+                                                    </th>
+                                                    <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                                        Multi Produk
                                                     </th>
                                                     <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                                         Action
@@ -68,13 +65,16 @@ const SellerUser = () => {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {sellerUser.map(item => (
+                                                {categoryBuyer.map(item => (
                                                     <tr key={item.no} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                                         <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
                                                             {item.no}
                                                         </td>
                                                         <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                            {item.username}
+                                                            {item.name}
+                                                        </td>
+                                                        <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                            {item.multy_product ? "True" : "False"}
                                                         </td>
                                                         <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                             <div className="flex gap-3">  
@@ -96,10 +96,10 @@ const SellerUser = () => {
                 
                 </div>
             </div>
-            <SellerUserModal showSellerUserModal={showSellerUserModal} setShowSellerUserModal={setShowSellerUserModal} />
+            <CategoryBuyerModal showCategoryBuyerModal={showCategoryBuyerModal} setShowCategoryBuyerModal={setShowCategoryBuyerModal} />
             </Layout>
         </> 
      );
 }
  
-export default SellerUser;
+export default CategoryBuyer;
