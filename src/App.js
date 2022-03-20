@@ -1,4 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Buyer from "./pages/buyer/Buyer";
+import BuyerUser from "./pages/buyer/BuyerUser";
+import CategoryBuyer from "./pages/buyer/CategoryBuyer";
 import CategoryProduct from "./pages/product/CategoryProduct";
 import MerchantList from "./pages/product/MerchantList";
 import MerchantProduct from "./pages/product/MerchantProduct";
@@ -17,6 +20,9 @@ function App() {
           <Route path="/produk/kategori" element={<CategoryProduct />} />
           <Route path="/penjual" element={<Seller />} />
           <Route path="/penjual/:corpId" element={<SellerUser />} />
+          <Route path="/pembeli" element={<Buyer />} />
+          <Route path="/pembeli/kategori" element={<CategoryBuyer />} />
+          <Route path="/pembeli/:corpId" element={<BuyerUser />} />
         </Routes>
       </BrowserRouter>
     </div>
