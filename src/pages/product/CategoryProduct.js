@@ -4,14 +4,19 @@ import {MdOutlineDelete} from "react-icons/md";
 import Layout from "../../components/layouts/Layout";
 import CategoryProductModal from "../../components/product/CategoryProductModal";
 import Pagination from "../../components/utility/Pagination";
+import useFetch from "../../services/useFetch";
 
 import categoryProduct from "./categoryProduct.json"
+const base_url = process.env.REACT_APP_BASE_URL;
+
 const CategoryProduct = () => {
 
     const [showCategoryProductModal, setShowCategoryProductModal] = useState(false);
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(10);
 
+    // const {error, isLoading, data} = useFetch(`${base_url}/admin/v1/products`);
+    // console.log(data);
 
     return (
         <>
