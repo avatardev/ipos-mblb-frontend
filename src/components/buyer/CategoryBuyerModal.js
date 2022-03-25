@@ -1,7 +1,44 @@
-export default function CategoryBuyerModal({showCategoryBuyerModal, setShowCategoryBuyerModal}) {
+import { useEffect, useState } from "react";
+import fetchData from "../../services/fetchData";
+import postData from "../../services/postData";
+import putData from "../../services/putData";
+
+export default function CategoryBuyerModal({showCategoryBuyerModal, setShowCategoryBuyerModal, idCategory, setIdCategory, setChanges}) {
+
+    const [category_name, setCategory_name] = useState('');
+    const [multi_product, setMulti_product] = useState(false);
+
+    useEffect(() => {
+      if (idCategory) {
+        fetchData(`/buyers/categories/${idCategory}`)
+        .then(res => {
+          setCategory_name(res.data.name);
+          setMulti_product(res.data.multi_product);
+        })
+      }
+    }, [idCategory])
 
     const handleSubmitCategory = () => {
-      setShowCategoryBuyerModal(false);
+      const body = {
+        category_name,
+        multi_product
+      }
+      if (!idCategory) {
+        postData('/buyers/categories', body)
+      .then(res => console.log(res))
+      } else {
+        putData(`/buyers/categories/${idCategory}`, body)
+        .then(res => console.log(res))
+      }
+      handleClearInput();
+      setChanges(current => current + 1)
+    }
+
+    const handleClearInput = () => {
+      setShowCategoryBuyerModal(false); 
+      setIdCategory(0);
+      setCategory_name('');
+      setMulti_product(false);
     }
   
     return (
@@ -21,23 +58,23 @@ export default function CategoryBuyerModal({showCategoryBuyerModal, setShowCateg
                     </h3>
                     <button
                       className="p-1 ml-auto bg-transparent border-0 text-black opacity-50 float-right text-2xl leading-none font-semibold outline-none focus:outline-none"
-                      onClick={() => setShowCategoryBuyerModal(false)}
+                      onClick={handleClearInput}
                     >
                       <span className="text-primary">x</span>
                     </button>
                   </div>
                   {/*body*/}
-                  <div className="md:w-[30vw] w-[90vw]">
+                  <div className="md:w-[25vw] w-[90vw]">
                     <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                       <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+                        <label className="block text-gray-700 text-sm font-bold mb-2">
                           Nama Kategori
                         </label>
-                        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Nama Kategori.." />
+                        <input value={category_name} onChange={(e) => setCategory_name(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Nama Kategori.." />
                       </div>
                       <div className="mb-4">
-                        <input className=""value={true} id="username" type="checkbox" />
-                        <label className="text-gray-700 text-sm font-bold mx-2" for="username">
+                        <input checked={multi_product} onChange={(e) => setMulti_product(e.target.checked)} value={true} id="username" type="checkbox" />
+                        <label className="text-gray-700 text-sm font-bold mx-2">
                           Multi Produk
                         </label>
                       </div>
@@ -48,7 +85,7 @@ export default function CategoryBuyerModal({showCategoryBuyerModal, setShowCateg
                     <button
                       className="text-red-500 background-transparent font-bold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
-                      onClick={() => setShowCategoryBuyerModal(false)}
+                      onClick={handleClearInput}
                     >
                       Tutup
                     </button>

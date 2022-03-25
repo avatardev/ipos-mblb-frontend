@@ -6,12 +6,31 @@ import { Link } from "react-router-dom";
 import BuyerModal from "../../components/buyer/BuyerModal";
 import Layout from "../../components/layouts/Layout";
 import Pagination from "../../components/utility/Pagination";
+import useFetch from "../../services/useFetch";
+import Loading from "../../components/utility/Loading";
+import Error from "../../components/utility/Error";
+import Limit from "../../components/utility/Limit";
+import deleteData from "../../services/deleteData";
 
-import buyer from "./buyer.json";
 const Buyer = () => {
   const [showBuyerModal, setShowBuyerModal] = useState(false);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
+  const [keyword, setKeyword] = useState('');
+  const offset = (page - 1) * limit;
+
+  const [idBuyer, setIdBuyer] = useState(0);
+  const [changes, setChanges] = useState(0);
+
+  const {data, isLoading, error} = useFetch(`/buyers?limit=${limit}&offset=${offset}&keyword=${keyword}`, changes);
+
+  const handleDelete = (id) => {
+    deleteData(`/buyers/${id}`)
+    .then(res => {
+      console.log(res);
+      setChanges(current => current + 1)
+    })
+  }
 
   return (
     <Layout>
@@ -30,25 +49,9 @@ const Buyer = () => {
             </button>
           </div>
           <hr />
-          <div className="md:flex md:justify-between py-3">
-            <div className="flex gap-2">
-              <p>Show</p>
-              <select
-                value={limit}
-                onChange={(e) => setLimit(e.target.value)}
-                className="border-2"
-              >
-                <option value={5}>5</option>
-                <option value={10}>10</option>
-                <option value={15}>15</option>
-              </select>
-              <p>Entries</p>
-            </div>
-            <div className="flex gap-2">
-              <p>Search: </p>
-              <input className="border-2 rounded" type="search" />
-            </div>
-          </div>
+          {isLoading && <Loading />}
+
+          <Limit setLimit={setLimit} limit={limit} setPage={setPage} setKeyword={setKeyword} />
 
           <div className="w-full">
             <div className="flex flex-col">
@@ -133,25 +136,31 @@ const Buyer = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {buyer.map((item) => (
+                        {
+                          error ?  
+                          <tr>
+                            <td><Error error={"Data Tidak Ditemukan"} /></td>
+                          </tr>
+                          :
+                          data?.buyer.map((item, i) => (
                           <tr
-                            key={item.no}
+                            key={i}
                             className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                           >
                               <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
-                              {item.no}
+                              {i + 1 + offset}
                             </td>
                             <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
-                              {item.plat}
+                              {item.vehicle_plate}
                             </td>
                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                              {item.kategori}
+                              {item.category}
                             </td>
                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                              {item.corp}
+                              {item.company}
                             </td>
                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                              {item.telp}
+                              {item.phone}
                             </td>
                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                               {item.address}
@@ -160,24 +169,24 @@ const Buyer = () => {
                               {item.email}
                             </td>
                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                              {item.pic}
+                              {item.pic_name}
                             </td>
                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                              {item.telp_pic}
+                              {item.pic_phone}
                             </td>
                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                              {item.keterangan}
+                              {item.description}
                             </td>
                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                              {item.isActive ? <p>True</p> : <p>False</p>}
+                              {item.status ? <p>Aktif</p> : <p>Non Aktif</p>}
                             </td>
                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                               <div className="flex gap-3">
                                 <Link to={`/pembeli/${item.no}`}><AiOutlineUserAdd /></Link>
-                                <button className="text-button">
+                                <button onClick={() => {setIdBuyer(item.vehicle_plate); setShowBuyerModal(true)}} className="text-button">
                                   <FiEdit />
                                 </button>
-                                <button className="text-nonActive">
+                                <button onClick={() => handleDelete(item.vehicle_plate)} className="text-nonActive">
                                   <MdOutlineDelete />
                                 </button>
                               </div>
@@ -196,13 +205,16 @@ const Buyer = () => {
             page={page}
             setPage={setPage}
             limit={limit}
-            totalData={50}
+            totalData={data?.total}
           />
         </div>
       </div>
       <BuyerModal
         showBuyerModal={showBuyerModal}
         setShowBuyerModal={setShowBuyerModal}
+        idBuyer={idBuyer}
+        setIdBuyer={setIdBuyer}
+        setChanges={setChanges}
       />
     </Layout>
   );

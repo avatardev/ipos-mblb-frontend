@@ -86,6 +86,9 @@ export default function ProductModal({showProductModal, setShowProductModal, IdP
                         <div className="flex gap-10 items-center">
                             <div className="w-full">
                                 <div className="mb-4">
+                                  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+                                       Kategori Produk
+                                  </label>
                                 <select
                                     onChange={(e) => setCategory_id(e.target.value)} value={category_id}
                                     className="border-2"

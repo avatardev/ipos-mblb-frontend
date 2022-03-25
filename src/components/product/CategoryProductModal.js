@@ -63,7 +63,7 @@ export default function CategoryProductModal({showCategoryProductModal, setShowC
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-50 float-right text-2xl leading-none font-semibold outline-none focus:outline-none"
-                    onClick={() => setShowCategoryProductModal(false)}
+                    onClick={handleClearInput}
                   >
                     <span className="text-primary">x</span>
                   </button>
@@ -84,7 +84,7 @@ export default function CategoryProductModal({showCategoryProductModal, setShowC
                       <input value={tax} onChange={(e) => setTax(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="number" />
                     </div>
                     <div className="mb-4">
-                      <input checked={status} onChange={(e) => setStatus(e.target.checked)} className=""value={true} id="username" type="checkbox" />
+                      <input checked={status} onChange={(e) => setStatus(e.target.checked)} value={true} id="username" type="checkbox" />
                       <label className="text-gray-700 text-sm font-bold mx-2" htmlFor="username">
                         Aktif
                       </label>
@@ -96,7 +96,7 @@ export default function CategoryProductModal({showCategoryProductModal, setShowC
                   <button
                     className="text-red-500 background-transparent font-bold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
-                    onClick={() => setShowCategoryProductModal(false)}
+                    onClick={handleClearInput}
                   >
                     Tutup
                   </button>
