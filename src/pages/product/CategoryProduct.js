@@ -21,7 +21,7 @@ const CategoryProduct = () => {
 
     const [changes, setChanges] = useState(0);
 
-    const {data, isLoading, error} = useFetch(`/products/categories`, changes);
+    const {data, isLoading, error} = useFetch(`/products/categories?limit=${limit}&offset=${offset}`, changes);
 
     const handleDelete = (id) => {
         deleteData(`/products/categories/${id}`)
