@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
+const base_url = process.env.REACT_APP_BASE_URL;
 
-const useFetch = (url) => {
+const useFetch = (url, changes) => {
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     
     useEffect(() => {
-        fetch(url, {
+        setError(null);
+        fetch(`${base_url + url}`, {
             method: "GET",
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': null
+                'Content-Type': 'application/json'
             }
         })
         .then(res => {
@@ -28,7 +29,7 @@ const useFetch = (url) => {
             setIsLoading(false)
             setError(err.message)
         })
-    }, [url])
+    }, [url, changes])
 
     return {data, isLoading, error}
 }

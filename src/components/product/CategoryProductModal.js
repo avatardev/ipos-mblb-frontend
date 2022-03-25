@@ -1,7 +1,49 @@
-export default function CategoryProductModal({showCategoryProductModal, setShowCategoryProductModal}) {
+import { useEffect, useState } from "react";
+import fetchData from "../../services/fetchData";
+import postData from "../../services/postData";
+import putData from "../../services/putData";
+
+export default function CategoryProductModal({showCategoryProductModal, setShowCategoryProductModal, idCategory, setIdCategory, setChanges}) {
+
+  const [category_name, setCategory_name] = useState('');
+  const [tax, setTax] = useState(0);
+  const [status, setStatus] = useState(true);
+
+  useEffect(() => {
+    console.log(idCategory);
+    if (idCategory) {
+      fetchData(`/products/categories/${idCategory}`)
+      .then(res => {
+        setCategory_name(res.data.category_name);
+        setTax(res.data.tax);
+        setStatus(res.data.status);
+      })
+    }
+  }, [idCategory])
 
   const handleSubmitCategory = () => {
-    setShowCategoryProductModal(false);
+    const body = {
+      category_name, 
+      tax: parseInt(tax), 
+      status
+    }
+    if (!idCategory) {
+      postData('/products/categories', body)
+    .then(res => console.log(res))
+    } else {
+      putData(`/products/categories/${idCategory}`, body)
+      .then(res => console.log(res))
+    }
+    handleClearInput();
+    setChanges(current => current + 1)
+  }
+
+  const handleClearInput = () => {
+    setShowCategoryProductModal(false); 
+    setIdCategory(0);
+    setCategory_name('');
+    setTax(0);
+    setStatus(false);
   }
 
   return (
@@ -27,23 +69,23 @@ export default function CategoryProductModal({showCategoryProductModal, setShowC
                   </button>
                 </div>
                 {/*body*/}
-                <div className="md:w-[30vw] w-[90vw]">
+                <div className="md:w-[25vw] w-[90vw]">
                   <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                     <div className="mb-4">
-                      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+                      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                         Nama Kategori
                       </label>
-                      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Nama Kategori.." />
+                      <input value={category_name} onChange={(e) => setCategory_name(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Nama Kategori.." />
                     </div>
                     <div className="mb-4">
-                      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+                      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                         Pajak (%)
                       </label>
-                      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="number" />
+                      <input value={tax} onChange={(e) => setTax(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="number" />
                     </div>
                     <div className="mb-4">
-                      <input className=""value={true} id="username" type="checkbox" />
-                      <label className="text-gray-700 text-sm font-bold mx-2" for="username">
+                      <input checked={status} onChange={(e) => setStatus(e.target.checked)} className=""value={true} id="username" type="checkbox" />
+                      <label className="text-gray-700 text-sm font-bold mx-2" htmlFor="username">
                         Aktif
                       </label>
                     </div>

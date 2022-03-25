@@ -4,13 +4,32 @@ import { MdOutlineDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Layout from "../../components/layouts/Layout";
 import ProductModal from "../../components/product/ProductModal";
+import Error from "../../components/utility/Error";
+import Limit from "../../components/utility/Limit";
+import Loading from "../../components/utility/Loading";
 import Pagination from "../../components/utility/Pagination";
+import deleteData from "../../services/deleteData";
+import useFetch from "../../services/useFetch";
 
-import product from "./product.json";
 const Product = () => {
   const [showProductModal, setShowProductModal] = useState(false);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
+  const [keyword, setKeyword] = useState('');
+  const offset = (page - 1) * limit;
+
+  const [IdProduct, setIdProduct] = useState(0);
+  const [changes, setChanges] = useState(0);
+
+  const {data, isLoading, error} = useFetch(`/products?offset=${offset}&limit=${limit}&keyword=${keyword}`, changes);
+
+  const handleDelete = (id) => {
+    deleteData(`/products/${id}`)
+    .then(res => {
+      console.log(res);
+      setChanges(current => current + 1)
+    })
+  }
 
   return (
     <Layout>
@@ -28,26 +47,10 @@ const Product = () => {
               + Tambah Produk
             </button>
           </div>
+          {isLoading && <Loading />}
+           
           <hr />
-          <div className="md:flex md:justify-between py-3">
-            <div className="flex gap-2">
-              <p>Show</p>
-              <select
-                value={limit}
-                onChange={(e) => setLimit(e.target.value)}
-                className="border-2"
-              >
-                <option value={5}>5</option>
-                <option value={10}>10</option>
-                <option value={15}>15</option>
-              </select>
-              <p>Entries</p>
-            </div>
-            <div className="flex gap-2">
-              <p>Search: </p>
-              <input className="border-2 rounded" type="search" />
-            </div>
-          </div>
+          <Limit setLimit={setLimit} limit={limit} setPage={setPage} setKeyword={setKeyword} />
 
           <div className="w-full">
             <div className="flex flex-col">
@@ -85,7 +88,7 @@ const Product = () => {
                             scope="col"
                             className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
                           >
-                            Pajak(%)
+                            Pajak
                           </th>
                           <th
                             scope="col"
@@ -108,38 +111,45 @@ const Product = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {product.map((item) => (
+                        { error ?  
+                          <tr>
+                            <td><Error error={"Data Tidak Ditemukan"} /></td>
+                          </tr> 
+                          
+                          :
+                        
+                          data?.product.map((item, i) => (
                           <tr
-                            key={item.no}
+                            key={item.id}
                             className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                           >
                             <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
-                              {item.no}
+                              {i + 1 + offset}
                             </td>
                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                               {item.name}
                             </td>
                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                              {item.price}
+                              {item.price_m3}
                             </td>
                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                              {item.category}
+                              {item.category_name}
                             </td>
                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                              {item.taxt}
+                              {item.tax}%
                             </td>
                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                              {item.desc}
+                              {item.description}
                             </td>
                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                              {item.isActive ? <p>True</p> : <p>False</p>}
+                              {item.status ? <p>Aktif</p> : <p>Non Aktif</p>}
                             </td>
                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                               <div className="flex gap-3">
-                                <button className="text-button">
+                                <button onClick={() => {setIdProduct(item.id); setShowProductModal(true)}} className="text-button">
                                   <FiEdit />
                                 </button>
-                                <button className="text-nonActive">
+                                <button onClick={() => handleDelete(item.id)} className="text-nonActive">
                                   <MdOutlineDelete />
                                 </button>
                               </div>
@@ -158,13 +168,16 @@ const Product = () => {
             page={page}
             setPage={setPage}
             limit={limit}
-            totalData={50}
+            totalData={data?.total}
           />
         </div>
       </div>
       <ProductModal
         showProductModal={showProductModal}
         setShowProductModal={setShowProductModal}
+        IdProduct={IdProduct}
+        setIdProduct={setIdProduct}
+        setChanges={setChanges}
       />
     </Layout>
   );

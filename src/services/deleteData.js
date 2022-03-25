@@ -1,11 +1,12 @@
-const usePut = (url, body) => {
-    const data = await fetch(url, {
-        method: "PUT",
+const base_url = process.env.REACT_APP_BASE_URL;
+const deleteData = async (url) => {
+
+    const data = await fetch(`${base_url + url}`, {
+        method: "DELETE",
         headers: {
             'Content-Type': 'application/json',
             'Authorization': null
-        },
-        body: JSON.stringify({...body})
+        }
     })
     .then(res => {
         if (!res.ok) {
@@ -20,4 +21,4 @@ const usePut = (url, body) => {
     return data;
 }
  
-export default usePut;
+export default deleteData;
