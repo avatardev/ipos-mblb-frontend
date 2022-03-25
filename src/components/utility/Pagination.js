@@ -37,13 +37,13 @@ const Pagination = ({page, setPage, limit, totalData}) => {
           Next
         </button>
       </div>
-      <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
-        <div>
+      <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-end">
+        {/* <div>
           <p className="text-sm text-gray-700">
             Showing <span className="font-medium">1</span> to <span className="font-medium">{limit}</span> of{' '}
             <span className="font-medium">{totalData}</span> results
           </p>
-        </div>
+        </div> */}
         <div>
           <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
             <button

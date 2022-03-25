@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Buyer from "./pages/buyer/Buyer";
 import BuyerUser from "./pages/buyer/BuyerUser";
 import CategoryBuyer from "./pages/buyer/CategoryBuyer";
+import Location from "./pages/location/Location";
 import CategoryProduct from "./pages/product/CategoryProduct";
 import MerchantList from "./pages/product/MerchantList";
 import MerchantProduct from "./pages/product/MerchantProduct";
@@ -27,6 +28,7 @@ function App() {
           <Route path="/pembeli/:corpId" element={<BuyerUser />} />
           <Route path="/user/admin" element={<AdminUser />} />
           <Route path="/user/checker" element={<CheckerUser />} />
+          <Route path="/lokasi" element={<Location />} />
         </Routes>
       </BrowserRouter>
     </div>
