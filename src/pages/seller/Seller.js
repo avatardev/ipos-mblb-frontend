@@ -7,11 +7,31 @@ import seller from "./seller.json"
 import SellerModal from "../../components/seller/SellerModal";
 import Layout from "../../components/layouts/Layout";
 import { Link } from "react-router-dom";
+import useFetch from "../../services/useFetch";
+import Loading from "../../components/utility/Loading";
+import Error from "../../components/utility/Error";
+import Limit from "../../components/utility/Limit";
+import deleteData from "../../services/deleteData";
 const Seller = () => {
 
     const [showSellerModal, setShowSellerModal] = useState(false);
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(10);
+    const [keyword, setKeyword] = useState('');
+    const offset = (page - 1) * limit;
+  
+    const [idSeller, setIdSeller] = useState(0);
+    const [changes, setChanges] = useState(0);
+  
+    const {data, isLoading, error} = useFetch(`/sellers?limit=${limit}&offset=${offset}&keyword=${keyword}`, changes);
+
+    const handleDelete = (id) => {
+        deleteData(`/sellers/${id}`)
+        .then(res => {
+          console.log(res);
+          setChanges(current => current + 1)
+        })
+      }
 
     return (
         <>
@@ -22,22 +42,9 @@ const Seller = () => {
                         <div className="flex justify-end gap-5 py-3">
                             <button onClick={() => setShowSellerModal(true)} className="py-1 px-2 bg-button rounded text-white">+ Tambah Seller</button>
                         </div>
+                            {isLoading && <Loading />}
                         <hr />
-                        <div className="md:flex md:justify-between py-3">
-                            <div className="flex gap-2">
-                                <p>Show</p>
-                                <select value={limit} onChange={(e) => setLimit(e.target.value)} className="border-2">
-                                    <option value={5}>5</option>
-                                    <option value={10}>10</option>
-                                    <option value={15}>15</option>
-                                </select>
-                                <p>Entries</p>
-                            </div>
-                            <div className="flex gap-2">
-                                <p>Search: </p>
-                                <input className="border-2 rounded" type="search" />
-                            </div>
-                        </div>
+                        <Limit setLimit={setLimit} limit={limit} setPage={setPage} setKeyword={setKeyword} />
 
                         <div className="w-full">
                         <div className="flex flex-col">
@@ -95,31 +102,38 @@ const Seller = () => {
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {seller.map(item => (
-                                                        <tr key={item.no} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                {error ?  
+                                                        <tr>
+                                                            <td><Error error={"Data Tidak Ditemukan"} /></td>
+                                                        </tr> 
+                                                        
+                                                        :
+                                                    
+                                                    data?.seller.map((item, i) => (
+                                                        <tr key={item.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                                             <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
-                                                                {item.no}
+                                                                {i + 1 + offset}
                                                             </td>
                                                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                                {item.name}
+                                                                {item.company}
                                                             </td>
                                                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                                {item.telp}
+                                                                {item.phone}
                                                             </td>
                                                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                                 {item.address}
                                                             </td>
                                                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                                {item.kecamatan}
+                                                                {item.district}
                                                             </td>
                                                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                                {item.email}
+                                                                {item.emali}
                                                             </td>
                                                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                                {item.pic}
+                                                                {item.pic_name}
                                                             </td>
                                                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                                {item.pic_telp}
+                                                                {item.pic_phone}
                                                             </td>
                                                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                                 {item.npwp}
@@ -128,22 +142,22 @@ const Seller = () => {
                                                                 {item.ktp}
                                                             </td>
                                                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                                {item.iup}
+                                                                {item.no_iup}
                                                             </td>
                                                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                                {item.exp_date}
+                                                                {item.valid_period}
                                                             </td>
                                                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                                {item.desc}
+                                                                {item.description}
                                                             </td>
                                                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                                {item.isActive ? <p>True</p> : <p>False</p>}
+                                                                {item.status ? <p>Aktif</p> : <p>Non Aktif</p>}
                                                             </td>
                                                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                                 <div className="flex gap-3">
-                                                                    <Link to={`/penjual/${item.no}`}><AiOutlineUserAdd /></Link>
-                                                                    <button className="text-button"><FiEdit /></button>
-                                                                    <button className="text-nonActive"><MdOutlineDelete /></button>
+                                                                    <Link to={`/penjual/${item.id}`}><AiOutlineUserAdd /></Link>
+                                                                    <button onClick={() => {setIdSeller(item.id); setShowSellerModal(true)}} className="text-button"><FiEdit /></button>
+                                                                    <button onClick={() => handleDelete(item.id)} className="text-nonActive"><MdOutlineDelete /></button>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -156,11 +170,22 @@ const Seller = () => {
                             </div>
                         </div>
 
-                        <Pagination page={page} setPage={setPage} limit={limit} totalData={50} />
+                        <Pagination
+                            page={page}
+                            setPage={setPage}
+                            limit={limit}
+                            totalData={data?.total}
+                        />
                     
                     </div>
                 </div>
-                <SellerModal showSellerModal={showSellerModal} setShowSellerModal={setShowSellerModal} />
+                <SellerModal 
+                    showSellerModal={showSellerModal} 
+                    setShowSellerModal={setShowSellerModal}
+                    idSeller={idSeller}
+                    setIdSeller={setIdSeller}
+                    setChanges={setChanges} 
+                />
             </Layout>
         </> 
      );
