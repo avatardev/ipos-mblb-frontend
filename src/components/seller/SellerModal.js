@@ -1,7 +1,88 @@
-export default function SellerModal({showSellerModal, setShowSellerModal}) {
+import { useEffect, useState } from "react";
+import fetchData from "../../services/fetchData";
+import postData from "../../services/postData";
+import putData from "../../services/putData";
+
+export default function SellerModal({showSellerModal, setShowSellerModal, idSeller, setIdSeller, setChanges}) {
+
+    const [company, setCompany] = useState('');
+    const [address, setAddress] = useState('');
+    const [district, setDistrict] = useState('');
+    const [emali, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [pic_name, setPic_name] = useState('');
+    const [pic_phone, setPic_phone] = useState('');
+    const [npwp, setNpwp] = useState('');
+    const [ktp, setKtp] = useState('');
+    const [no_iup, setNo_iup] = useState('');
+    const [valid_period, setValid_period] = useState('');
+    const [description, setDescription] = useState('');
+    const [status, setStatus] = useState(true);
+
+    useEffect(() => {
+      if (idSeller) {
+        fetchData(`/sellers/${idSeller}`)
+        .then(res => {
+          setCompany(res.data.company);
+          setAddress(res.data.address);
+          setDistrict(res.data.district);
+          setEmail(res.data.emali);
+          setPhone(res.data.phone);
+          setPic_name(res.data.pic_name);
+          setPic_phone(res.data.phone);
+          setNpwp(res.data.npwp);
+          setKtp(res.data.ktp);
+          setNo_iup(res.data.no_iup);
+          setValid_period(res.data.valid_period);
+          setDescription(res.data.description);
+          setStatus(res.data.status);
+        })
+      }
+    }, [idSeller])
 
     const handleSubmitSeller = () => {
+      const body = {
+        company,
+        address,
+        district,
+        emali,
+        phone,
+        pic_name,
+        pic_phone,
+        npwp,
+        ktp,
+        no_iup,
+        valid_period,
+        description,
+        status
+      }
+      if (!idSeller) {
+        postData('/sellers', body)
+      .then(res => console.log(res))
+      } else {
+        putData(`/sellers/${idSeller}`, body)
+        .then(res => console.log(res))
+      }
+      handleClearInput();
+      setChanges(current => current + 1)
+    }
+
+    const handleClearInput = () => {
       setShowSellerModal(false);
+      setIdSeller(0);
+      setCompany('');
+      setAddress('');
+      setDistrict('');
+      setEmail('');
+      setPhone('');
+      setPic_name('');
+      setPic_phone('');
+      setNpwp('');
+      setKtp('');
+      setNo_iup('');
+      setValid_period('');
+      setDescription('');
+      setStatus('');
     }
   
     return (
@@ -21,7 +102,7 @@ export default function SellerModal({showSellerModal, setShowSellerModal}) {
                     </h3>
                     <button
                       className="p-1 ml-auto bg-transparent border-0 text-black opacity-50 float-right text-2xl leading-none font-semibold outline-none focus:outline-none"
-                      onClick={() => setShowSellerModal(false)}
+                      onClick={handleClearInput}
                     >
                       <span className="text-primary">x</span>
                     </button>
@@ -35,43 +116,43 @@ export default function SellerModal({showSellerModal, setShowSellerModal}) {
                                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                                         Perusahaan
                                     </label>
-                                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Nama Kategori.." />
+                                    <input value={company} onChange={(e) => setCompany(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Nama Kategori.." />
                                 </div>
                                 <div className="mb-4">
                                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                                         Telp
                                     </label>
-                                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="number" />
+                                    <input value={phone} onChange={(e) => setPhone(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="number" />
                                 </div>
                                 <div className="mb-4">
                                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                                         Alamat
                                     </label>
-                                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+                                    <input value={address} onChange={(e) => setAddress(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
                                 </div>
                                 <div className="mb-4">
                                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                                         Kecamatan
                                     </label>
-                                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+                                    <input value={district} onChange={(e) => setDistrict(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
                                 </div>
                                 <div className="mb-4">
                                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                                         Email
                                     </label>
-                                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="email" />
+                                    <input value={emali} onChange={(e) => setEmail(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="email" />
                                 </div>
                                 <div className="mb-4">
                                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                                         Pic
                                     </label>
-                                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+                                    <input value={pic_name} onChange={(e) => setPic_name(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
                                 </div>
                                 <div className="mb-4">
                                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                                         Telp Pic
                                     </label>
-                                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+                                    <input value={pic_phone} onChange={(e) => setPic_phone(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
                                 </div>
                             </div>
                             <div className="w-full">
@@ -79,34 +160,36 @@ export default function SellerModal({showSellerModal, setShowSellerModal}) {
                                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                                         NPWP
                                     </label>
-                                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="number" />
+                                    <input value={npwp} onChange={(e) => setNpwp(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="number" />
                                 </div>
                                 <div className="mb-4">
                                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                                         KTP
                                     </label>
-                                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+                                    <input value={ktp} onChange={(e) => setKtp(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
                                 </div>
                                 <div className="mb-4">
                                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                                         No IUP
                                     </label>
-                                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+                                    <input value={no_iup} onChange={(e) => setNo_iup(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
                                 </div>
                                 <div className="mb-4">
                                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                                         Masa Berlaku
                                     </label>
-                                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="date" />
+                                    <input value={valid_period} onChange={(e) => setValid_period(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="date" />
                                 </div>
                                 <div className="mb-4">
                                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                                         Keterangan
                                     </label>
-                                    <textarea className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+                                    <textarea value={description} onChange={(e) => setDescription(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
+                                      {description}  
+                                    </textarea>
                                 </div>
                                 <div className="mb-4">
-                                    <input className=""value={true} id="username" type="checkbox" />
+                                    <input checked={status} onChange={(e) => setStatus(e.target.checked)} id="username" type="checkbox" />
                                     <label className="text-gray-700 text-sm font-bold mx-2" htmlFor="username">
                                     Aktif
                                     </label>
@@ -120,7 +203,7 @@ export default function SellerModal({showSellerModal, setShowSellerModal}) {
                     <button
                       className="text-red-500 background-transparent font-bold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
-                      onClick={() => setShowSellerModal(false)}
+                      onClick={handleClearInput}
                     >
                       Tutup
                     </button>
