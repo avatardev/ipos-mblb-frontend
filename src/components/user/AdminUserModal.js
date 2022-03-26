@@ -1,8 +1,51 @@
-export default function AdminUserModal({showAdminUserModal, setShowAdminUserModal}) {
+import { useEffect, useState } from "react";
+import fetchData from "../../services/fetchData";
+import postData from "../../services/postData";
+import putData from "../../services/putData";
+
+export default function AdminUserModal({showAdminUserModal, setShowAdminUserModal, idUserAdmin, setIdUserAdmin, setChanges}) {
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+
+    useEffect(() => {
+      if (idUserAdmin) {
+        fetchData(`/user/admins/${idUserAdmin}`)
+        .then(res => {
+          setUsername(res.data.username);
+        })
+      }
+    }, [idUserAdmin])
 
     const handleSubmitAdminUser = () => {
-      setShowAdminUserModal(false);
+      if (password === confirmPassword) {
+          const body = {
+            username,
+            password
+          }
+          if (!idUserAdmin) {
+            postData('/user/admins', body)
+          .then(res => console.log(res))
+          } else {
+            putData(`/user/admins/${idUserAdmin}`, body)
+            .then(res => console.log(res))
+          }
+          handleClearInput();
+          setChanges(current => current + 1)
+      } else {
+        console.log("password and confirm password unmatch");
+      }
     }
+
+    const handleClearInput = () => {
+      setShowAdminUserModal(false); 
+      setIdUserAdmin(0);
+      setUsername('');
+      setPassword('');
+      setConfirmPassword('');
+    }
+    
   
     return (
       <>
@@ -21,32 +64,36 @@ export default function AdminUserModal({showAdminUserModal, setShowAdminUserModa
                     </h3>
                     <button
                       className="p-1 ml-auto bg-transparent border-0 text-black opacity-50 float-right text-2xl leading-none font-semibold outline-none focus:outline-none"
-                      onClick={() => setShowAdminUserModal(false)}
+                      onClick={handleClearInput}
                     >
                       <span className="text-primary">x</span>
                     </button>
                   </div>
                   {/*body*/}
-                  <div className="md:w-[30vw] w-[90vw]">
+                  <div className="md:w-[25vw] w-[90vw]">
                     <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                       <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+                        <label className="block text-gray-700 text-sm font-bold mb-2">
                           Username
                         </label>
-                        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username.." />
+                        <input value={username} onChange={(e) => setUsername(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Username.." />
                       </div>
-                      <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
-                          Password
-                        </label>
-                        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="password" />
-                      </div>
-                      <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
-                          Confirm Password
-                        </label>
-                        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="password" />
-                      </div>
+                      {!idUserAdmin &&
+                        <>
+                          <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                              Password
+                            </label>
+                            <input value={password} onChange={(e) => setPassword(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="password" />
+                          </div>
+                          <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                              Confirm Password
+                            </label>
+                            <input value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="password" />
+                          </div>
+                        </>
+                      }
                     </form>
                   </div>
                   {/*footer*/}
@@ -54,7 +101,7 @@ export default function AdminUserModal({showAdminUserModal, setShowAdminUserModa
                     <button
                       className="text-red-500 background-transparent font-bold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
-                      onClick={() => setShowAdminUserModal(false)}
+                      onClick={handleClearInput}
                     >
                       Tutup
                     </button>

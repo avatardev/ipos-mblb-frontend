@@ -3,7 +3,6 @@ import {FiEdit} from "react-icons/fi";
 import {MdOutlineDelete} from "react-icons/md";
 import {AiOutlineUserAdd} from "react-icons/ai";
 import Pagination from "../../components/utility/Pagination";
-import seller from "./seller.json"
 import SellerModal from "../../components/seller/SellerModal";
 import Layout from "../../components/layouts/Layout";
 import { Link } from "react-router-dom";
