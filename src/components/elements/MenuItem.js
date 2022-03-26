@@ -5,7 +5,7 @@ import { IoChevronForwardOutline } from "react-icons/io5";
 export default function MenuItem(props) {
   const location = window.location.pathname;
   const splitPath = location.split("/");
-  console.log(splitPath[1]);
+  
   const pathParent = splitPath[1];
   const dropdownCondition = pathParent === props.pathParent ? "collapse" : "";
   const [dropdown, setDropdown] = useState(dropdownCondition);

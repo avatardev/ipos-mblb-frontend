@@ -1,14 +1,18 @@
 import React, { useState } from "react";
-import { IoExitOutline } from "react-icons/io5";
+import { IoExitOutline, IoReorderThreeOutline } from "react-icons/io5";
 
-export default function Navbar() {
+
+export default function Navbar(props) {
   const [showLogout, setShowLogout] = useState("hidden");
 
   const buttonLogoutHandler = () => {
     showLogout === "hidden" ? setShowLogout("block") : setShowLogout("hidden");
   };
   return (
-    <div className="w-full bg-white min-h-sm p-[16px]">
+    <div className="w-full flex justify-between bg-white min-h-sm p-[16px]">
+      <button className="text-lg p-2 rounded-full" onClick={props.sidebarHandler}>
+      <IoReorderThreeOutline />
+      </button>
       <div className="flex justify-end gap-5 items-center relative">
         <button
           className="flex items-center gap-3 border-l pl-5 border-secondary"

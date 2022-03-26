@@ -15,12 +15,12 @@ import {
   IoFolderOpenOutline,
 } from "react-icons/io5";
 
-export default function Sidebar() {
+export default function Sidebar(props) {
   return (
-    <div className="bg-white text-primary lg:w-96  min-h-screen p-4">
+    <div className={`${props.sidebarCondition === "show" ? "block" : "hidden"} bg-white text-primary w-96 min-h-screen p-4 ease-in-out duration-500`}>
       <div className="w-full flex justify-between items-center gap-5">
         <Logo img={KarangasemLogo} />
-        <h1 className="text-xl font-semibold hidden lg:block">IPOS MBLB</h1>
+        <h1 className="text-xl font-semibold hidden lg:block text-center">IPOS MBLB</h1>
         <Logo img={BPDLogo} />
       </div>
       <Divider />
