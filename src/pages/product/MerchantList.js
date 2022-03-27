@@ -1,13 +1,21 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "../../components/layouts/Layout";
+import Error from "../../components/utility/Error";
+import Limit from "../../components/utility/Limit";
+import Loading from "../../components/utility/Loading";
 import Pagination from "../../components/utility/Pagination";
+import useFetch from "../../services/useFetch";
+import {BsBoxArrowInDownRight} from "react-icons/bs";
 
-import sellerUser from "./sellerUser.json"
 const MerchantList = () => {
 
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(10);
+    const [keyword, setKeyword] = useState('');
+    const offset = (page - 1) * limit;
+  
+    const {data, isLoading, error} = useFetch(`/sellers?limit=${limit}&offset=${offset}&keyword=${keyword}`);
 
     return (
         <>
@@ -17,22 +25,9 @@ const MerchantList = () => {
                     <h1 className="text-xl py-3 font-semibold">Data Seller</h1>
                 </div>
                 <div className="bg-white h-fit px-3 overflow-x-auto">
+                    {isLoading && <Loading />}
                     <hr />
-                    <div className="md:flex md:justify-between py-3">
-                        <div className="flex gap-2">
-                            <p>Show</p>
-                            <select value={limit} onChange={(e) => setLimit(e.target.value)} className="border-2">
-                                <option value={5}>5</option>
-                                <option value={10}>10</option>
-                                <option value={15}>15</option>
-                            </select>
-                            <p>Entries</p>
-                        </div>
-                        <div className="flex gap-2">
-                            <p>Search: </p>
-                            <input className="border-2 rounded" type="search" />
-                        </div>
-                    </div>
+                    <Limit setLimit={setLimit} limit={limit} setPage={setPage} setKeyword={setKeyword} />
 
                     <div className="w-full">
                     <div className="flex flex-col">
@@ -57,28 +52,42 @@ const MerchantList = () => {
                                                     <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                                         Telp
                                                     </th>
+                                                    <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                                            Action
+                                                    </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {sellerUser.map(item => (
-                                                    <tr key={item.no} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            {error ?  
+                                                        <tr>
+                                                            <td><Error error={"Data Tidak Ditemukan"} /></td>
+                                                        </tr> 
+                                                        
+                                                        :
+                                                    data?.seller.map((item, i) => (
+                                                    <tr key={item.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                                         <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
-                                                            {item.no}
+                                                            {i + 1 + offset}
                                                         </td>
                                                         <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                            <Link to={`/produk/seller/${item.no}`}>
-                                                                {item.corp}
+                                                            <Link to={`/produk/seller/${item.id}`}>
+                                                                {item.company}
                                                             </Link>
                                                         </td>
                                                         <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                             {item.address}
                                                         </td>
                                                         <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                            {item.email}
+                                                            {item.emali}
                                                         </td>
                                                         <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                            {item.telp}
+                                                            {item.phone}
                                                         </td>
+                                                        <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                                <div className="flex gap-3">
+                                                                    <Link to={`/produk/seller/${item.id}`}><BsBoxArrowInDownRight /></Link>
+                                                                </div>
+                                                         </td>
                                                     </tr>
                                                 ))}
                                             </tbody>
