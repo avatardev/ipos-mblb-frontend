@@ -19,7 +19,7 @@ function App() {
         <Routes>
           <Route path="/produk/master" element={<Product />} />
           <Route path="/produk/seller" element={<MerchantList />} />
-          <Route path="/produk/seller/:merchantId" element={<MerchantProduct />} />
+          <Route path="/produk/seller/:merchantId/:merchantName" element={<MerchantProduct />} />
           <Route path="/produk/kategori" element={<CategoryProduct />} />
           <Route path="/penjual" element={<Seller />} />
           <Route path="/penjual/:corpId" element={<SellerUser />} />
