@@ -58,13 +58,13 @@ export default function SellerModal({showSellerModal, setShowSellerModal, idSell
       }
       if (!idSeller) {
         postData('/sellers', body)
-      .then(res => console.log(res))
+      .then(setChanges(current => current + 1))
       } else {
         putData(`/sellers/${idSeller}`, body)
-        .then(res => console.log(res))
+        .then(setChanges(current => current + 1))
       }
       handleClearInput();
-      setChanges(current => current + 1)
+      // setChanges(current => current + 1)
     }
 
     const handleClearInput = () => {

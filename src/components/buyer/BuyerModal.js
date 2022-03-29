@@ -54,13 +54,13 @@ export default function BuyerModal({showBuyerModal, setShowBuyerModal, idBuyer, 
       }
       if (!idBuyer) {
         postData('/buyers', body)
-      .then(res => console.log(res))
+      .then(setChanges(current => current + 1))
       } else {
         putData(`/buyers/${idBuyer}`, body)
-        .then(res => console.log(res))
+        .then(setChanges(current => current + 1))
       }
       handleClearInput();
-      setChanges(current => current + 1)
+      // setChanges(current => current + 1)
     }
 
     const handleClearInput = () => {

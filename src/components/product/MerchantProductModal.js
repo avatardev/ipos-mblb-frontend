@@ -31,10 +31,10 @@ export default function MerchantProductModal({showMerchantProductModal, setShowM
       }
       if (IdProduct) {
         putData(`/sellers/${merchantId}/items/${IdProduct}`, body)
-        .then(res => console.log(res))
+        .then(setChanges(current => current + 1))
       }
       handleClearInput();
-      setChanges(current => current + 1)
+      // setChanges(current => current + 1)
     }
 
     const handleClearInput = () => {

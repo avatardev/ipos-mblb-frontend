@@ -26,13 +26,13 @@ export default function CheckerUserModal({showCheckerUserModal, setShowCheckerUs
         }
         if (!idUserChecker) {
           postData('/user/checkers', body)
-        .then(res => console.log(res))
+        .then(setChanges(current => current + 1))
         } else {
           putData(`/user/checkers/${idUserChecker}`, body)
-          .then(res => console.log(res))
+          .then(setChanges(current => current + 1))
         }
         handleClearInput();
-        setChanges(current => current + 1)
+        //setChanges(current => current + 1)
     } else {
       console.log("password and confirm password unmatch");
     }

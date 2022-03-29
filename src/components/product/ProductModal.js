@@ -39,13 +39,13 @@ export default function ProductModal({showProductModal, setShowProductModal, IdP
       }
       if (!IdProduct) {
         postData('/products', body)
-      .then(res => console.log(res))
+      .then(setChanges(current => current + 1))
       } else {
         putData(`/products/${IdProduct}`, body)
-        .then(res => console.log(res))
+        .then(setChanges(current => current + 1))
       }
       handleClearInput();
-      setChanges(current => current + 1)
+      // setChanges(current => current + 1)
     }
 
     const handleClearInput = () => {

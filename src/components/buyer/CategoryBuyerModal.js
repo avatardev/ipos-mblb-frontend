@@ -25,13 +25,13 @@ export default function CategoryBuyerModal({showCategoryBuyerModal, setShowCateg
       }
       if (!idCategory) {
         postData('/buyers/categories', body)
-      .then(res => console.log(res))
+      .then(setChanges(current => current + 1))
       } else {
         putData(`/buyers/categories/${idCategory}`, body)
-        .then(res => console.log(res))
+        .then(setChanges(current => current + 1))
       }
       handleClearInput();
-      setChanges(current => current + 1)
+      // setChanges(current => current + 1)
     }
 
     const handleClearInput = () => {
