@@ -6,15 +6,35 @@ import Layout from "../../components/layouts/Layout";
 import Pagination from "../../components/utility/Pagination";
 import { useParams, Link } from "react-router-dom";
 
-import buyerUser from "./buyerUser.json"
 import BuyerUserModal from "../../components/buyer/BuyerUserModal";
+import useFetch from "../../services/useFetch";
+import deleteData from "../../services/deleteData";
+import Loading from "../../components/utility/Loading";
+import Limit from "../../components/utility/Limit";
+import Error from "../../components/utility/Error";
 const BuyerUser = () => {
 
     const [showBuyerUserModal, setShowBuyerUserModal] = useState(false);
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(10);
 
-    const {corpId} = useParams();
+    const {corpId, corpName} = useParams();
+
+    const [keyword, setKeyword] = useState('');
+    const offset = (page - 1) * limit;
+
+    const [idUserBuyer, setIdUserBuyer] = useState(0);
+    const [changes, setChanges] = useState(0);
+
+    const {data, isLoading, error} = useFetch(`/user/buyers?offset=${offset}&limit=${limit}&keyword=${keyword}`, changes);
+
+    const handleDelete = (id) => {
+        deleteData(`/user/buyers/${id}`)
+        .then(res => {
+          console.log(res);
+          setChanges(current => current + 1)
+        })
+      }
 
     return (
         <>
@@ -29,24 +49,11 @@ const BuyerUser = () => {
                             <button onClick={() => setShowBuyerUserModal(true)} className="py-1 px-2 bg-button rounded text-white">+ Tambah User</button>
                         </div>
                     <div className="text-center py-3">
-                        <h1 className="text-2xl font-semibold">Company ID: {corpId}</h1>
+                        <h1 className="text-2xl font-semibold">{corpName}</h1>
                     </div>
+                        {isLoading && <Loading />}
                     <hr />
-                    <div className="md:flex md:justify-between py-3">
-                        <div className="flex gap-2">
-                            <p>Show</p>
-                            <select value={limit} onChange={(e) => setLimit(e.target.value)} className="border-2">
-                                <option value={5}>5</option>
-                                <option value={10}>10</option>
-                                <option value={15}>15</option>
-                            </select>
-                            <p>Entries</p>
-                        </div>
-                        <div className="flex gap-2">
-                            <p>Search: </p>
-                            <input className="border-2 rounded" type="search" />
-                        </div>
-                    </div>
+                        <Limit setLimit={setLimit} limit={limit} setPage={setPage} setKeyword={setKeyword} />
 
                     <div className="w-full">
                     <div className="flex flex-col">
@@ -68,18 +75,24 @@ const BuyerUser = () => {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {buyerUser.map(item => (
-                                                    <tr key={item.no} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            {error ?  
+                                                <tr>
+                                                    <td><Error error={"Data Tidak Ditemukan"} /></td>
+                                                </tr> 
+                                                
+                                                :
+                                                data?.user.map((item, i) => (
+                                                    <tr key={item.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                                         <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
-                                                            {item.no}
+                                                            {i + offset + 1}
                                                         </td>
                                                         <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                             {item.username}
                                                         </td>
                                                         <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                             <div className="flex gap-3">  
-                                                                <button className="text-button"><FiEdit /></button>
-                                                                <button className="text-nonActive"><MdOutlineDelete /></button>
+                                                                <button onClick={() => {setIdUserBuyer(item.id); setShowBuyerUserModal(true)}} className="text-button"><FiEdit /></button>
+                                                                <button onClick={() => handleDelete(item.id)} className="text-nonActive"><MdOutlineDelete /></button>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -92,11 +105,22 @@ const BuyerUser = () => {
                         </div>
                     </div>
 
-                    <Pagination page={page} setPage={setPage} limit={limit} totalData={50} />
+                    <Pagination
+                        page={page}
+                        setPage={setPage}
+                        limit={limit}
+                        totalData={data?.total}
+                    />
                 
                 </div>
             </div>
-            <BuyerUserModal showBuyerUserModal={showBuyerUserModal} setShowBuyerUserModal={setShowBuyerUserModal} />
+            <BuyerUserModal 
+                showBuyerUserModal={showBuyerUserModal} 
+                setShowBuyerUserModal={setShowBuyerUserModal} 
+                idUserBuyer={idUserBuyer}
+                setIdUserBuyer={setIdUserBuyer}
+                setChanges={setChanges}
+            />
             </Layout>
         </> 
      );

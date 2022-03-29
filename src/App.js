@@ -24,7 +24,7 @@ function App() {
           <Route path="/produk/seller/:merchantId/:merchantName" element={<MerchantProduct />} />
           <Route path="/produk/kategori" element={<CategoryProduct />} />
           <Route path="/penjual" element={<Seller />} />
-          <Route path="/penjual/:corpId" element={<SellerUser />} />
+          <Route path="/penjual/:corpId/:corpName" element={<SellerUser />} />
           <Route path="/pembeli" element={<Buyer />} />
           <Route path="/pembeli/kategori" element={<CategoryBuyer />} />
           <Route path="/pembeli/:corpId" element={<BuyerUser />} />
