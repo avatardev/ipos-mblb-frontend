@@ -154,7 +154,7 @@ const Seller = () => {
                                                             </td>
                                                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                                 <div className="flex gap-3">
-                                                                    <Link to={`/penjual/${item.id}`}><AiOutlineUserAdd /></Link>
+                                                                    <Link to={`/penjual/${item.id}/${item.company}`}><AiOutlineUserAdd /></Link>
                                                                     <button onClick={() => {setIdSeller(item.id); setShowSellerModal(true)}} className="text-button"><FiEdit /></button>
                                                                     <button onClick={() => handleDelete(item.id)} className="text-nonActive"><MdOutlineDelete /></button>
                                                                 </div>
