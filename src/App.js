@@ -8,6 +8,7 @@ import CategoryProduct from "./pages/product/CategoryProduct";
 import MerchantList from "./pages/product/MerchantList";
 import MerchantProduct from "./pages/product/MerchantProduct";
 import Product from "./pages/product/Product";
+import Order from "./pages/report/Order";
 import Seller from "./pages/seller/Seller";
 import SellerUser from "./pages/seller/SellerUser";
 import AdminUser from "./pages/user/Admin";
@@ -31,6 +32,7 @@ function App() {
           <Route path="/user/admin" element={<AdminUser />} />
           <Route path="/user/checker" element={<CheckerUser />} />
           <Route path="/lokasi" element={<Location />} />
+          <Route path="/laporan/transaksi" element={<Order />} />
         </Routes>
       </BrowserRouter>
     </div>
