@@ -182,7 +182,7 @@ const Buyer = () => {
                             </td>
                             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                               <div className="flex gap-3">
-                                <Link to={`/pembeli/${item.no}`}><AiOutlineUserAdd /></Link>
+                                <Link to={`/pembeli/${item.vehicle_plate}`}><AiOutlineUserAdd /></Link>
                                 <button onClick={() => {setIdBuyer(item.vehicle_plate); setShowBuyerModal(true)}} className="text-button">
                                   <FiEdit />
                                 </button>

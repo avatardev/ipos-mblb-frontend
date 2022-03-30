@@ -16,6 +16,7 @@ import {
 } from "react-icons/io5";
 
 export default function Sidebar() {
+  const role_name = localStorage.getItem("role_name");
   return (
     <div className="bg-white text-primary lg:w-96  min-h-screen p-4">
       <div className="w-full flex justify-between items-center gap-5">
@@ -26,32 +27,42 @@ export default function Sidebar() {
       <Divider />
       <MenuItem icon={<IoSpeedometerOutline />} name="Dashboard" href="/" />
       <Divider />
-      <MenuItem
-        icon={<IoPersonOutline />}
-        name="User"
-        pathParent="user"
-        isDropdown
-      >
-        <MenuItem name="Admin" href="/user/admin" />
-        <MenuItem name="Checker" href="/user/checker" />
-      </MenuItem>
-      <MenuItem icon={<IoPricetagOutline />} name="Penjual" href="/penjual" />
+      {role_name === "Admin" &&
+        <>
+          <MenuItem
+            icon={<IoPersonOutline />}
+            name="User"
+            pathParent="user"
+            isDropdown
+          >
+            <MenuItem name="Admin" href="/user/admin" />
+            <MenuItem name="Checker" href="/user/checker" />
+          </MenuItem>
+          <MenuItem icon={<IoPricetagOutline />} name="Penjual" href="/penjual" />
+        </>
+      }
       <MenuItem icon={<IoCartOutline />} name="Pembeli" href="/pembeli" />
       <MenuItem
         icon={<IoCubeOutline />}
         name="Produk"
         pathParent="produk"
         isDropdown
-      >
-        <MenuItem name="Produk Master" href="/produk/master" />
+      > 
+        {role_name === "Admin" &&
+          <MenuItem name="Produk Master" href="/produk/master" />
+        } 
         <MenuItem name="Produk Seller" href="/produk/seller" />
       </MenuItem>
-      <MenuItem icon={<IoLocationOutline />} name="Lokasi" href="/lokasi" />
-      <MenuItem
-        icon={<IoGitBranchOutline />}
-        name="Log Aktivitas"
-        href="/log-aktivitas"
-      />
+      {role_name === "Admin" &&
+        <>
+          <MenuItem icon={<IoLocationOutline />} name="Lokasi" href="/lokasi" />
+          <MenuItem
+            icon={<IoGitBranchOutline />}
+            name="Log Aktivitas"
+            href="/log-aktivitas"
+          />
+        </>
+      }
 
       <Divider />
       <MenuItem

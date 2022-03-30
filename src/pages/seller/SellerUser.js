@@ -26,7 +26,7 @@ const SellerUser = () => {
     const [idUserSeller, setIdUserSeller] = useState(0);
     const [changes, setChanges] = useState(0);
 
-    const {data, isLoading, error} = useFetch(`/user/sellers?offset=${offset}&limit=${limit}&keyword=${keyword}`, changes);
+    const {data, isLoading, error} = useFetch(`/user/sellers?seller_id=${corpId}&offset=${offset}&limit=${limit}&keyword=${keyword}`, changes);
 
     const handleDelete = (id) => {
         deleteData(`/user/sellers/${id}`)
@@ -119,7 +119,8 @@ const SellerUser = () => {
                 setShowSellerUserModal={setShowSellerUserModal} 
                 setIdUserSeller={setIdUserSeller}
                 idUserSeller={idUserSeller}
-                setChanges={setChanges}     
+                setChanges={setChanges} 
+                corpId={corpId}    
                 />
             </Layout>
         </> 

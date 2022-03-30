@@ -3,7 +3,7 @@ import fetchData from "../../services/fetchData";
 import postData from "../../services/postData";
 import putData from "../../services/putData";
 
-export default function BuyerUserModal({showBuyerUserModal, setShowBuyerUserModal, idUserBuyer, setIdUserBuyer, setChanges}) {
+export default function BuyerUserModal({showBuyerUserModal, setShowBuyerUserModal, idUserBuyer, setIdUserBuyer, corpId, setChanges}) {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -22,7 +22,8 @@ export default function BuyerUserModal({showBuyerUserModal, setShowBuyerUserModa
       if (password === confirmPassword) {
         const body = {
           username,
-          password
+          password,
+          vehicle_plate: corpId,
         }
         if (!idUserBuyer) {
           postData('/user/buyers', body)
@@ -77,7 +78,7 @@ export default function BuyerUserModal({showBuyerUserModal, setShowBuyerUserModa
                       </label>
                       <input value={username} onChange={(e) => setUsername(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Username.." />
                     </div>
-                    {!idUserBuyer &&
+                    
                       <>
                         <div className="mb-4">
                           <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -92,7 +93,6 @@ export default function BuyerUserModal({showBuyerUserModal, setShowBuyerUserModa
                           <input value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="password" />
                         </div>
                       </>
-                    }
                   </form>
                 </div>
                 {/*footer*/}
