@@ -85,7 +85,7 @@ const MerchantList = () => {
                                                         </td>
                                                         <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                                 <div className="flex gap-3">
-                                                                    <Link to={`/produk/seller/${item.id}`}><BsBoxArrowInDownRight className="text-button" /></Link>
+                                                                    <Link to={`/produk/seller/${item.id}/${item.company}`}><BsBoxArrowInDownRight className="text-button" /></Link>
                                                                 </div>
                                                          </td>
                                                     </tr>

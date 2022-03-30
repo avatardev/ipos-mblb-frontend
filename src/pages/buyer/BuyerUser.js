@@ -18,7 +18,7 @@ const BuyerUser = () => {
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(10);
 
-    const {corpId, corpName} = useParams();
+    const {corpId} = useParams();
 
     const [keyword, setKeyword] = useState('');
     const offset = (page - 1) * limit;
@@ -26,7 +26,7 @@ const BuyerUser = () => {
     const [idUserBuyer, setIdUserBuyer] = useState(0);
     const [changes, setChanges] = useState(0);
 
-    const {data, isLoading, error} = useFetch(`/user/buyers?offset=${offset}&limit=${limit}&keyword=${keyword}`, changes);
+    const {data, isLoading, error} = useFetch(`/user/buyers?v_plate=${corpId}&offset=${offset}&limit=${limit}&keyword=${keyword}`, changes);
 
     const handleDelete = (id) => {
         deleteData(`/user/buyers/${id}`)
@@ -49,7 +49,7 @@ const BuyerUser = () => {
                             <button onClick={() => setShowBuyerUserModal(true)} className="py-1 px-2 bg-button rounded text-white">+ Tambah User</button>
                         </div>
                     <div className="text-center py-3">
-                        <h1 className="text-2xl font-semibold">{corpName}</h1>
+                        <h1 className="text-2xl font-semibold">{corpId}</h1>
                     </div>
                         {isLoading && <Loading />}
                     <hr />
@@ -120,6 +120,7 @@ const BuyerUser = () => {
                 idUserBuyer={idUserBuyer}
                 setIdUserBuyer={setIdUserBuyer}
                 setChanges={setChanges}
+                corpId={corpId}
             />
             </Layout>
         </> 

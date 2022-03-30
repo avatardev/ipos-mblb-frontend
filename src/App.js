@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Authoize from "./middlewares/Authorize";
 import Login from "./pages/auth/Login";
 import Buyer from "./pages/buyer/Buyer";
 import BuyerUser from "./pages/buyer/BuyerUser";
@@ -20,19 +21,22 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login/>} />
-          <Route path="/produk/master" element={<Product />} />
           <Route path="/produk/seller" element={<MerchantList />} />
           <Route path="/produk/seller/:merchantId/:merchantName" element={<MerchantProduct />} />
-          <Route path="/produk/kategori" element={<CategoryProduct />} />
-          <Route path="/penjual" element={<Seller />} />
-          <Route path="/penjual/:corpId/:corpName" element={<SellerUser />} />
           <Route path="/pembeli" element={<Buyer />} />
           <Route path="/pembeli/kategori" element={<CategoryBuyer />} />
-          <Route path="/pembeli/:corpId" element={<BuyerUser />} />
-          <Route path="/user/admin" element={<AdminUser />} />
-          <Route path="/user/checker" element={<CheckerUser />} />
-          <Route path="/lokasi" element={<Location />} />
-          <Route path="/laporan/transaksi" element={<Order />} />
+
+          <Route element={<Authoize />}>
+            <Route path="/produk/master" element={<Product />} />
+            <Route path="/produk/kategori" element={<CategoryProduct />} />
+            <Route path="/penjual" element={<Seller />} />
+            <Route path="/penjual/:corpId/:corpName" element={<SellerUser />} />
+            <Route path="/pembeli/:corpId" element={<BuyerUser />} />
+            <Route path="/user/admin" element={<AdminUser />} />
+            <Route path="/user/checker" element={<CheckerUser />} />
+            <Route path="/lokasi" element={<Location />} />
+            <Route path="/laporan/transaksi" element={<Order />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>
