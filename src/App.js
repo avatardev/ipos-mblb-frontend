@@ -4,12 +4,13 @@ import Login from "./pages/auth/Login";
 import Buyer from "./pages/buyer/Buyer";
 import BuyerUser from "./pages/buyer/BuyerUser";
 import CategoryBuyer from "./pages/buyer/CategoryBuyer";
+import NotFound from "./pages/handler/NotFound";
 import Location from "./pages/location/Location";
 import CategoryProduct from "./pages/product/CategoryProduct";
 import MerchantList from "./pages/product/MerchantList";
 import MerchantProduct from "./pages/product/MerchantProduct";
 import Product from "./pages/product/Product";
-import Order from "./pages/report/Order";
+import ReportDetail from "./pages/report/ReportDetail";
 import Seller from "./pages/seller/Seller";
 import SellerUser from "./pages/seller/SellerUser";
 import AdminUser from "./pages/user/Admin";
@@ -35,7 +36,8 @@ function App() {
             <Route path="/user/admin" element={<AdminUser />} />
             <Route path="/user/checker" element={<CheckerUser />} />
             <Route path="/lokasi" element={<Location />} />
-            <Route path="/laporan/transaksi" element={<Order />} />
+            <Route path="/laporan/detail-transaksi" element={<ReportDetail />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>

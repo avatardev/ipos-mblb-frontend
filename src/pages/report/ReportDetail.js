@@ -5,22 +5,32 @@ import Loading from "../../components/utility/Loading";
 import ReportMenu from "../../components/utility/ReportMenu";
 import fetchReport from "../../services/fetchReport";
 import useFetch from "../../services/useFetch";
-const Order = () => {
+import { AiOutlineFileAdd } from "react-icons/ai";
+import DetailReportModal from "../../components/report/DetailReportModal";
+const ReportDetail = () => {
     const [changes, setChanges] = useState(0);
+    const pastDate = new Date(new Date().setDate(new Date().getDate()-35)).toISOString().split('T')[0];
+    const currentDate = new Date().toISOString().split('T')[0];
+
+    const [startDate, setStartDate] = useState(pastDate);
+    const [endDate, setEndDate] = useState(currentDate);
+    const [showDetailReportModal, setShowDetailReportModal] = useState(false);
+    const [idOrder, setIdOrder] = useState(0);
   
-    const {data, isLoading, error} = useFetch(`/buyers`, changes);
+    const {data, isLoading, error} = useFetch(`/orders/report/detail?startDate=${startDate}&endDate=${endDate}`, changes);
     
     
     const handleDownloadFile = () => {
-        fetchReport('/orders/report/generateDetail?startDate=2020-01-01&endDate=2030-12-31');
+        fetchReport(`/orders/report/generateDetail?startDate=${startDate}&endDate=${endDate}`);
     }
+
 
     return ( 
         <Layout>
             <div className="bg-secondary pl-5 pr-2 pb-3 w-[84vw]">
                 <h1 className="text-xl py-3">Data Transaksi</h1>
                 <div className="bg-white h-fit px-3 overflow-x-auto">
-                    <ReportMenu handleDownloadFile={handleDownloadFile} />
+                    <ReportMenu handleDownloadFile={handleDownloadFile} setStartDate={setStartDate} startDate={startDate} setEndDate={setEndDate} endDate={endDate} />
                 <hr />
                 {isLoading && <Loading />}
 
@@ -79,6 +89,12 @@ const Order = () => {
                                     scope="col"
                                     className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
                                 >
+                                    Catatan
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                                >
                                     Quantity
                                 </th>
                                 <th
@@ -99,6 +115,12 @@ const Order = () => {
                                 >
                                     Harga
                                 </th>
+                                <th
+                                    scope="col"
+                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                                >
+                                    Action
+                                </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -108,7 +130,7 @@ const Order = () => {
                                     <td><Error error={"Data Tidak Ditemukan"} /></td>
                                 </tr>
                                 :
-                                data?.buyer.map((item, i) => (
+                                data?.trx_detail.map((item, i) => (
                                 <tr
                                     key={i}
                                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
@@ -117,34 +139,42 @@ const Order = () => {
                                     {i + 1}
                                     </td>
                                     <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
-                                    {item.vehicle_plate}
+                                    {item.order_date}
                                     </td>
                                     <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.category}
+                                    {item.seller}
                                     </td>
                                     <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.company}
+                                    {item.buyer}
                                     </td>
                                     <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.phone}
+                                    {item.payment_method}
                                     </td>
                                     <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                     {item.status ? <p>Aktif</p> : <p>Non Aktif</p>}
                                     </td>
                                     <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.address}
+                                    {item.product_name}
                                     </td>
                                     <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.email}
+                                    {item.note}
                                     </td>
                                     <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.pic_name}
+                                    {item.qty}
                                     </td>
                                     <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.pic_phone}
+                                    {item.disc}
                                     </td>
                                     <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.description}
+                                    {item.tax}
+                                    </td>
+                                    <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                    {item.price}
+                                    </td>
+                                    <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                    <div className="flex gap-3">
+                                        <button onClick={() => {setIdOrder(item.order_id); setShowDetailReportModal(true)}}><AiOutlineFileAdd /></button>
+                                    </div>
                                     </td>
                                 </tr>
                                 ))}
@@ -157,8 +187,15 @@ const Order = () => {
                 </div>
                 </div>
             </div>
+            <DetailReportModal
+                showDetailReportModal={showDetailReportModal}
+                setShowDetailReportModal={setShowDetailReportModal}
+                setIdOrder={setIdOrder}
+                idOrder={idOrder}
+                setChanges={setChanges}
+            />
         </Layout>
      );
 }
  
-export default Order;
+export default ReportDetail;
