@@ -19,7 +19,7 @@ import CheckerUser from "./pages/user/Checker";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename="/mblb/dev2">
         <Routes>
           <Route path="/" element={<Login/>} />
           <Route path="/produk/seller" element={<MerchantList />} />
