@@ -74,7 +74,7 @@ export default function Sidebar() {
         <MenuItem name="Transaksi" href="/laporan/transaksi" />
         <MenuItem name="Harian" href="/laporan/harian" />
         <MenuItem name="Detail Transaksi" href="/laporan/detail-transaksi" />
-        <MenuItem name="Pembanding" href="/laporan/pembandingr" />
+        <MenuItem name="Pembanding" href="/laporan/pembanding" />
       </MenuItem>
     </div>
   );
