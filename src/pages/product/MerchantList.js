@@ -98,7 +98,7 @@ const MerchantList = () => {
                         </div>
                     </div>
 
-                    <Pagination page={page} setPage={setPage} limit={limit} totalData={50} />
+                    <Pagination page={page} setPage={setPage} limit={limit} totalData={data?.total} />
                 
                 </div>
             </div>
