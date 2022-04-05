@@ -12,6 +12,8 @@ import MerchantProduct from "./pages/product/MerchantProduct";
 import Product from "./pages/product/Product";
 import BriefReport from "./pages/report/BriefReport";
 import ComparisonReport from "./pages/report/ComparisonReport";
+import DailyReportList from "./pages/report/DailyReport";
+import DailyReportDetail from "./pages/report/DailyReportDetail";
 import ReportDetail from "./pages/report/ReportDetail";
 import Seller from "./pages/seller/Seller";
 import SellerUser from "./pages/seller/SellerUser";
@@ -41,6 +43,8 @@ function App() {
             <Route path="/laporan/detail-transaksi" element={<ReportDetail />} />
             <Route path="/laporan/transaksi" element={<BriefReport />} />
             <Route path="/laporan/pembanding" element={<ComparisonReport />} />
+            <Route path="/laporan/harian" element={<DailyReportList />} />
+            <Route path="/laporan/harian/:corpId/:corpName" element={<DailyReportDetail />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
