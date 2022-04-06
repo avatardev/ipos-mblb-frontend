@@ -17,7 +17,6 @@ export default function Navbar() {
 
   const handleLogout = () => {
     localStorage.setItem("access_token", "");
-    ``;
     localStorage.setItem("refresh_token", "");
     localStorage.setItem("profile_pic", "");
     localStorage.setItem("username", "");
