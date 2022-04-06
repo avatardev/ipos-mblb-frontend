@@ -34,11 +34,11 @@ const CategoryProduct = () => {
     return (
       <>
         <Layout>
-          <div className="bg-tableOdd shadow-md px-[32px] pb-[32px] w-[84vw]">
+          <div className=" shadow-md px-[32px] pb-[32px] ">
             <h1 className="text-xl font-medium pt-[32px] pb-[24px]">
               Kategori Produk
             </h1>
-            <div className="bg-white rounded-lg h-fit px-3 ">
+            <div className="bg-white rounded-lg h-fit px-3 shadow-lg">
               <div className="flex justify-end gap-5 py-3">
                 <button
                   onClick={() => setShowCategoryProductModal(true)}

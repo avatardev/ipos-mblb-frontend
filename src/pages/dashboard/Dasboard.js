@@ -31,7 +31,7 @@ const Dashboard = () => {
               <div className="bg-white rounded-lg flex justify-between items-center h-32 px-5 shadow-md  gap-5">
                 <div className="w-full pr-2 py-2">
                   <h3>Total Truk Terdaftar</h3>
-                  <h1 className="text-xl font-semibold">{data?.buyer_count}</h1>
+                  <h2 className="text-xl font-semibold">{data?.buyer_count}</h2>
                 </div>
                 <div>
                   <BsTruck className="text-[2.2rem]" />
@@ -39,10 +39,10 @@ const Dashboard = () => {
               </div>
               <div className="bg-white rounded-lg flex justify-between items-center h-32 px-5 shadow-md gap-5">
                 <div className="w-50 py-2">
-                  <h1>Total Penjual Terdaftar</h1>
-                  <h1 className="text-xl font-semibold">
+                  <h3>Total Penjual Terdaftar</h3>
+                  <h2 className="text-xl font-semibold">
                     {data?.seller_count}
-                  </h1>
+                  </h2>
                 </div>
                 <div>
                   <FiUser className="text-[2.2rem]" />
@@ -50,8 +50,8 @@ const Dashboard = () => {
               </div>
               <div className="bg-white rounded-lg flex justify-between items-center h-32 px-5 shadow-md gap-5">
                 <div className="w-40 py-2">
-                  <h1>Total Transaksi</h1>
-                  <h1 className="text-xl font-semibold">{data?.trx_count}</h1>
+                  <h3>Total Transaksi</h3>
+                  <h2 className="text-xl font-semibold">{data?.trx_count}</h2>
                 </div>
                 <div>
                   <CgNotes className="text-[2.2rem]" />
@@ -59,10 +59,10 @@ const Dashboard = () => {
               </div>
               <div className="bg-white rounded-lg flex justify-between items-center h-32 px-5 shadow-md gap-5">
                 <div className="w-40 py-2">
-                  <h1>Total Pajak</h1>
-                  <h1 className="text-xl font-semibold">
+                  <h3>Total Pajak</h3>
+                  <h2 className="text-xl font-semibold">
                     Rp. {data?.tax_total}
-                  </h1>
+                  </h2>
                 </div>
                 <div>
                   <MdOutlineAttachMoney className="text-[2.2rem]" />
