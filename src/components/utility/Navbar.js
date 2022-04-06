@@ -1,12 +1,25 @@
 import React, { useState } from "react";
 import { IoExitOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [showLogout, setShowLogout] = useState("hidden");
+  const navigate = useNavigate();
+  const username = localStorage.getItem("username");
+  const profile_pic = localStorage.getItem("profile_pic");
 
   const buttonLogoutHandler = () => {
     showLogout === "hidden" ? setShowLogout("block") : setShowLogout("hidden");
   };
+
+  const handleLogout = () => {
+      localStorage.setItem("access_token", '');
+      localStorage.setItem("refresh_token", '');
+      localStorage.setItem("profile_pic", '');
+      localStorage.setItem("username", '');
+      localStorage.setItem("role_name", '');
+      navigate('/');
+  }
   return (
     <div className="w-full bg-white min-h-sm p-[16px]">
       <div className="flex justify-end gap-5 items-center relative">
@@ -14,13 +27,13 @@ export default function Navbar() {
           className="flex items-center gap-3 border-l pl-5 border-secondary"
           onClick={buttonLogoutHandler}
         >
-          <p className="text-primary text-sm">Hi, Avatar 123</p>
-          <div className="w-[42px] h-[42px] bg-primary rounded-full"></div>
+          <p className="text-primary text-sm">Hi, {username}</p>
+          <div className="w-[42px] h-[42px]"><img className="rounded-full" src={`${profile_pic}`} alt="user" /></div>
         </button>
         <div
           className={`bg-white shadow-lg py-2 px-4 top-[64px] absolute text-red rounded-md ${showLogout}`}
         >
-          <button className="flex items-center gap-1">
+          <button onClick={handleLogout} className="flex items-center gap-1">
             <IoExitOutline />
             Logout
           </button>

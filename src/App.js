@@ -4,6 +4,7 @@ import Login from "./pages/auth/Login";
 import Buyer from "./pages/buyer/Buyer";
 import BuyerUser from "./pages/buyer/BuyerUser";
 import CategoryBuyer from "./pages/buyer/CategoryBuyer";
+import Dashboard from "./pages/dashboard/Dasboard";
 import NotFound from "./pages/handler/NotFound";
 import Location from "./pages/location/Location";
 import CategoryProduct from "./pages/product/CategoryProduct";
@@ -30,6 +31,7 @@ function App() {
           <Route path="/produk/seller/:merchantId/:merchantName" element={<MerchantProduct />} />
           <Route path="/pembeli" element={<Buyer />} />
           <Route path="/pembeli/kategori" element={<CategoryBuyer />} />
+          <Route path="/dashboard" element={<Dashboard />} />
 
           <Route element={<Authoize />}>
             <Route path="/produk/master" element={<Product />} />

@@ -25,7 +25,7 @@ export default function Sidebar() {
         <Logo img={BPDLogo} />
       </div>
       <Divider />
-      <MenuItem icon={<IoSpeedometerOutline />} name="Dashboard" href="/" />
+      <MenuItem icon={<IoSpeedometerOutline />} name="Dashboard" href="/dashboard" />
       <Divider />
       {role_name === "Admin" &&
         <>
