@@ -6,7 +6,7 @@ export default function Layout(props) {
   return (
     <div className="flex w-full bg-primary">
       <Sidebar />
-      <div className="bg-secondary w-full">
+      <div className="bg-tableOdd w-full">
         <Navbar />
         <div>{props.children}</div>
       </div>

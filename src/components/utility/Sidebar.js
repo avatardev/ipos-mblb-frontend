@@ -1,8 +1,5 @@
 import React from "react";
 import Divider from "../elements/Divider";
-import Logo from "../elements/Logo";
-import BPDLogo from "../../assets/images/BPD.png";
-import KarangasemLogo from "../../assets/images/karangasem.png";
 import iposImage from "../../assets/images/ipos.png";
 import MenuItem from "../elements/MenuItem";
 import {
