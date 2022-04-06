@@ -13,10 +13,14 @@ import {
   IoFolderOpenOutline,
 } from "react-icons/io5";
 
-export default function Sidebar() {
+export default function Sidebar(props) {
   const role_name = localStorage.getItem("role_name");
   return (
-    <div className="bg-blue text-white lg:w-96  min-h-screen p-4">
+    <div
+      className={`bg-blue text-white lg:w-96  min-h-screen p-4  ${
+        props.condition === "show" ? "" : "hidden"
+      }`}
+    >
       <div className="w-full flex justify-center items-center gap-5">
         <img src={iposImage} className="h-[64px]" />
       </div>
@@ -35,8 +39,8 @@ export default function Sidebar() {
             pathParent="user"
             isDropdown
           >
-            <MenuItem name="Admin" href="/user/admin" />
-            <MenuItem name="Checker" href="/user/checker" />
+            <MenuItem name="Admin" href="/user/admin" isChild />
+            <MenuItem name="Checker" href="/user/checker" isChild />
           </MenuItem>
           <MenuItem
             icon={<IoPricetagOutline />}
@@ -53,9 +57,9 @@ export default function Sidebar() {
         isDropdown
       >
         {role_name === "Admin" && (
-          <MenuItem name="Produk Master" href="/produk/master" />
+          <MenuItem name="Produk Master" href="/produk/master" isChild />
         )}
-        <MenuItem name="Produk Seller" href="/produk/seller" />
+        <MenuItem name="Produk Seller" href="/produk/seller" isChild />
       </MenuItem>
       {role_name === "Admin" && (
         <>
@@ -75,10 +79,14 @@ export default function Sidebar() {
         pathParent="laporan"
         isDropdown
       >
-        <MenuItem name="Transaksi" href="/laporan/transaksi" />
-        <MenuItem name="Harian" href="/laporan/harian" />
-        <MenuItem name="Detail Transaksi" href="/laporan/detail-transaksi" />
-        <MenuItem name="Pembanding" href="/laporan/pembanding" />
+        <MenuItem name="Transaksi" href="/laporan/transaksi" isChild />
+        <MenuItem name="Harian" href="/laporan/harian" isChild />
+        <MenuItem
+          name="Detail Transaksi"
+          href="/laporan/detail-transaksi"
+          isChild
+        />
+        <MenuItem name="Pembanding" href="/laporan/pembanding" isChild />
       </MenuItem>
     </div>
   );

@@ -5,7 +5,7 @@ import { IoChevronForwardOutline } from "react-icons/io5";
 export default function MenuItem(props) {
   const location = window.location.pathname;
   const splitPath = location.split("/");
-  console.log(splitPath[3]);
+  // console.log(splitPath[3]);
   const pathParent = splitPath[3];
   const dropdownCondition = pathParent === props.pathParent ? "collapse" : "";
   const [dropdown, setDropdown] = useState(dropdownCondition);
@@ -15,7 +15,7 @@ export default function MenuItem(props) {
   if (props.isDropdown) {
     return (
       <div
-        className={`mb-5 ${
+        className={`${dropdown === "collapse" ? "" : "mb-5"} ${
           pathParent === props.pathParent
             ? "font-medium text-white"
             : "font-normal text-gray"
@@ -42,7 +42,7 @@ export default function MenuItem(props) {
             dropdown === "collapse" ? "" : "hidden"
           } flex mt-3`}
         >
-          <div className="border-l pl-2">{props.children}</div>
+          <div className="border-l parentMenu pl-0 ">{props.children}</div>
         </div>
       </div>
     );
@@ -57,6 +57,7 @@ export default function MenuItem(props) {
       >
         <Link to={`${props.href}`}>
           <div className="flex items-center gap-2  text-lg cursor-pointer">
+            {props.isChild ? "-" : ""}
             {props.icon}
             <p className="text-base">{props.name}</p>
           </div>
