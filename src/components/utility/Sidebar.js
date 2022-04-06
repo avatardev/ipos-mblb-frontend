@@ -3,6 +3,7 @@ import Divider from "../elements/Divider";
 import Logo from "../elements/Logo";
 import BPDLogo from "../../assets/images/BPD.png";
 import KarangasemLogo from "../../assets/images/karangasem.png";
+import iposImage from "../../assets/images/ipos.png";
 import MenuItem from "../elements/MenuItem";
 import {
   IoGitBranchOutline,
@@ -18,16 +19,18 @@ import {
 export default function Sidebar() {
   const role_name = localStorage.getItem("role_name");
   return (
-    <div className="bg-white text-primary lg:w-96  min-h-screen p-4">
-      <div className="w-full flex justify-between items-center gap-5">
-        <Logo img={KarangasemLogo} />
-        <h1 className="text-xl font-semibold hidden lg:block">IPOS MBLB</h1>
-        <Logo img={BPDLogo} />
+    <div className="bg-blue text-white lg:w-96  min-h-screen p-4">
+      <div className="w-full flex justify-center items-center gap-5">
+        <img src={iposImage} className="h-[64px]" />
       </div>
       <Divider />
-      <MenuItem icon={<IoSpeedometerOutline />} name="Dashboard" href="/dashboard" />
+      <MenuItem
+        icon={<IoSpeedometerOutline />}
+        name="Dashboard"
+        href="/dashboard"
+      />
       <Divider />
-      {role_name === "Admin" &&
+      {role_name === "Admin" && (
         <>
           <MenuItem
             icon={<IoPersonOutline />}
@@ -38,22 +41,26 @@ export default function Sidebar() {
             <MenuItem name="Admin" href="/user/admin" />
             <MenuItem name="Checker" href="/user/checker" />
           </MenuItem>
-          <MenuItem icon={<IoPricetagOutline />} name="Penjual" href="/penjual" />
+          <MenuItem
+            icon={<IoPricetagOutline />}
+            name="Penjual"
+            href="/penjual"
+          />
         </>
-      }
+      )}
       <MenuItem icon={<IoCartOutline />} name="Pembeli" href="/pembeli" />
       <MenuItem
         icon={<IoCubeOutline />}
         name="Produk"
         pathParent="produk"
         isDropdown
-      > 
-        {role_name === "Admin" &&
+      >
+        {role_name === "Admin" && (
           <MenuItem name="Produk Master" href="/produk/master" />
-        } 
+        )}
         <MenuItem name="Produk Seller" href="/produk/seller" />
       </MenuItem>
-      {role_name === "Admin" &&
+      {role_name === "Admin" && (
         <>
           <MenuItem icon={<IoLocationOutline />} name="Lokasi" href="/lokasi" />
           <MenuItem
@@ -62,7 +69,7 @@ export default function Sidebar() {
             href="/log-aktivitas"
           />
         </>
-      }
+      )}
 
       <Divider />
       <MenuItem
