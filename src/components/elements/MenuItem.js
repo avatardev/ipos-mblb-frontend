@@ -5,8 +5,8 @@ import { IoChevronForwardOutline } from "react-icons/io5";
 export default function MenuItem(props) {
   const location = window.location.pathname;
   const splitPath = location.split("/");
-  console.log(splitPath[1]);
-  const pathParent = splitPath[1];
+  console.log(splitPath[3]);
+  const pathParent = splitPath[3];
   const dropdownCondition = pathParent === props.pathParent ? "collapse" : "";
   const [dropdown, setDropdown] = useState(dropdownCondition);
   const dropdownHandler = () => {
@@ -16,7 +16,9 @@ export default function MenuItem(props) {
     return (
       <div
         className={`mb-5 ${
-          pathParent === props.pathParent ? "text-primary" : "text-secondary"
+          pathParent === props.pathParent
+            ? "font-medium text-white"
+            : "font-normal text-gray"
         }`}
       >
         <div
@@ -47,8 +49,10 @@ export default function MenuItem(props) {
   } else {
     return (
       <div
-        className={`mb-5  ${
-          location === props.href ? "text-primary" : "text-secondary"
+        className={`mb-5 ${
+          location === "/mblb/dev2" + props.href
+            ? "font-medium text-white"
+            : "font-normal text-gray"
         }`}
       >
         <Link to={`${props.href}`}>
