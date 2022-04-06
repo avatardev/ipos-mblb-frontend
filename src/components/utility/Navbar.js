@@ -5,7 +5,7 @@ import Logo from "../elements/Logo";
 import BPDLogo from "../../assets/images/BPD.png";
 import KarangasemLogo from "../../assets/images/karangasem.png";
 
-export default function Navbar() {
+export default function Navbar(props) {
   const [showLogout, setShowLogout] = useState("hidden");
   const navigate = useNavigate();
   const username = localStorage.getItem("username");
@@ -23,11 +23,20 @@ export default function Navbar() {
     localStorage.setItem("role_name", "");
     navigate("/");
   };
+
+  const sidebarHandler = () => {
+    if (props.showSidebar === "hidden") {
+      props.setShowSidebar("show");
+    } else {
+      props.setShowSidebar("hidden");
+    }
+  };
+
   return (
     <div className="w-full bg-white min-h-sm p-[16px]">
       <div className="flex justify-between items-center">
         <div className="flex">
-          <button className="text-[32px] mr-[24px]">
+          <button className="text-[32px] mr-[24px]" onClick={sidebarHandler}>
             <IoMenuOutline />
           </button>
           <div className="flex gap-2">

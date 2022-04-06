@@ -96,7 +96,7 @@ const MerchantProduct = () => {
                           <tbody>
                             {error ? (
                               <tr>
-                                <td>
+                                <td colSpan={8} className="py-5 px-3">
                                   <Error error={"Data Tidak Ditemukan"} />
                                 </td>
                               </tr>

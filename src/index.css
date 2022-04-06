@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+ .parentMenu{
+     position: relative;
+ }
+
+.parentMenu::after{
+    content: '';
+    background-color: #3662E3;
+    /* background-color: aqua; */
+    position: absolute;
+    left: -2px;
+    bottom: 0;
+    height: 31px;
+    width: 20px;
+
+  }
