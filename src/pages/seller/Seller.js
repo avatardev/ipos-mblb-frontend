@@ -39,7 +39,7 @@ const Seller = () => {
             <h1 className="text-xl font-medium pt-[32px] pb-[24px]">
               Data Seller
             </h1>
-            <div className="shadow-lg rounded-lg bg-white h-fit px-3 overflow-x-auto">
+            <div className="shadow-lg rounded-lg bg-white h-fit px-3">
               <div className="flex justify-end gap-5 py-5 px-3">
                 <button
                   onClick={() => setShowSellerModal(true)}
