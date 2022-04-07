@@ -21,7 +21,7 @@ const MerchantList = () => {
   return (
     <>
       <Layout>
-        <div className=" shadow-md px-[32px] pb-[32px] ">
+        <div className="  px-[32px] pb-[32px] ">
           <div className="flex items-center gap-2">
             <h1 className="text-xl font-medium pt-[32px] pb-[24px]">
               Data Seller
@@ -40,7 +40,7 @@ const MerchantList = () => {
               <div className="flex flex-col">
                 <div className="sm:-mx-6 lg:-mx-8">
                   <div className="inline-block py-2 min-w-full sm:px-6 lg:px-8">
-                    <div className="overflow-hidden shadow-md sm:rounded-lg">
+                    <div className="overflow-hidden sm:rounded-lg">
                       <table className="min-w-full">
                         <thead className="bg-grey900 text-white">
                           <tr>
@@ -95,32 +95,32 @@ const MerchantList = () => {
                                 key={item.id}
                                 className="bg-white odd:bg-tableOdd"
                               >
-                                <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
+                                <td className="py-2 px-6 text-md font-medium text-gray-900 whitespace-nowrap">
                                   {i + 1 + offset}
                                 </td>
-                                <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                <td className="py-2 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">
                                   <Link
                                     to={`/produk/seller/${item.id}/${item.company}`}
                                   >
                                     {item.company}
                                   </Link>
                                 </td>
-                                <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                <td className="py-2 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">
                                   {item.address}
                                 </td>
-                                <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                <td className="py-2 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">
                                   {item.emali}
                                 </td>
-                                <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                <td className="py-2 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">
                                   {item.phone}
                                 </td>
-                                <td className="py-4 px-6 text-sm whitespace-nowrap ">
+                                <td className="py-2 px-6 text-md whitespace-nowrap ">
                                   <div className="flex justify-center">
                                     <Link
                                       to={`/produk/seller/${item.id}/${item.company}`}
                                       className="text-white bg-success text-lg p-[4px] rounded"
                                     >
-                                      <AiOutlineEye />
+                                      <AiOutlineEye />  
                                     </Link>
                                   </div>
                                 </td>
