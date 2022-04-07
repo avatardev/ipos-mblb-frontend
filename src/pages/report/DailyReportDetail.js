@@ -48,21 +48,24 @@ const DailyReportDetail = () => {
                                 <th
                                     scope="col"
                                     className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
-                                >
-                                    No
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                                    rowSpan={2}
                                 >
                                     Tgl Transaksi
                                 </th>
                                 <th
                                     scope="col"
-                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                                    className="py-3 px-6 text-xs font-medium tracking-wider text-center text-gray-700 uppercase dark:text-gray-400"
+                                    colSpan={5}
                                 >
                                     Volume Material
                                 </th>
+                                </tr>
+                                <tr>
+                                    <th>6</th>
+                                    <th>7</th>
+                                    <th>8</th>
+                                    <th>10</th>
+                                    <th>20</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -77,14 +80,23 @@ const DailyReportDetail = () => {
                                     key={i}
                                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                                 >
-                                    <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
-                                    {i + 1}
-                                    </td>
-                                    <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
+                                    <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap border-x-2">
                                     {item.order_date}
                                     </td>
-                                    <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.volume}
+                                    <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-center border-x-2">
+                                    {item["details"]["6"]}
+                                    </td>
+                                    <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-center border-x-2">
+                                    {item["details"]["7"]}
+                                    </td>
+                                    <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-center border-x-2">
+                                    {item["details"]["8"]}
+                                    </td>
+                                    <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-center border-x-2">
+                                    {item["details"]["10"]}
+                                    </td>
+                                    <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-center border-x-2">
+                                    {item["details"]["20"]}
                                     </td>
                                 </tr>
                                 ))}
