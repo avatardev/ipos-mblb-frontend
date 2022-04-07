@@ -25,177 +25,199 @@ const ReportDetail = () => {
     }
 
 
-    return ( 
-        <Layout>
-            <div className="bg-secondary pl-5 pr-2 pb-3 w-[84vw]">
-                <h1 className="text-xl py-3">Detail Data Transaksi</h1>
-                <div className="bg-white h-fit px-3 overflow-x-auto">
-                    <ReportMenu handleDownloadFile={handleDownloadFile} setStartDate={setStartDate} startDate={startDate} setEndDate={setEndDate} endDate={endDate} />
-                <hr />
-                {isLoading && <Loading />}
-
-
-                <div className="w-full">
-                    <div className="flex flex-col">
-                    <div className="sm:-mx-6 lg:-mx-8">
-                        <div className="inline-block py-2 min-w-full sm:px-6 lg:px-8">
-                        <div className="overflow-hidden shadow-md sm:rounded-lg">
-                            <table className="min-w-full">
-                            <thead className="bg-primary text-white">
-                                <tr>
-                                <th
-                                    scope="col"
-                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
-                                >
-                                    No
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
-                                >
-                                    Tgl Transaksi
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
-                                >
-                                    Penjual
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
-                                >
-                                    Pembeli
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
-                                >
-                                    Pembayaran
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
-                                >
-                                    Status
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
-                                >
-                                    Produk
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
-                                >
-                                    Catatan
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
-                                >
-                                    Quantity
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
-                                >
-                                    Discount
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
-                                >
-                                    Pajak
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
-                                >
-                                    Harga
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
-                                >
-                                    Action
-                                </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                error ?  
-                                <tr>
-                                    <td><Error error={"Data Tidak Ditemukan"} /></td>
-                                </tr>
-                                :
-                                data?.trx_detail.map((item, i) => (
-                                <tr
-                                    key={i}
-                                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                                >
-                                    <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
-                                    {i + 1}
-                                    </td>
-                                    <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
-                                    {item.order_date}
-                                    </td>
-                                    <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.seller}
-                                    </td>
-                                    <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.buyer}
-                                    </td>
-                                    <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.payment_method}
-                                    </td>
-                                    <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.status ? <p>Aktif</p> : <p>Non Aktif</p>}
-                                    </td>
-                                    <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.product_name}
-                                    </td>
-                                    <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.note}
-                                    </td>
-                                    <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.qty}
-                                    </td>
-                                    <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.disc}
-                                    </td>
-                                    <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.tax}
-                                    </td>
-                                    <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.price}
-                                    </td>
-                                    <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    <div className="flex gap-3">
-                                        <button onClick={() => {setIdOrder(item.order_id); setShowDetailReportModal(true)}}><AiOutlineFileAdd /></button>
-                                    </div>
-                                    </td>
-                                </tr>
-                                ))}
-                            </tbody>
-                            </table>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <DetailReportModal
-                showDetailReportModal={showDetailReportModal}
-                setShowDetailReportModal={setShowDetailReportModal}
-                setIdOrder={setIdOrder}
-                idOrder={idOrder}
-                setChanges={setChanges}
+    return (
+      <Layout>
+        <div className="px-[32px] pb-[32px] w-full">
+          <h1 className="text-xl font-medium pt-[32px] pb-[24px]">
+            Detail Data Transaksi
+          </h1>
+          <div className="shadow-lg rounded-lg bg-white h-fit px-3 py-2">
+            <ReportMenu
+              handleDownloadFile={handleDownloadFile}
+              setStartDate={setStartDate}
+              startDate={startDate}
+              setEndDate={setEndDate}
+              endDate={endDate}
             />
-        </Layout>
-     );
+            <hr className="border-gray my-2" />
+            {isLoading && <Loading />}
+
+            <div className="w-full overflow-auto">
+              <div className="flex flex-col">
+                <div className="sm:-mx-6 lg:-mx-8">
+                  <div className="inline-block py-2 min-w-full sm:px-6 lg:px-8">
+                    <div className="overflow-hidden sm:rounded-lg">
+                      <table className="min-w-full">
+                        <thead className="bg-grey900  text-white">
+                          <tr>
+                            <th
+                              scope="col"
+                              className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                            >
+                              No
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                            >
+                              Tgl Transaksi
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                            >
+                              Penjual
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                            >
+                              Pembeli
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                            >
+                              Pembayaran
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                            >
+                              Status
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                            >
+                              Produk
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                            >
+                              Catatan
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                            >
+                              Quantity
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                            >
+                              Discount
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                            >
+                              Pajak
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                            >
+                              Harga
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                            >
+                              Action
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {error ? (
+                            <tr>
+                              <td colSpan={8} className="py-5 px-3">
+                                <Error error={"Data Tidak Ditemukan"} />
+                              </td>
+                            </tr>
+                          ) : (
+                            data?.trx_detail.map((item, i) => (
+                              <tr key={i} className="bg-white odd:bg-tableOdd">
+                                <td className="py-2 px-4 text-normal  text-gray-900 whitespace-nowrap">
+                                  {i + 1}
+                                </td>
+                                <td className="py-2 px-4 text-normal  text-gray-900 whitespace-nowrap">
+                                  {item.order_date}
+                                </td>
+                                <td className="py-2 px-4 text-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                  {item.seller}
+                                </td>
+                                <td className="py-2 px-4 text-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                  {item.buyer}
+                                </td>
+                                <td className="py-2 px-4 text-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                  {item.payment_method}
+                                </td>
+                                <td className="py-2 px-4 text-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                  {item.status ? (
+                                    <p className="bg-success text-center py-1 px-2 text-white rounded-full">
+                                      Active
+                                    </p>
+                                  ) : (
+                                    <p className="bg-red text-center p-1 px-2 text-white rounded-full">
+                                      Non Active
+                                    </p>
+                                  )}
+                                </td>
+                                <td className="py-2 px-4 text-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                  {item.product_name}
+                                </td>
+                                <td className="py-2 px-4 text-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                  {item.note}
+                                </td>
+                                <td className="py-2 px-4 text-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                  {item.qty}
+                                </td>
+                                <td className="py-2 px-4 text-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                  {item.disc}
+                                </td>
+                                <td className="py-2 px-4 text-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                  {item.tax}
+                                </td>
+                                <td className="py-2 px-4 text-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                  {item.price}
+                                </td>
+                                <td className="py-2 px-4 text-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                  <div className="flex gap-3 justify-center ">
+                                    <button
+                                      className="text-white bg-button text-lg p-[4px] rounded"
+                                      onClick={() => {
+                                        setIdOrder(item.order_id);
+                                        setShowDetailReportModal(true);
+                                      }}
+                                    >
+                                      <AiOutlineFileAdd />
+                                    </button>
+                                  </div>
+                                </td>
+                              </tr>
+                            ))
+                          )}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <DetailReportModal
+          showDetailReportModal={showDetailReportModal}
+          setShowDetailReportModal={setShowDetailReportModal}
+          setIdOrder={setIdOrder}
+          idOrder={idOrder}
+          setChanges={setChanges}
+        />
+      </Layout>
+    );
 }
  
 export default ReportDetail;

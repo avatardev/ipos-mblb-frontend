@@ -20,105 +20,113 @@ const BriefReport = () => {
     }
 
 
-    return ( 
-        <Layout>
-            <div className="bg-secondary pl-5 pr-2 pb-3 w-[84vw]">
-                <h1 className="text-xl py-3">Data Transaksi</h1>
-                <div className="bg-white h-fit px-3 overflow-x-auto">
-                    <ReportMenu handleDownloadFile={handleDownloadFile} setStartDate={setStartDate} startDate={startDate} setEndDate={setEndDate} endDate={endDate} />
-                <hr />
-                {isLoading && <Loading />}
-
-
-                <div className="w-full">
-                    <div className="flex flex-col">
-                    <div className="sm:-mx-6 lg:-mx-8">
-                        <div className="inline-block py-2 min-w-full sm:px-6 lg:px-8">
-                        <div className="overflow-hidden shadow-md sm:rounded-lg">
-                            <table className="min-w-full">
-                            <thead className="bg-primary text-white">
-                                <tr>
-                                <th
-                                    scope="col"
-                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
-                                >
-                                    No
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
-                                >
-                                    Tgl Transaksi
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
-                                >
-                                    Penjual
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
-                                >
-                                    Pembeli
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
-                                >
-                                    Total Pajak
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
-                                >
-                                    Total Harga
-                                </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                error ?  
-                                <tr>
-                                    <td><Error error={"Data Tidak Ditemukan"} /></td>
-                                </tr>
-                                :
-                                data?.trx_brief.map((item, i) => (
-                                <tr
-                                    key={i}
-                                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                                >
-                                    <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
-                                    {i + 1}
-                                    </td>
-                                    <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
-                                    {item.order_date}
-                                    </td>
-                                    <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.company}
-                                    </td>
-                                    <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.buyer}
-                                    </td>
-                                    <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.total_tax}
-                                    </td>
-                                    <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                    {item.total_price}
-                                    </td>
-                                </tr>
-                                ))}
-                            </tbody>
-                            </table>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </div>
+    return (
+      <Layout>
+        <div className="px-[32px] pb-[32px] w-full">
+          <h1 className="text-xl font-medium pt-[32px] pb-[24px]">
+            Data Transaksi
+          </h1>
+          <div className="shadow-lg rounded-lg bg-white h-fit px-3">
+            <div className=" py-5 px-3">
+              <ReportMenu
+                handleDownloadFile={handleDownloadFile}
+                setStartDate={setStartDate}
+                startDate={startDate}
+                setEndDate={setEndDate}
+                endDate={endDate}
+              />
             </div>
-        </Layout>
-     );
+            <hr className="border-gray" />
+            {isLoading && <Loading />}
+
+            <div className="w-full overflow-auto">
+              <div className="flex flex-col">
+                <div className="sm:-mx-6 lg:-mx-8">
+                  <div className="inline-block py-2 min-w-full sm:px-6 lg:px-8">
+                    <div className="overflow-hidden  sm:rounded-lg">
+                      <table className="min-w-full">
+                        <thead className="bg-grey900  text-white">
+                          <tr>
+                            <th
+                              scope="col"
+                              className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                            >
+                              No
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                            >
+                              Tgl Transaksi
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                            >
+                              Penjual
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                            >
+                              Pembeli
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                            >
+                              Total Pajak
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                            >
+                              Total Harga
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {error ? (
+                            <tr>
+                              <td colSpan={8} className="py-5 px-3">
+                                <Error error={"Data Tidak Ditemukan"} />
+                              </td>
+                            </tr>
+                          ) : (
+                            data?.trx_brief.map((item, i) => (
+                              <tr key={i} className="bg-white odd:bg-tableOdd">
+                                <td className="py-2 px-6 text-md font-normal text-gray-900 whitespace-nowrap">
+                                  {i + 1}
+                                </td>
+                                <td className="py-2 px-6 text-md font-normal text-gray-900 whitespace-nowrap">
+                                  {item.order_date}
+                                </td>
+                                <td className="py-2 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                  {item.company}
+                                </td>
+                                <td className="py-2 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                  {item.buyer}
+                                </td>
+                                <td className="py-2 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                  {item.total_tax}
+                                </td>
+                                <td className="py-2 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                  {item.total_price}
+                                </td>
+                              </tr>
+                            ))
+                          )}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Layout>
+    );
 }
  
 export default BriefReport;
