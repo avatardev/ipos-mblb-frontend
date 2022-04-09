@@ -2,12 +2,11 @@ import Layout from "../../components/layouts/Layout";
 import Error from "../../components/utility/Error";
 import Loading from "../../components/utility/Loading";
 import useFetch from "../../services/useFetch";
-import {FaTruck} from "react-icons/fa";
-import { BsPersonFill, BsTruck } from "react-icons/bs";
+import { BsTruck } from "react-icons/bs";
 import { CgNotes } from "react-icons/cg";
-import { GoLaw } from "react-icons/go";
 import { MdOutlineAttachMoney } from "react-icons/md";
 import { FiUser } from "react-icons/fi";
+import Formatnumber from "../../components/utility/formatNumber";
 
 const Dashboard = () => {
   const { data, isLoading, error } = useFetch(`/dashboard/statistics`);
@@ -61,7 +60,7 @@ const Dashboard = () => {
                 <div className="w-40 py-2">
                   <h3>Total Pajak</h3>
                   <h2 className="text-xl font-semibold">
-                    Rp. {data?.tax_total}
+                    Rp {Formatnumber(data?.tax_total)}
                   </h2>
                 </div>
                 <div>

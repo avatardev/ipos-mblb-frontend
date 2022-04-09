@@ -82,9 +82,7 @@ export default function BuyerModal({showBuyerModal, setShowBuyerModal, idBuyer, 
       <>
         {showBuyerModal ? (
           <>
-            <div
-              className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-white bg-opacity-30"
-            >
+            <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-white bg-opacity-30">
               <div className="relative w-auto my-6 mx-auto">
                 {/*content*/}
                 <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -102,95 +100,160 @@ export default function BuyerModal({showBuyerModal, setShowBuyerModal, idBuyer, 
                   </div>
                   {/*body*/}
                   <div className="md:w-[50vw] w-[90vw]">
-                    <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                        <div className="flex gap-10 items-center">
-                            <div className="w-full">
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2">
-                                        Plat
-                                    </label>
-                                    <input value={vehicle_plate} onChange={(e) => setVehicle_plate(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
-                                </div>
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2">
-                                        Perusahaan
-                                    </label>
-                                    <input value={company} onChange={(e) => setCompany(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
-                                </div>
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2">
-                                        Telp
-                                    </label>
-                                    <input value={phone} onChange={(e) => setPhone(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="number" />
-                                </div>
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2">
-                                        Alamat
-                                    </label>
-                                    <input value={address} onChange={(e) => setAddress(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
-                                </div>
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2">
-                                        Email
-                                    </label>
-                                    <input value={email} onChange={(e) => setEmail(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="email" />
-                                </div>
-                            </div>
-                            <div className="w-full">
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2">
-                                        Kategori Pembeli
-                                    </label>
-                                    <select
-                                        onChange={(e) => setCategory_id(e.target.value)} value={category_id}
-                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                      >
-                                        {data?.category.map(item => (
-                                          <option key={item.id} value={item.id}>{item.name}</option>
-                                        ))}
-                                    </select>
-                                  </div>
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2">
-                                        PIC
-                                    </label>
-                                    <input value={pic_name} onChange={(e) => setPic_name(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
-                                </div>
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" >
-                                        Telp PIC
-                                    </label>
-                                    <input value={pic_phone} onChange={(e) => setPic_phone(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="number" />
-                                </div>
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2">
-                                        Keterangan
-                                    </label>
-                                    <textarea value={description} onChange={(e) => setDescription(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
-                                      {description}
-                                    </textarea>
-                                </div>
-                                <div className="mb-4">
-                                    <input checked={status} onChange={(e) => setStatus(e.target.checked)} id="username" type="checkbox" />
-                                    <label className="text-gray-700 text-sm font-bold mx-2" htmlFor="username">
-                                    Aktif
-                                    </label>
-                                </div>
-                            </div>
+                    <form className="bg-white rounded px-8 pt-6 pb-8 mb-4">
+                      <div className="flex gap-10 items-center">
+                        <div className="w-full">
+                          <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                              Plat
+                            </label>
+                            <input
+                              value={vehicle_plate}
+                              onChange={(e) => setVehicle_plate(e.target.value)}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              placeholder="Masukan Plat"
+                              id="username"
+                              type="text"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                              Perusahaan
+                            </label>
+                            <input
+                              value={company}
+                              onChange={(e) => setCompany(e.target.value)}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              placeholder="Masukan Perusahaan"
+                              id="username"
+                              type="text"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                              Telp
+                            </label>
+                            <input
+                              value={phone}
+                              onChange={(e) => setPhone(e.target.value)}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              placeholder="Masukan Telepon"
+                              id="username"
+                              type="number"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                              Alamat
+                            </label>
+                            <input
+                              value={address}
+                              onChange={(e) => setAddress(e.target.value)}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              placeholder="Masukan Alamat"
+                              id="username"
+                              type="text"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                              Email
+                            </label>
+                            <input
+                              value={email}
+                              onChange={(e) => setEmail(e.target.value)}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              placeholder="Masukan Email"
+                              id="username"
+                              type="email"
+                            />
+                          </div>
                         </div>
+                        <div className="w-full">
+                          <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                              Kategori Pembeli
+                            </label>
+                            <select
+                              onChange={(e) => setCategory_id(e.target.value)}
+                              value={category_id}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                            >
+                              {data?.category.map((item) => (
+                                <option key={item.id} value={item.id}>
+                                  {item.name}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+                          <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                              PIC
+                            </label>
+                            <input
+                              value={pic_name}
+                              onChange={(e) => setPic_name(e.target.value)}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              placeholder="Masukan PIC"
+                              id="username"
+                              type="text"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                              Telp PIC
+                            </label>
+                            <input
+                              value={pic_phone}
+                              onChange={(e) => setPic_phone(e.target.value)}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              placeholder="Masukan Telepon PIC"
+                              id="username"
+                              type="number"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                              Keterangan
+                            </label>
+                            <textarea
+                              value={description}
+                              onChange={(e) => setDescription(e.target.value)}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              placeholder="Masukan Keterangan"
+                            >
+                              {description}
+                            </textarea>
+                          </div>
+                          <div className="mb-4">
+                            <input
+                              checked={status}
+                              onChange={(e) => setStatus(e.target.checked)}
+                              id="username"
+                              type="checkbox"
+                            />
+                            <label
+                              className="text-gray-700 text-sm font-bold mx-2"
+                              htmlFor="username"
+                            >
+                              Aktif
+                            </label>
+                          </div>
+                        </div>
+                      </div>
                     </form>
                   </div>
                   {/*footer*/}
-                  <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                  <div className="flex items-center justify-end p-3 border-t border-solid border-gray rounded-b">
                     <button
-                      className="text-red-500 background-transparent font-bold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      className="text-red-500 background-transparent font-medium px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
                       onClick={handleClearInput}
                     >
                       Tutup
                     </button>
                     <button
-                      className="bg-button text-white active:bg-emerald-600 font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      className="bg-button text-white active:bg-emerald-600 font-medium text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
                       onClick={handleSubmitBuyer}
                     >

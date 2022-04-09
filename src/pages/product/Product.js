@@ -10,30 +10,32 @@ import Loading from "../../components/utility/Loading";
 import Pagination from "../../components/utility/Pagination";
 import deleteData from "../../services/deleteData";
 import useFetch from "../../services/useFetch";
-
+import FormatNumber from "../../components/utility/formatNumber";
 const Product = () => {
   const [showProductModal, setShowProductModal] = useState(false);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
-  const [keyword, setKeyword] = useState('');
+  const [keyword, setKeyword] = useState("");
   const offset = (page - 1) * limit;
 
   const [IdProduct, setIdProduct] = useState(0);
   const [changes, setChanges] = useState(0);
 
-  const {data, isLoading, error} = useFetch(`/products?offset=${offset}&limit=${limit}&keyword=${keyword}`, changes);
+  const { data, isLoading, error } = useFetch(
+    `/products?offset=${offset}&limit=${limit}&keyword=${keyword}`,
+    changes
+  );
 
   const handleDelete = (id) => {
-    deleteData(`/products/${id}`)
-    .then(res => {
+    deleteData(`/products/${id}`).then((res) => {
       console.log(res);
-      setChanges(current => current + 1)
-    })
-  }
+      setChanges((current) => current + 1);
+    });
+  };
 
   return (
     <Layout>
-      <div className=" shadow-md px-[32px] pb-[32px] w-full">
+      <div className=" px-[32px] pb-[32px] w-full">
         <h1 className="text-xl font-medium pt-[32px] pb-[24px]">Data Produk</h1>
         <div className="bg-white rounded-lg h-fit px-3 shadow-lg">
           <div className="flex justify-end gap-5 py-5 px-3">
@@ -138,7 +140,7 @@ const Product = () => {
                                 {item.name}
                               </td>
                               <td className="py-2 px-6 text-md  text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                {item.price_m3}
+                                Rp {FormatNumber(item.price_m3)}
                               </td>
                               <td className="py-2 px-6 text-md  text-gray-500 whitespace-nowrap dark:text-gray-400">
                                 {item.category_name}
