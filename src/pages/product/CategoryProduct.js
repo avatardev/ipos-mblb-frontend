@@ -114,7 +114,7 @@ const CategoryProduct = () => {
                                     {item.category_name}
                                   </td>
                                   <td className="py-2 px-6 text-md text-primary whitespace-nowrap dark:text-gray-400">
-                                    {item.tax}
+                                    {item.tax}%
                                   </td>
                                   <td className="py-2 px-6 text-md text-primary whitespace-nowrap dark:text-gray-400">
                                     {item.status ? (

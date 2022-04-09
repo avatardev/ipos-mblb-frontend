@@ -89,9 +89,7 @@ export default function SellerModal({showSellerModal, setShowSellerModal, idSell
       <>
         {showSellerModal ? (
           <>
-            <div
-              className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-white bg-opacity-30"
-            >
+            <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-white bg-opacity-30">
               <div className="relative w-auto my-6 sm:pt-32 pt-[100vh] mx-auto">
                 {/*content*/}
                 <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -109,106 +107,232 @@ export default function SellerModal({showSellerModal, setShowSellerModal, idSell
                   </div>
                   {/*body*/}
                   <div className="md:w-[50vw] w-[90vw]">
-                    <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                        <div className="sm:flex gap-10 items-center">
-                            <div className="w-full">
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                                        Perusahaan
-                                    </label>
-                                    <input value={company} onChange={(e) => setCompany(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Nama Kategori.." />
-                                </div>
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                                        Telp
-                                    </label>
-                                    <input value={phone} onChange={(e) => setPhone(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="number" />
-                                </div>
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                                        Alamat
-                                    </label>
-                                    <input value={address} onChange={(e) => setAddress(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
-                                </div>
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                                        Kecamatan
-                                    </label>
-                                    <input value={district} onChange={(e) => setDistrict(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
-                                </div>
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                                        Email
-                                    </label>
-                                    <input value={emali} onChange={(e) => setEmail(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="email" />
-                                </div>
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                                        Pic
-                                    </label>
-                                    <input value={pic_name} onChange={(e) => setPic_name(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
-                                </div>
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                                        Telp Pic
-                                    </label>
-                                    <input value={pic_phone} onChange={(e) => setPic_phone(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
-                                </div>
-                            </div>
-                            <div className="w-full">
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                                        NPWP
-                                    </label>
-                                    <input value={npwp} onChange={(e) => setNpwp(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="number" />
-                                </div>
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                                        KTP
-                                    </label>
-                                    <input value={ktp} onChange={(e) => setKtp(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
-                                </div>
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                                        No IUP
-                                    </label>
-                                    <input value={no_iup} onChange={(e) => setNo_iup(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
-                                </div>
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                                        Masa Berlaku
-                                    </label>
-                                    <input value={valid_period} onChange={(e) => setValid_period(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="date" />
-                                </div>
-                                <div className="mb-4">
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                                        Keterangan
-                                    </label>
-                                    <textarea value={description} onChange={(e) => setDescription(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
-                                      {description}  
-                                    </textarea>
-                                </div>
-                                <div className="mb-4">
-                                    <input checked={status} onChange={(e) => setStatus(e.target.checked)} id="username" type="checkbox" />
-                                    <label className="text-gray-700 text-sm font-bold mx-2" htmlFor="username">
-                                    Aktif
-                                    </label>
-                                </div>
-                            </div>
+                    <form className="bg-white  rounded px-8 pt-6 pb-8 mb-4">
+                      <div className="sm:flex gap-10 items-center">
+                        <div className="w-full">
+                          <div className="mb-4">
+                            <label
+                              className="block text-gray-700 text-sm font-bold mb-2"
+                              htmlFor="company"
+                            >
+                              Perusahaan
+                            </label>
+                            <input
+                              value={company}
+                              onChange={(e) => setCompany(e.target.value)}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              id="company"
+                              type="text"
+                              placeholder="Masukan Nama Perusahaan"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label
+                              className="block text-gray-700 text-sm font-bold mb-2"
+                              htmlFor="telp"
+                            >
+                              Telp
+                            </label>
+                            <input
+                              value={phone}
+                              onChange={(e) => setPhone(e.target.value)}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              id="telp"
+                              type="number"
+                              placeholder="Masukan Telepon"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label
+                              className="block text-gray-700 text-sm font-bold mb-2"
+                              htmlFor="address"
+                            >
+                              Alamat
+                            </label>
+                            <input
+                              value={address}
+                              onChange={(e) => setAddress(e.target.value)}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              id="address"
+                              type="text"
+                              placeholder="Masukan Alamat"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label
+                              className="block text-gray-700 text-sm font-bold mb-2"
+                              htmlFor="district"
+                            >
+                              Kecamatan
+                            </label>
+                            <input
+                              value={district}
+                              onChange={(e) => setDistrict(e.target.value)}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              id="disctrict"
+                              type="text"
+                              placeholder="Masukan Kecamatan"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label
+                              className="block text-gray-700 text-sm font-bold mb-2"
+                              htmlFor="email"
+                            >
+                              Email
+                            </label>
+                            <input
+                              value={emali}
+                              onChange={(e) => setEmail(e.target.value)}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              id="email"
+                              type="email"
+                              placeholder="Masukan Email"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label
+                              className="block text-gray-700 text-sm font-bold mb-2"
+                              htmlFor="pic"
+                            >
+                              Pic
+                            </label>
+                            <input
+                              value={pic_name}
+                              onChange={(e) => setPic_name(e.target.value)}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              id="pic"
+                              type="text"
+                              placeholder="Masukan Nama PIC"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label
+                              className="block text-gray-700 text-sm font-bold mb-2"
+                              htmlFor="pic_phone"
+                            >
+                              Telp Pic
+                            </label>
+                            <input
+                              value={pic_phone}
+                              onChange={(e) => setPic_phone(e.target.value)}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              id="pic_phone"
+                              type="text"
+                              placeholder="Masukan Telepon PIC"
+                            />
+                          </div>
                         </div>
+                        <div className="w-full">
+                          <div className="mb-4">
+                            <label
+                              className="block text-gray-700 text-sm font-bold mb-2"
+                              htmlFor="npwp"
+                            >
+                              NPWP
+                            </label>
+                            <input
+                              value={npwp}
+                              onChange={(e) => setNpwp(e.target.value)}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              id="npwp"
+                              type="number"
+                              placeholder="Masukan NPWP"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label
+                              className="block text-gray-700 text-sm font-bold mb-2"
+                              htmlFor="ktp"
+                            >
+                              KTP
+                            </label>
+                            <input
+                              value={ktp}
+                              onChange={(e) => setKtp(e.target.value)}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              id="ktp"
+                              type="text"
+                              placeholder="Masukan Nomor KTP"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label
+                              className="block text-gray-700 text-sm font-bold mb-2"
+                              htmlFor="iup"
+                            >
+                              No IUP
+                            </label>
+                            <input
+                              value={no_iup}
+                              onChange={(e) => setNo_iup(e.target.value)}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              id="iup"
+                              type="text"
+                              placeholder="Masukan Nomor IUP"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label
+                              className="block text-gray-700 text-sm font-bold mb-2"
+                              htmlFor="valid_period"
+                            >
+                              Masa Berlaku
+                            </label>
+                            <input
+                              value={valid_period}
+                              onChange={(e) => setValid_period(e.target.value)}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              id="valid_period"
+                              type="date"
+                            />
+                          </div>
+                          <div className="mb-4">
+                            <label
+                              className="block text-gray-700 text-sm font-bold mb-2"
+                              htmlFor="desc"
+                            >
+                              Keterangan
+                            </label>
+                            <textarea
+                              id="desc"
+                              value={description}
+                              onChange={(e) => setDescription(e.target.value)}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              placeholder="Masukan Keterangan"
+                            >
+                              {description}
+                            </textarea>
+                          </div>
+                          <div className="mb-4">
+                            <input
+                              checked={status}
+                              onChange={(e) => setStatus(e.target.checked)}
+                              id="username"
+                              type="checkbox"
+                            />
+                            <label
+                              className="text-gray-700 text-sm font-bold mx-2"
+                              htmlFor="username"
+                            >
+                              Aktif
+                            </label>
+                          </div>
+                        </div>
+                      </div>
                     </form>
                   </div>
                   {/*footer*/}
-                  <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                  <div className="flex items-center justify-end p-3 border-t border-solid border-gray rounded-b">
                     <button
-                      className="text-red-500 background-transparent font-bold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      className="text-red-500 background-transparent font-medium px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
                       onClick={handleClearInput}
                     >
                       Tutup
                     </button>
                     <button
-                      className="bg-button text-white active:bg-emerald-600 font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      className="bg-button text-white active:bg-emerald-600 font-medium text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
                       onClick={handleSubmitSeller}
                     >

@@ -50,9 +50,7 @@ export default function CheckerUserModal({showCheckerUserModal, setShowCheckerUs
       <>
         {showCheckerUserModal ? (
           <>
-            <div
-              className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-white bg-opacity-30"
-            >
+            <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-white bg-opacity-30">
               <div className="relative w-auto my-6 mx-auto max-w-3xl">
                 {/*content*/}
                 <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -70,42 +68,62 @@ export default function CheckerUserModal({showCheckerUserModal, setShowCheckerUs
                   </div>
                   {/*body*/}
                   <div className="md:w-[25vw] w-[90vw]">
-                    <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                    <div className="mb-4">
+                    <form className="bg-white  rounded px-8 pt-6 pb-8 mb-4">
+                      <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">
                           Username
                         </label>
-                        <input value={username} onChange={(e) => setUsername(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Username.." />
+                        <input
+                          value={username}
+                          onChange={(e) => setUsername(e.target.value)}
+                          className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                          type="text"
+                          placeholder="Masukan Username"
+                        />
                       </div>
-                      {!idUserChecker &&
+                      {!idUserChecker && (
                         <>
                           <div className="mb-4">
                             <label className="block text-gray-700 text-sm font-bold mb-2">
                               Password
                             </label>
-                            <input value={password} onChange={(e) => setPassword(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="password" />
+                            <input
+                              value={password}
+                              onChange={(e) => setPassword(e.target.value)}
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              type="password"
+                              placeholder="Masukan Password"
+                            />
                           </div>
                           <div className="mb-4">
                             <label className="block text-gray-700 text-sm font-bold mb-2">
                               Confirm Password
                             </label>
-                            <input value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="password" />
+                            <input
+                              value={confirmPassword}
+                              onChange={(e) =>
+                                setConfirmPassword(e.target.value)
+                              }
+                              className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
+                              type="password"
+                              placeholder="Masukan Ulang Password"
+                            />
                           </div>
                         </>
-                      }
+                      )}
                     </form>
                   </div>
                   {/*footer*/}
-                  <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                  <div className="flex items-center justify-end p-3 border-t border-solid border-gray rounded-b">
                     <button
-                      className="text-red-500 background-transparent font-bold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      className="text-red-500 background-transparent font-medium px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
                       onClick={handleClearInput}
                     >
                       Tutup
                     </button>
                     <button
-                      className="bg-button text-white active:bg-emerald-600 font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      className="bg-button text-white active:bg-emerald-600 font-medium text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
                       onClick={handleSubmitCheckerUser}
                     >
