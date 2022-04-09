@@ -26,9 +26,12 @@ function App() {
     <div className="App">
       <BrowserRouter basename="/mblb/dev2">
         <Routes>
-          <Route path="/" element={<Login/>} />
+          <Route path="/" element={<Login />} />
           <Route path="/produk/seller" element={<MerchantList />} />
-          <Route path="/produk/seller/:merchantId/:merchantName" element={<MerchantProduct />} />
+          <Route
+            path="/produk/seller/:merchantId/:merchantName"
+            element={<MerchantProduct />}
+          />
           <Route path="/pembeli" element={<Buyer />} />
           <Route path="/pembeli/kategori" element={<CategoryBuyer />} />
           <Route path="/dashboard" element={<Dashboard />} />
@@ -42,11 +45,17 @@ function App() {
             <Route path="/user/admin" element={<AdminUser />} />
             <Route path="/user/checker" element={<CheckerUser />} />
             <Route path="/lokasi" element={<Location />} />
-            <Route path="/laporan/detail-transaksi" element={<ReportDetail />} />
+            <Route
+              path="/laporan/detail-transaksi"
+              element={<ReportDetail />}
+            />
             <Route path="/laporan/transaksi" element={<BriefReport />} />
             <Route path="/laporan/pembanding" element={<ComparisonReport />} />
             <Route path="/laporan/harian" element={<DailyReportList />} />
-            <Route path="/laporan/harian/:corpId/:corpName" element={<DailyReportDetail />} />
+            <Route
+              path="/laporan/harian/:corpId/:corpName"
+              element={<DailyReportDetail />}
+            />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
