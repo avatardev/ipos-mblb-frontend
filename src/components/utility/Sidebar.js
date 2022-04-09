@@ -17,7 +17,7 @@ export default function Sidebar(props) {
   const role_name = localStorage.getItem("role_name");
   return (
     <div
-      className={`bg-blue text-white lg:w-96  min-h-screen p-4  ${
+      className={`bg-blue text-white w-96  min-h-screen p-4  ${
         props.condition === "show" ? "" : "hidden"
       }`}
     >

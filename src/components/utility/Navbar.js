@@ -34,7 +34,7 @@ export default function Navbar(props) {
 
   return (
     <div className="w-full bg-white min-h-sm p-[16px]">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center gap-5">
         <div className="flex">
           <button className="text-[32px] mr-[24px]" onClick={sidebarHandler}>
             <IoMenuOutline />
