@@ -36,7 +36,7 @@ const Location = () => {
               </h1>
               <button
                 onClick={() => setShowLocationModal(true)}
-                className="py-1 px-2 bg-button rounded text-white h-10"
+                className="py-1 px-2 bg-button rounded text-white "
               >
                 + Tambah Lokasi
               </button>

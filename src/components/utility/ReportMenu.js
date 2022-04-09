@@ -19,7 +19,7 @@ const ReportMenu = ({
   };
 
   return (
-    <div className="flex justify-between px-3 items-center h-12">
+    <div className="flex flex-wrap gap-3 justify-between px-3 items-center ">
       <div>
         <button
           className="bg-success text-white py-2 px-2 rounded font-semibold flex items-center gap-2"
@@ -28,7 +28,7 @@ const ReportMenu = ({
           Export to CSV <AiOutlineFileText />
         </button>
       </div>
-      <div className="flex gap-5">
+      <div className="flex gap-5 flex-wrap">
         <label htmlFor="startdate">Tanggal Mulai</label>
         <input
           value={startDate}
