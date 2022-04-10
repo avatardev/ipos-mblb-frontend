@@ -45,6 +45,7 @@ function App() {
             <Route path="/user/admin" element={<AdminUser />} />
             <Route path="/user/checker" element={<CheckerUser />} />
             <Route path="/lokasi" element={<Location />} />
+          </Route>
             <Route
               path="/laporan/detail-transaksi"
               element={<ReportDetail />}
@@ -57,7 +58,6 @@ function App() {
               element={<DailyReportDetail />}
             />
             <Route path="*" element={<NotFound />} />
-          </Route>
         </Routes>
       </BrowserRouter>
     </div>

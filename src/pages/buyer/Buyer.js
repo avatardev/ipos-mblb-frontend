@@ -34,7 +34,7 @@ const Buyer = () => {
 
   return (
     <Layout>
-      <div className=" px-[32px] pb-[32px] w-full">
+      <div className="sm:px-[32px] pb-[32px] w-full">
         <h1 className="text-xl py-3">Data Pembeli</h1>
         <div className=" shadow-md rounded-lg bg-white h-fit px-3 overflow-x-auto">
           <div className="flex justify-end gap-5 py-5 px-3">
@@ -61,7 +61,7 @@ const Buyer = () => {
             setKeyword={setKeyword}
           />
 
-          <div className="w-full overflow-auto">
+          <div className="w-full">
             <div className="flex flex-col">
               <div className="sm:-mx-6 lg:-mx-8">
                 <div className="inline-block py-2 min-w-full sm:px-6 lg:px-8">

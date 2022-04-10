@@ -6,7 +6,6 @@ import Limit from "../../components/utility/Limit";
 import Loading from "../../components/utility/Loading";
 import Pagination from "../../components/utility/Pagination";
 import useFetch from "../../services/useFetch";
-import {BsBoxArrowInDownRight} from "react-icons/bs";
 import { AiOutlineEye } from "react-icons/ai";
 
 const DailyReportList = () => {
@@ -22,7 +21,7 @@ const DailyReportList = () => {
   return (
     <>
       <Layout>
-        <div className=" px-[32px] pb-[32px] w-full">
+        <div className="sm:px-[32px] pb-[32px] w-full">
           <div className="flex items-center gap-2">
             <h1 className="text-xl font-medium pt-[32px] pb-[24px]">
               Laporan Penjual

@@ -1,9 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navbar from "../utility/Navbar";
 import Sidebar from "../utility/Sidebar";
 
 export default function Layout(props) {
-  const [showSidebar, setShowSidebar] = useState("show");
+  let screenWidth = "show";
+
+  if (window.screen.width < 600) {
+    screenWidth = "hiden";
+  }
+
+  const [showSidebar, setShowSidebar] = useState(screenWidth);
 
   return (
     <div className="flex w-full bg-primary">

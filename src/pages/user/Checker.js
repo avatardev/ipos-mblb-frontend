@@ -34,7 +34,7 @@ const CheckerUser = () => {
     return (
       <>
         <Layout>
-          <div className=" px-[32px] pb-[32px] w-full">
+          <div className="sm:px-[32px] pb-[32px] w-full">
             <div className="flex items-center gap-2">
               <h1 className="text-xl py-3 font-semibold">Data User Checker</h1>
             </div>

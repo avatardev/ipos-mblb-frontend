@@ -31,7 +31,7 @@ const MerchantProduct = () => {
   return (
     <>
       <Layout>
-        <div className="shadow-md px-[32px] pb-[32px] w-full">
+        <div className="shadow-md sm:px-[32px] pb-[32px] w-full">
           <div className="flex items-center gap-2">
             <Link to={"/produk/seller"}>
               <IoMdArrowRoundBack className="text-xl" />

@@ -36,7 +36,7 @@ export default function Login() {
         <div className="w-full flex justify-center items-center gap-5 py-3">
           <Logo img={KarangasemLogo} h={"60px"} />
           <Logo img={BPDLogo} h={"60px"} />
-          <img src={IposLogo} className="h-[60px]" />
+          <img src={IposLogo} className="h-[60px]" alt="iposlogo" />
         </div>
         <div className="bg-white p-4 rounded-lg">
           <h1 className="text-xl text-center font-medium py-3">Login</h1>
@@ -45,7 +45,7 @@ export default function Login() {
               <div>
                 <label className="block text-md font-medium">Username</label>
                 <input
-                  value={"avatar123"}
+                  defaultValue={"avatar123"}
                   type="text"
                   onChange={(e) => setUsername(e.target.value)}
                   className="w-full px-4 py-2 mt-2 border rounded-md border-gray focus:outline-none focus:ring-1 focus:ring-button"
@@ -57,7 +57,7 @@ export default function Login() {
               <div className="mt-4">
                 <label className="block text-md font-medium">Password</label>
                 <input
-                  value={"avatar123"}
+                  defaultValue={"avatar123"}
                   type="password"
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full px-4 py-2 mt-2 border rounded-md border-gray focus:outline-none focus:ring-1 focus:ring-button"

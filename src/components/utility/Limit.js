@@ -17,7 +17,7 @@ const Limit = ({limit, setLimit, setPage, setKeyword}) => {
           </select>
           <p>Entries</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 py-3 sm:py-0">
           <p>Search: </p>
           <input
             onChange={(e) => {
