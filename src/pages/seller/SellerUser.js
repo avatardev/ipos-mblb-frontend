@@ -39,7 +39,7 @@ const SellerUser = () => {
     return (
       <>
         <Layout>
-          <div className="px-[32px] pb-[32px] w-full">
+          <div className="sm:px-[32px] pb-[32px] w-full">
             <div className="flex items-center gap-3 text-xl font-medium pt-[32px] pb-[24px]">
               <Link to={"/penjual"}>
                 <IoMdArrowRoundBack className="text-xl" />

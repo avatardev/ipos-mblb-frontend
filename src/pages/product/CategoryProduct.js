@@ -34,7 +34,7 @@ const CategoryProduct = () => {
     return (
       <>
         <Layout>
-          <div className=" shadow-md px-[32px] pb-[32px] ">
+          <div className=" shadow-md sm:px-[32px] pb-[32px] ">
             <h1 className="text-xl font-medium pt-[32px] pb-[24px]">
               Kategori Produk
             </h1>

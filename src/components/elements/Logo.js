@@ -5,7 +5,7 @@ export default function Logo(props) {
   let w = props.h != null ? "auto" : "40px";
   return (
     <div style={{ height: h, width: w }}>
-      <img src={props.img} className="h-full" />
+      <img src={props.img} alt="ipos" className="h-full" />
     </div>
   );
 }

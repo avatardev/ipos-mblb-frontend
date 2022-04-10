@@ -35,7 +35,7 @@ const Product = () => {
 
   return (
     <Layout>
-      <div className=" px-[32px] pb-[32px] w-full">
+      <div className="sm:px-[32px] pb-[32px] w-full">
         <h1 className="text-xl font-medium pt-[32px] pb-[24px]">Data Produk</h1>
         <div className="bg-white rounded-lg h-fit px-3 shadow-lg">
           <div className="flex justify-end gap-5 py-5 px-3">

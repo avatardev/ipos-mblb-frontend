@@ -25,7 +25,7 @@ const NotFound = () => {
             </p>
 
             <a
-              href="/"
+              href="./dashboard"
               className="px-6 py-2 text-sm font-medium text-white bg-button"
             >
               Back to home

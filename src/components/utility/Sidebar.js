@@ -22,7 +22,7 @@ export default function Sidebar(props) {
       }`}
     >
       <div className="w-full flex justify-center items-center gap-5">
-        <img src={iposImage} className="h-[64px]" />
+        <img src={iposImage} alt="ipos" className="h-[64px]" />
       </div>
       <Divider />
       <MenuItem
