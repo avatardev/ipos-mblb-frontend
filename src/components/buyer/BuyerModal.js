@@ -60,7 +60,7 @@ export default function BuyerModal({showBuyerModal, setShowBuyerModal, idBuyer, 
         .then(setChanges(current => current + 1))
       }
       handleClearInput();
-      // setChanges(current => current + 1)
+      setChanges(current => current + 1)
     }
 
     const handleClearInput = () => {

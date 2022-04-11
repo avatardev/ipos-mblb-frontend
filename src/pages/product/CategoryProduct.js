@@ -9,6 +9,8 @@ import Loading from "../../components/utility/Loading";
 import Pagination from "../../components/utility/Pagination";
 import deleteData from "../../services/deleteData";
 import useFetch from "../../services/useFetch";
+import { Link } from "react-router-dom";
+import {IoMdArrowRoundBack} from "react-icons/io";
 
 
 const CategoryProduct = () => {
@@ -18,10 +20,11 @@ const CategoryProduct = () => {
     const [limit, setLimit] = useState(10);
     const offset = (page - 1) * limit;
     const [idCategory, setIdCategory] = useState(0);
+    const [keyword, setKeyword] = useState("");
 
     const [changes, setChanges] = useState(0);
 
-    const {data, isLoading, error} = useFetch(`/products/categories?limit=${limit}&offset=${offset}`, changes);
+    const {data, isLoading, error} = useFetch(`/products/categories?limit=${limit}&offset=${offset}&keyword=${keyword}`, changes);
 
     const handleDelete = (id) => {
         deleteData(`/products/categories/${id}`)
@@ -35,9 +38,12 @@ const CategoryProduct = () => {
       <>
         <Layout>
           <div className=" shadow-md sm:px-[32px] pb-[32px] ">
-            <h1 className="text-xl font-medium pt-[32px] pb-[24px]">
-              Kategori Produk
-            </h1>
+            <div className="flex items-center gap-2">
+                <Link to={"/produk"}>
+                  <IoMdArrowRoundBack className="text-xl" />
+                </Link>
+                <h1 className="text-xl py-3 font-semibold">Kategori Produk</h1>
+              </div>
             <div className="bg-white rounded-lg h-fit px-3 shadow-lg">
               <div className="flex justify-end gap-5 py-3">
                 <button
@@ -52,7 +58,7 @@ const CategoryProduct = () => {
               </div> */}
               {isLoading && <Loading />}
               <hr className="border-gray" />
-              <Limit setLimit={setLimit} limit={limit} setPage={setPage} />
+              <Limit setLimit={setLimit} limit={limit} setPage={setPage} setKeyword={setKeyword} />
 
               <div className="w-full overflow-x-auto">
                 <div className="flex flex-col">
