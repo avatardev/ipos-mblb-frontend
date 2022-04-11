@@ -31,14 +31,14 @@ const ReportMenu = ({
       <div className="flex gap-5 flex-wrap">
         <label htmlFor="startdate">Tanggal Mulai</label>
         <input
-          value={startDate}
+          value={firstDate}
           onChange={(e) => setFirstDate(e.target.value)}
           className="border py-1 px-2 rounded border-gray focus:border-primary"
           type="date"
         />
         <label htmlFor="startdate">Tanggal Selesai</label>
         <input
-          value={endDate}
+          value={secondDate}
           onChange={(e) => setSecondDate(e.target.value)}
           className="border py-1 px-2 rounded border-gray focus:border-primary"
           type="date"
