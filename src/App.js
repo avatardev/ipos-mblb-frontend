@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Authoize from "./middlewares/Authorize";
+import LogActivity from "./pages/activity/LogActivity";
 import Login from "./pages/auth/Login";
 import Buyer from "./pages/buyer/Buyer";
 import BuyerUser from "./pages/buyer/BuyerUser";
@@ -45,6 +46,7 @@ function App() {
             <Route path="/user/admin" element={<AdminUser />} />
             <Route path="/user/checker" element={<CheckerUser />} />
             <Route path="/lokasi" element={<Location />} />
+            <Route path="/log-aktivitas" element={<LogActivity />} />
           </Route>
             <Route
               path="/laporan/detail-transaksi"
