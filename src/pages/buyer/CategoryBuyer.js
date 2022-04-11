@@ -20,10 +20,11 @@ const CategoryBuyer = () => {
     const [limit, setLimit] = useState(10);
     const offset = (page - 1) * limit;
     const [idCategory, setIdCategory] = useState(0);
+    const [keyword, setKeyword] = useState("");
 
     const [changes, setChanges] = useState(0);
 
-    const {data, isLoading, error} = useFetch(`/buyers/categories?offset=${offset}&limit=${limit}`, changes);
+    const {data, isLoading, error} = useFetch(`/buyers/categories?offset=${offset}&limit=${limit}&keyword=${keyword}`, changes);
 
     const handleDelete = (id) => {
         deleteData(`/buyers/categories/${id}`)
@@ -55,7 +56,7 @@ const CategoryBuyer = () => {
               </div>
               {isLoading && <Loading />}
               <hr className="border-gray" />
-              <Limit setLimit={setLimit} limit={limit} setPage={setPage} />
+              <Limit setLimit={setLimit} limit={limit} setPage={setPage} setKeyword={setKeyword} />
 
               <div className="w-full">
                 <div className="flex flex-col">
