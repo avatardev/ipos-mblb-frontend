@@ -14,7 +14,7 @@ const LogActivity = () => {
   const [endDate, setEndDate] = useState(currentDate);
 
   const { data, isLoading, error } = useFetch(
-    `/orders/report/brief?startDate=${startDate}&endDate=${endDate}`
+    `/logs?startDate=${startDate}&endDate=${endDate}`
   );
 
   return (
@@ -77,19 +77,19 @@ const LogActivity = () => {
                             </td>
                           </tr>
                         ) : (
-                          data?.trx_brief.map((item, i) => (
+                          data?.logs.map((item, i) => (
                             <tr key={i} className="bg-white odd:bg-tableOdd">
                               <td className="py-2 px-6 text-md font-normal text-gray-900 whitespace-nowrap">
                                 {i + 1}
                               </td>
                               <td className="py-2 px-6 text-md font-normal text-gray-900 whitespace-nowrap">
-                                {item.order_date}
+                                {item.timestamp}
                               </td>
                               <td className="py-2 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                {item.company}
+                                {item.message}
                               </td>
                               <td className="py-2 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                {item.buyer}
+                                {item.username}
                               </td>
                             </tr>
                           ))
