@@ -11,32 +11,38 @@ import Loading from "../../components/utility/Loading";
 import Error from "../../components/utility/Error";
 import Limit from "../../components/utility/Limit";
 import deleteData from "../../services/deleteData";
+import DeleteModal from "../../components/utility/DeleteModal";
 
 const Buyer = () => {
   const [showBuyerModal, setShowBuyerModal] = useState(false);
+  const [showModalDelete, setShowModalDelete] = useState(false);
+  const [itemId, setItemId] = useState(0);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
-  const [keyword, setKeyword] = useState('');
+  const [keyword, setKeyword] = useState("");
   const offset = (page - 1) * limit;
 
   const [idBuyer, setIdBuyer] = useState(0);
   const [changes, setChanges] = useState(0);
 
-  const {data, isLoading, error} = useFetch(`/buyers?limit=${limit}&offset=${offset}&keyword=${keyword}`, changes);
+  const { data, isLoading, error } = useFetch(
+    `/buyers?limit=${limit}&offset=${offset}&keyword=${keyword}`,
+    changes
+  );
 
-  const handleDelete = (id) => {
-    deleteData(`/buyers/${id}`)
-    .then(res => {
+  const handleDelete = () => {
+    deleteData(`/buyers/${itemId}`).then((res) => {
       console.log(res);
-      setChanges(current => current + 1)
-    })
-  }
+      setChanges((current) => current + 1);
+      setShowModalDelete(false);
+    });
+  };
 
   return (
     <Layout>
       <div className="sm:px-[32px] pb-[32px] w-full">
         <h1 className="text-xl py-3">Data Pembeli</h1>
-        <div className=" shadow-md rounded-lg bg-white h-fit px-3 overflow-x-auto">
+        <div className=" shadow-md rounded-lg bg-white h-fit px-3">
           <div className="flex justify-end gap-5 py-5 px-3">
             <Link
               to={"/pembeli/kategori"}
@@ -61,7 +67,7 @@ const Buyer = () => {
             setKeyword={setKeyword}
           />
 
-          <div className="w-full">
+          <div className="w-full overflow-x-auto">
             <div className="flex flex-col">
               <div className="sm:-mx-6 lg:-mx-8">
                 <div className="inline-block py-2 min-w-full sm:px-6 lg:px-8">
@@ -212,9 +218,10 @@ const Buyer = () => {
                                     <FiEdit />
                                   </button>
                                   <button
-                                    onClick={() =>
-                                      handleDelete(item.vehicle_plate)
-                                    }
+                                    onClick={() => {
+                                      setItemId(item.vehicle_plate);
+                                      setShowModalDelete(true);
+                                    }}
                                     className="text-white bg-red text-lg p-[4px] rounded"
                                   >
                                     <MdOutlineDelete />
@@ -246,6 +253,11 @@ const Buyer = () => {
         idBuyer={idBuyer}
         setIdBuyer={setIdBuyer}
         setChanges={setChanges}
+      />
+      <DeleteModal
+        handleDelete={handleDelete}
+        showModalDelete={showModalDelete}
+        setShowModalDelete={setShowModalDelete}
       />
     </Layout>
   );

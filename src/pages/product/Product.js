@@ -11,8 +11,11 @@ import Pagination from "../../components/utility/Pagination";
 import deleteData from "../../services/deleteData";
 import useFetch from "../../services/useFetch";
 import FormatNumber from "../../components/utility/formatNumber";
+import DeleteModal from "../../components/utility/DeleteModal";
 const Product = () => {
   const [showProductModal, setShowProductModal] = useState(false);
+  const [showModalDelete, setShowModalDelete] = useState(false);
+  const [itemId, setItemId] = useState(0);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const [keyword, setKeyword] = useState("");
@@ -26,10 +29,11 @@ const Product = () => {
     changes
   );
 
-  const handleDelete = (id) => {
-    deleteData(`/products/${id}`).then((res) => {
+  const handleDelete = () => {
+    deleteData(`/products/${itemId}`).then((res) => {
       console.log(res);
       setChanges((current) => current + 1);
+      setShowModalDelete(false);
     });
   };
 
@@ -174,7 +178,10 @@ const Product = () => {
                                     <FiEdit />
                                   </button>
                                   <button
-                                    onClick={() => handleDelete(item.id)}
+                                    onClick={() => {
+                                      setItemId(item.id);
+                                      setShowModalDelete(true);
+                                    }}
                                     className="text-white bg-red text-lg p-[4px] rounded"
                                   >
                                     <MdOutlineDelete />
@@ -206,6 +213,11 @@ const Product = () => {
         IdProduct={IdProduct}
         setIdProduct={setIdProduct}
         setChanges={setChanges}
+      />
+      <DeleteModal
+        handleDelete={handleDelete}
+        showModalDelete={showModalDelete}
+        setShowModalDelete={setShowModalDelete}
       />
     </Layout>
   );
