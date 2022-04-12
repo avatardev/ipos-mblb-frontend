@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, BrowserRouter as Router } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { IoChevronForwardOutline } from "react-icons/io5";
 
 export default function MenuItem(props) {
@@ -31,7 +31,7 @@ export default function MenuItem(props) {
           </div>
           <div
             className={` ${
-              dropdown == "collapse" ? "rotate-90" : "rotate-0"
+              dropdown === "collapse" ? "rotate-90" : "rotate-0"
             } transition-transform`}
           >
             <IoChevronForwardOutline />
