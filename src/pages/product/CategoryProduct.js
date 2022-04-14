@@ -39,7 +39,7 @@ const CategoryProduct = () => {
         <Layout>
           <div className=" shadow-md sm:px-[32px] pb-[32px] ">
             <div className="flex items-center gap-2">
-                <Link to={"/produk"}>
+                <Link to={"/produk/master"}>
                   <IoMdArrowRoundBack className="text-xl" />
                 </Link>
                 <h1 className="text-xl py-3 font-semibold">Kategori Produk</h1>

@@ -7,7 +7,7 @@ import useFetch from "../../services/useFetch";
 export default function BuyerModal({showBuyerModal, setShowBuyerModal, idBuyer, setIdBuyer, setChanges}) {
 
     const [vehicle_plate, setVehicle_plate] = useState('');
-    const [category_id, setCategory_id] = useState(0);
+    const [category_id, setCategory_id] = useState(1);
     const [company, setCompany] = useState('');
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
