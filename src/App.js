@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Authoize from "./middlewares/Authorize";
+import SellerAuthoize from "./middlewares/SellerAuthorize";
 import LogActivity from "./pages/activity/LogActivity";
 import Login from "./pages/auth/Login";
 import Buyer from "./pages/buyer/Buyer";
@@ -28,14 +29,17 @@ function App() {
       <BrowserRouter basename="/mblb/dev2">
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/produk/seller" element={<MerchantList />} />
-          <Route
-            path="/produk/seller/:merchantId/:merchantName"
-            element={<MerchantProduct />}
-          />
-          <Route path="/pembeli" element={<Buyer />} />
-          <Route path="/pembeli/kategori" element={<CategoryBuyer />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+
+          <Route element={<SellerAuthoize />}>
+            <Route path="/produk/seller" element={<MerchantList />} />
+            <Route
+              path="/produk/seller/:merchantId/:merchantName"
+              element={<MerchantProduct />}
+            />
+            <Route path="/pembeli" element={<Buyer />} />
+            <Route path="/pembeli/kategori" element={<CategoryBuyer />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
 
           <Route element={<Authoize />}>
             <Route path="/produk/master" element={<Product />} />
@@ -48,17 +52,19 @@ function App() {
             <Route path="/lokasi" element={<Location />} />
             <Route path="/log-aktivitas" element={<LogActivity />} />
           </Route>
-            <Route
-              path="/laporan/detail-transaksi"
-              element={<ReportDetail />}
-            />
-            <Route path="/laporan/transaksi" element={<BriefReport />} />
-            <Route path="/laporan/pembanding" element={<ComparisonReport />} />
-            <Route path="/laporan/harian" element={<DailyReportList />} />
-            <Route
-              path="/laporan/harian/:corpId/:corpName"
-              element={<DailyReportDetail />}
-            />
+          <Route element={<SellerAuthoize />}>
+              <Route
+                path="/laporan/detail-transaksi"
+                element={<ReportDetail />}
+              />
+              <Route path="/laporan/transaksi" element={<BriefReport />} />
+              <Route path="/laporan/pembanding" element={<ComparisonReport />} />
+              <Route path="/laporan/harian" element={<DailyReportList />} />
+              <Route
+                path="/laporan/harian/:corpId/:corpName"
+                element={<DailyReportDetail />}
+              />
+          </Route>
             <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
