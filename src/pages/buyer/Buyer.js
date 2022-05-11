@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { FiEdit } from "react-icons/fi";
 import { MdOutlineDelete } from "react-icons/md";
-import {AiOutlineUserAdd} from "react-icons/ai";
 import { Link } from "react-router-dom";
 import BuyerModal from "../../components/buyer/BuyerModal";
 import Layout from "../../components/layouts/Layout";
@@ -202,12 +201,6 @@ const Buyer = () => {
                               </td>
                               <td className="py-2 px-6 text-md  text-gray-500 whitespace-nowrap dark:text-gray-400">
                                 <div className="flex gap-3">
-                                  <Link
-                                    to={`/pembeli/${item.vehicle_plate}`}
-                                    className="text-white bg-button text-lg p-[4px] rounded"
-                                  >
-                                    <AiOutlineUserAdd />
-                                  </Link>
                                   <button
                                     onClick={() => {
                                       setIdBuyer(item.vehicle_plate);
