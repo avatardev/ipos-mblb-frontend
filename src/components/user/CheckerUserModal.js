@@ -81,7 +81,6 @@ export default function CheckerUserModal({showCheckerUserModal, setShowCheckerUs
                           placeholder="Masukan Username"
                         />
                       </div>
-                      {!idUserChecker && (
                         <>
                           <div className="mb-4">
                             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -110,7 +109,6 @@ export default function CheckerUserModal({showCheckerUserModal, setShowCheckerUs
                             />
                           </div>
                         </>
-                      )}
                     </form>
                   </div>
                   {/*footer*/}

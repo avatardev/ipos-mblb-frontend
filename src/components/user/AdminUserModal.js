@@ -82,7 +82,6 @@ export default function AdminUserModal({showAdminUserModal, setShowAdminUserModa
                           placeholder="Masukan Username"
                         />
                       </div>
-                      {!idUserAdmin && (
                         <>
                           <div className="mb-4">
                             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -111,7 +110,6 @@ export default function AdminUserModal({showAdminUserModal, setShowAdminUserModa
                             />
                           </div>
                         </>
-                      )}
                     </form>
                   </div>
                   {/*footer*/}
