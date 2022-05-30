@@ -14,14 +14,17 @@ const BriefReport = () => {
 
   const [startDate, setStartDate] = useState(pastDate);
   const [endDate, setEndDate] = useState(currentDate);
+  const [keyword, setKeyword] = useState('');
 
   const { data, isLoading, error } = useFetch(
-    `/orders/report/brief?startDate=${startDate}&endDate=${endDate}`
+    `/orders/report/brief?startDate=${startDate}&endDate=${endDate}&company=${keyword}`
   );
+
+  console.log(keyword);
 
   const handleDownloadFile = () => {
     fetchReport(
-      `/orders/report/generateBrief?startDate=${startDate}&endDate=${endDate}`
+      `/orders/report/generateBrief?startDate=${startDate}&endDate=${endDate}&company=${keyword}`
     );
   };
 
@@ -39,6 +42,8 @@ const BriefReport = () => {
               startDate={startDate}
               setEndDate={setEndDate}
               endDate={endDate}
+              keyword={keyword}
+              setKeyword={setKeyword}
             />
           </div>
           <hr className="border-gray" />

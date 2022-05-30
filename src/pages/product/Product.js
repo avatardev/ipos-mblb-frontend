@@ -12,8 +12,11 @@ import deleteData from "../../services/deleteData";
 import useFetch from "../../services/useFetch";
 import FormatNumber from "../../components/utility/formatNumber";
 import DeleteModal from "../../components/utility/DeleteModal";
+import ProductImgModal from "../../components/product/ProductImgModel";
+
 const Product = () => {
   const [showProductModal, setShowProductModal] = useState(false);
+  const [showProductImgModal, setShowProductImgModal] = useState(false);
   const [showModalDelete, setShowModalDelete] = useState(false);
   const [itemId, setItemId] = useState(0);
   const [page, setPage] = useState(1);
@@ -28,6 +31,7 @@ const Product = () => {
     `/products?offset=${offset}&limit=${limit}&keyword=${keyword}`,
     changes
   );
+
 
   const handleDelete = () => {
     deleteData(`/products/${itemId}`).then((res) => {
@@ -79,6 +83,12 @@ const Product = () => {
                             className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
                           >
                             No
+                          </th>
+                          <th
+                            scope="col"
+                            className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                          >
+                            Gambar
                           </th>
                           <th
                             scope="col"
@@ -139,6 +149,9 @@ const Product = () => {
                             >
                               <td className="py-2 px-6 text-md  font-medium text-gray-900 whitespace-nowrap">
                                 {i + 1 + offset}
+                              </td>
+                              <td className="py-2 px-6 text-md  text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                <img className="max-h-12 object-cover" src={item.img} alt="product" onClick={() => {setShowProductImgModal(true); setIdProduct(item.id)}} />
                               </td>
                               <td className="py-2 px-6 text-md  text-gray-500 whitespace-nowrap dark:text-gray-400">
                                 {item.name}
@@ -207,6 +220,13 @@ const Product = () => {
           />
         </div>
       </div>
+      <ProductImgModal 
+        showProductImgModal={showProductImgModal}
+        setShowProductImgModal={setShowProductImgModal}
+        IdProduct={IdProduct}
+        setIdProduct={setIdProduct}
+        setChanges={setChanges}
+      />
       <ProductModal
         showProductModal={showProductModal}
         setShowProductModal={setShowProductModal}

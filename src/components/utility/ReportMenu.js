@@ -9,6 +9,8 @@ const ReportMenu = ({
   setStartDate,
   endDate,
   setEndDate,
+  keyword,
+  setKeyword
 }) => {
   const [firstDate, setFirstDate] = useState(startDate);
   const [secondDate, setSecondDate] = useState(endDate);
@@ -42,6 +44,13 @@ const ReportMenu = ({
           onChange={(e) => setSecondDate(e.target.value)}
           className="border py-1 px-2 rounded border-gray focus:border-primary"
           type="date"
+        />
+        <label htmlFor="startdate">Search</label>
+        <input
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+          className="border py-1 px-2 rounded border-gray focus:border-primary"
+          type="text"
         />
         <button
           className="bg-button text-white px-3 text-md rounded font-semibold"

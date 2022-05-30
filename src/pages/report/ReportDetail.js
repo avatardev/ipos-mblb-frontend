@@ -19,15 +19,16 @@ const ReportDetail = () => {
   const [endDate, setEndDate] = useState(currentDate);
   const [showDetailReportModal, setShowDetailReportModal] = useState(false);
   const [idOrder, setIdOrder] = useState(0);
+  const [keyword, setKeyword] = useState('');
 
   const { data, isLoading, error } = useFetch(
-    `/orders/report/detail?startDate=${startDate}&endDate=${endDate}`,
+    `/orders/report/detail?startDate=${startDate}&endDate=${endDate}&company=${keyword}`,
     changes
   );
 
   const handleDownloadFile = () => {
     fetchReport(
-      `/orders/report/generateDetail?startDate=${startDate}&endDate=${endDate}`
+      `/orders/report/generateDetail?startDate=${startDate}&endDate=${endDate}&company=${keyword}`
     );
   };
 
@@ -44,6 +45,8 @@ const ReportDetail = () => {
             startDate={startDate}
             setEndDate={setEndDate}
             endDate={endDate}
+            keyword={keyword}
+            setKeyword={setKeyword}
           />
           <hr className="border-gray my-2" />
           {isLoading && <Loading />}

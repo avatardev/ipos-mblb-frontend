@@ -14,14 +14,15 @@ const ComparisonReport = () => {
 
   const [startDate, setStartDate] = useState(pastDate);
   const [endDate, setEndDate] = useState(currentDate);
+  const [keyword, setKeyword] = useState('');
 
   const { data, isLoading, error } = useFetch(
-    `/orders/report/comparison?startDate=${startDate}&endDate=${endDate}`
+    `/orders/report/comparison?startDate=${startDate}&endDate=${endDate}&company=${keyword}`
   );
 
   const handleDownloadFile = () => {
     fetchReport(
-      `/orders/report/generateComparison?startDate=${startDate}&endDate=${endDate}`
+      `/orders/report/generateComparison?startDate=${startDate}&endDate=${endDate}&company=${keyword}`
     );
   };
 
@@ -38,6 +39,8 @@ const ComparisonReport = () => {
             startDate={startDate}
             setEndDate={setEndDate}
             endDate={endDate}
+            keyword={keyword}
+            setKeyword={setKeyword}
           />
           <hr className="border-gray my-2" />
           {isLoading && <Loading />}
