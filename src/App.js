@@ -26,7 +26,7 @@ import CheckerUser from "./pages/user/Checker";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter basename="/mblb/dev2">
+      <BrowserRouter basename="/mblb/admin/dev">
         <Routes>
           <Route path="/" element={<Login />} />
 

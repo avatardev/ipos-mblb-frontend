@@ -1,7 +1,7 @@
 {
   "name": "ipos-mblb-frontend",
   "version": "0.1.0",
-  "homepage": "http://ipos.id/mblb/dev2",
+  "homepage": "/mblb/admin/dev",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
