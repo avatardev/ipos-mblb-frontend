@@ -1,0 +1,29 @@
+on:
+  push:
+    branches:
+      - 'main'
+
+name: Deploy on develop server
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install dependencies and build the project
+        run: |
+          npm install
+          npm run build
+      - name: Publish to hosting
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.2
+        with:
+          username: ${{ secrets.SFTP_USERNAME }}
+          server: ${{ secrets.SFTP_HOSTNAME }}
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          sftp_only: 'true'
+          port: ${{ secrets.SFTP_PORT }}
+          local_path: './build/*'
+          remote_path: '/home/ipos/public_html/mblb/admin/dev'
+          args: '-o ConnectTimeout=5'
