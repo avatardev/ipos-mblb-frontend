@@ -20,7 +20,7 @@ jobs:
         uses: sand4rt/ftp-deployer@v1.4
         with:
           sftp: true
-          server: ${{ secrets.SFTP_HOSTNAME }}
+          host: ${{ secrets.SFTP_HOSTNAME }}
           username: ${{ secrets.SFTP_USERNAME }}
           password: ${{ secrets.SFTP_PASSWORD }}
           port: ${{ secrets.SFTP_PORT }}
