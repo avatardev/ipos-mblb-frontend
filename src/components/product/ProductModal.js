@@ -29,7 +29,12 @@ export default function ProductModal({showProductModal, setShowProductModal, IdP
 
 
     const handleSubmitCategory = () => {
-      console.log(category_id, name, price_m3, description, status);
+      
+      if (name === '' || price_m3 === 0 || description === '') {
+        alert("Form pendaftaran tidak boleh kosong!");
+        return 0;
+      }
+
       const body = {
         category_id: parseInt(category_id), 
         name, 
@@ -39,10 +44,16 @@ export default function ProductModal({showProductModal, setShowProductModal, IdP
       }
       if (!IdProduct) {
         postData('/products', body)
-      .then(setChanges(current => current + 1))
+      .then(() => {
+        setChanges(current => current + 1);
+        alert("Data Berhasil Ditambahkan!");
+      })
       } else {
         putData(`/products/${IdProduct}`, body)
-        .then(setChanges(current => current + 1))
+        .then(() => {
+          setChanges(current => current + 1);
+          alert("Data Berhasil Ditambahkan!");
+        })
       }
       handleClearInput();
       // setChanges(current => current + 1)

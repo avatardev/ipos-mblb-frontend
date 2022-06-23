@@ -17,15 +17,27 @@ export default function AdminUserModal({showLocationModal, setShowLocationModal,
     }, [idLocation])
 
     const handleSubmitLocation = () => {
+
+      if (location_name === '') {
+        alert("Field lokasi tidak boleh kosong!");
+        return 0;
+      }
+
           const body = {
             location_name
           }
           if (!idLocation) {
             postData('/locations', body)
-          .then(setChanges(current => current + 1))
+          .then(() => {
+            setChanges(current => current + 1);
+            alert("Data Berhasil Ditambahkan!");
+          })
           } else {
             putData(`/locations/${idLocation}`, body)
-            .then(setChanges(current => current + 1))
+            .then(() => {
+              setChanges(current => current + 1);
+              alert("Data Berhasil Ditambahkan!");
+            })
           }
           handleClearInput();
     }

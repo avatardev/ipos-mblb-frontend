@@ -41,6 +41,12 @@ export default function SellerModal({showSellerModal, setShowSellerModal, idSell
     }, [idSeller])
 
     const handleSubmitSeller = () => {
+
+      if (company === '' || emali === '' || phone === '' || no_iup === '' || npwp === '') {
+        alert("Form pendaftaran tidak boleh kosong!");
+        return 0;
+      }
+
       const body = {
         company,
         address,
@@ -58,10 +64,16 @@ export default function SellerModal({showSellerModal, setShowSellerModal, idSell
       }
       if (!idSeller) {
         postData('/sellers', body)
-      .then(setChanges(current => current + 1))
+      .then(() => {
+        setChanges(current => current + 1);
+        alert("Data Berhasil Ditambahkan!");
+      })
       } else {
         putData(`/sellers/${idSeller}`, body)
-        .then(setChanges(current => current + 1))
+        .then(() => {
+          setChanges(current => current + 1);
+          alert("Data Berhasil Ditambahkan!");
+        })
       }
       handleClearInput();
       // setChanges(current => current + 1)
