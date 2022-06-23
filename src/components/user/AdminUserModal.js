@@ -19,6 +19,10 @@ export default function AdminUserModal({showAdminUserModal, setShowAdminUserModa
     }, [idUserAdmin])
 
     const handleSubmitAdminUser = () => {
+      if (username === '' || password === '') {
+        alert("Field lokasi tidak boleh kosong!");
+        return 0;
+      }
       if (password === confirmPassword) {
           const body = {
             username,
@@ -26,15 +30,22 @@ export default function AdminUserModal({showAdminUserModal, setShowAdminUserModa
           }
           if (!idUserAdmin) {
             postData('/user/admins', body)
-          .then(setChanges(current => current + 1))
+          .then(() => {
+            setChanges(current => current + 1);
+            alert("Data Berhasil Ditambahkan!");
+          })
           } else {
             putData(`/user/admins/${idUserAdmin}`, body)
-            .then(setChanges(current => current + 1))
+            .then(() => {
+              setChanges(current => current + 1);
+              alert("Data Berhasil Ditambahkan!");
+            })
           }
           handleClearInput();
           // setChanges(current => current + 1)
       } else {
-        console.log("password and confirm password unmatch");
+        alert("Password dan konfirmasi password tidak sama!");
+        return 0
       }
     }
 

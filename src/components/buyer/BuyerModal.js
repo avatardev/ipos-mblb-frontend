@@ -40,6 +40,12 @@ export default function BuyerModal({showBuyerModal, setShowBuyerModal, idBuyer, 
     }, [idBuyer])
 
     const handleSubmitBuyer = () => {
+
+      if (vehicle_plate === '' || company === '' || phone === '' || pic_name === '' || description === '') {
+        alert("Form pendaftaran tidak boleh kosong!");
+        return 0;
+      }
+
       const body = {
         vehicle_plate, 
         category_id: parseInt(category_id), 
@@ -54,13 +60,19 @@ export default function BuyerModal({showBuyerModal, setShowBuyerModal, idBuyer, 
       }
       if (!idBuyer) {
         postData('/buyers', body)
-      .then(setChanges(current => current + 1))
+      .then(() => {
+        setChanges(current => current + 1);
+        alert("Data Berhasil Ditambahkan!");
+      })
       } else {
         putData(`/buyers/${idBuyer}`, body)
-        .then(setChanges(current => current + 1))
+        .then(() => {
+          setChanges(current => current + 1);
+          alert("Data Berhasil Ditambahkan!");
+        })
       }
       handleClearInput();
-      setChanges(current => current + 1)
+      //setChanges(current => current + 1)
     }
 
     const handleClearInput = () => {

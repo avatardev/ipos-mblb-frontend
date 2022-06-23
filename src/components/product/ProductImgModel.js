@@ -6,21 +6,24 @@ export default function ProductImgModal({showProductImgModal, setShowProductImgM
 
     const [file, setFile] = useState([]);
 
-
-    
-
-
     const handleSubmit = () => {
 
+      if (file.length === 0) {
+        alert("Gampar tidak boleh kosong!");
+        return 0;
+      }
+
       const data = new FormData();
-      data.append('img-data', file[0])
+      data.append('img-data', file[0]);
 
       postImg(`/products/${IdProduct}/img`, data)
-      .then(setChanges(current => current + 1))
+      .then(() => {
+        setChanges(current => current + 1);
+        alert("Data Berhasil Ditambahkan!");
+      })
 
       handleClearInput();
       
-      console.log(file[0]);
     }
 
     const handleClearInput = () => {

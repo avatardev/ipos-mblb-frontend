@@ -19,6 +19,12 @@ export default function CheckerUserModal({showCheckerUserModal, setShowCheckerUs
     }, [idUserChecker])
 
     const handleSubmitCheckerUser = () => {
+
+      if (username === '' || password === '') {
+        alert("Field lokasi tidak boleh kosong!");
+        return 0;
+      }
+
       if (password === confirmPassword) {
         const body = {
           username,
@@ -26,15 +32,22 @@ export default function CheckerUserModal({showCheckerUserModal, setShowCheckerUs
         }
         if (!idUserChecker) {
           postData('/user/checkers', body)
-        .then(setChanges(current => current + 1))
+        .then(() => {
+          setChanges(current => current + 1);
+          alert("Data Berhasil Ditambahkan!");
+        })
         } else {
           putData(`/user/checkers/${idUserChecker}`, body)
-          .then(setChanges(current => current + 1))
+          .then(() => {
+            setChanges(current => current + 1);
+            alert("Data Berhasil Ditambahkan!");
+          })
         }
         handleClearInput();
         //setChanges(current => current + 1)
     } else {
-      console.log("password and confirm password unmatch");
+      alert("Password dan konfirmasi password tidak sama!");
+      return 0
     }
     }
 
