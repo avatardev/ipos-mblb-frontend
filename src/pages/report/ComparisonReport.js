@@ -7,7 +7,8 @@ import fetchReport from "../../services/fetchReport";
 import useFetch from "../../services/useFetch";
 import Formatnumber from "../../components/utility/formatNumber";
 const ComparisonReport = () => {
-  const pastDate = new Date(new Date().setDate(new Date().getDate() - 35))
+  //const pastDate = new Date(new Date().setDate(new Date().getDate() - 35))
+  const pastDate = new Date(new Date().setDate(new Date().getDate() ))
     .toISOString()
     .split("T")[0];
   const currentDate = new Date().toISOString().split("T")[0];

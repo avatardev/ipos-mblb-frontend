@@ -8,7 +8,8 @@ import fetchReport from "../../services/fetchReport";
 import useFetch from "../../services/useFetch";
 import {IoMdArrowRoundBack} from "react-icons/io"
 const DailyReportDetail = () => {
-    const pastDate = new Date(new Date().setDate(new Date().getDate()-35)).toISOString().split('T')[0];
+    //const pastDate = new Date(new Date().setDate(new Date().getDate() - 35))
+    const pastDate = new Date(new Date().setDate(new Date().getDate() ))
     const currentDate = new Date().toISOString().split('T')[0];
 
     const [startDate, setStartDate] = useState(pastDate);
