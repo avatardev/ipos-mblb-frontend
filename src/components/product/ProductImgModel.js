@@ -16,6 +16,8 @@ export default function ProductImgModal({showProductImgModal, setShowProductImgM
       const data = new FormData();
       data.append('img-data', file[0]);
 
+      // console.log(data.get("img-data"));
+
       postImg(`/products/${IdProduct}/img`, data)
       .then(() => {
         setChanges(current => current + 1);
