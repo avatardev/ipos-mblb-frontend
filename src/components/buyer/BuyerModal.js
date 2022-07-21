@@ -24,7 +24,12 @@ export default function BuyerModal({
 
   const { data } = useFetch(`/buyers/categories`);
 
-  console.log(idBuyer);
+  useEffect(() => {
+    if (data) {
+      console.log(data.category[0].id);
+      setCategory_id(data.category[0].id);
+    }
+  }, [data]);
 
   useEffect(() => {
     if (idBuyer) {
@@ -108,7 +113,7 @@ export default function BuyerModal({
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-                  <h3 className="text-xl font-semibold mt-1">Tambah Pembeli</h3>
+                  <h3 className="text-xl font-semibold mt-1">Form Pembeli</h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-50 float-right text-2xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={handleClearInput}
