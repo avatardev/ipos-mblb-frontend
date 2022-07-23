@@ -140,7 +140,7 @@ export default function SellerModal({
                             className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
                             id="company"
                             type="text"
-                            placeholder="Masukan Nama Perusahaan"
+                            placeholder="PT. MBLB Karangasem"
                           />
                         </div>
                         <div className="mb-4">
@@ -156,7 +156,7 @@ export default function SellerModal({
                             className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
                             id="telp"
                             type="number"
-                            placeholder="Masukan Telepon"
+                            placeholder="08123XX"
                           />
                         </div>
                         <div className="mb-4">
@@ -172,7 +172,7 @@ export default function SellerModal({
                             className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
                             id="address"
                             type="text"
-                            placeholder="Masukan Alamat"
+                            placeholder="Jl. Raya Gilimanuk No. 32"
                           />
                         </div>
                         <div className="mb-4">
@@ -188,7 +188,7 @@ export default function SellerModal({
                             className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
                             id="disctrict"
                             type="text"
-                            placeholder="Masukan Kecamatan"
+                            placeholder="Rendang"
                           />
                         </div>
                         <div className="mb-4">
@@ -204,7 +204,7 @@ export default function SellerModal({
                             className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
                             id="email"
                             type="email"
-                            placeholder="Masukan Email"
+                            placeholder="user@email.com"
                           />
                         </div>
                         <div className="mb-4">
@@ -220,7 +220,7 @@ export default function SellerModal({
                             className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
                             id="pic"
                             type="text"
-                            placeholder="Masukan Nama PIC"
+                            placeholder="I Gede PIC"
                           />
                         </div>
                         <div className="mb-4">
@@ -236,7 +236,7 @@ export default function SellerModal({
                             className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
                             id="pic_phone"
                             type="text"
-                            placeholder="Masukan Telepon PIC"
+                            placeholder="08123XX"
                           />
                         </div>
                       </div>
@@ -254,7 +254,7 @@ export default function SellerModal({
                             className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
                             id="npwp"
                             type="number"
-                            placeholder="Masukan NPWP"
+                            placeholder="2855721XXX"
                           />
                         </div>
                         <div className="mb-4">
@@ -270,7 +270,7 @@ export default function SellerModal({
                             className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
                             id="ktp"
                             type="text"
-                            placeholder="Masukan Nomor KTP"
+                            placeholder="51030327XXX"
                           />
                         </div>
                         <div className="mb-4">
@@ -286,7 +286,7 @@ export default function SellerModal({
                             className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
                             id="iup"
                             type="text"
-                            placeholder="Masukan Nomor IUP"
+                            placeholder="2855721XXX"
                           />
                         </div>
                         <div className="mb-4">
@@ -316,7 +316,7 @@ export default function SellerModal({
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
-                            placeholder="Masukan Keterangan"
+                            placeholder="PT. MBLB Merupakan..."
                           >
                             {description}
                           </textarea>

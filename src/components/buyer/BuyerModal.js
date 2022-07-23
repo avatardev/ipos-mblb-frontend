@@ -134,7 +134,7 @@ export default function BuyerModal({
                             value={vehicle_plate}
                             onChange={(e) => setVehicle_plate(e.target.value)}
                             className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
-                            placeholder="Masukan Plat"
+                            placeholder="DK 1234 XX"
                             id="username"
                             type="text"
                           />
@@ -147,7 +147,7 @@ export default function BuyerModal({
                             value={company}
                             onChange={(e) => setCompany(e.target.value)}
                             className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
-                            placeholder="Masukan Perusahaan"
+                            placeholder="Nama Perusahaan"
                             id="username"
                             type="text"
                           />
@@ -160,7 +160,7 @@ export default function BuyerModal({
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
                             className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
-                            placeholder="Masukan Telepon"
+                            placeholder="08123XXX"
                             id="username"
                             type="number"
                           />
@@ -173,7 +173,7 @@ export default function BuyerModal({
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
                             className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
-                            placeholder="Masukan Alamat"
+                            placeholder="Jl. Raya Gilimanuk, No. 21"
                             id="username"
                             type="text"
                           />
@@ -186,7 +186,7 @@ export default function BuyerModal({
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
-                            placeholder="Masukan Email"
+                            placeholder="user@email.com"
                             id="username"
                             type="email"
                           />
@@ -217,7 +217,7 @@ export default function BuyerModal({
                             value={pic_name}
                             onChange={(e) => setPic_name(e.target.value)}
                             className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
-                            placeholder="Masukan PIC"
+                            placeholder="Nama PIC"
                             id="username"
                             type="text"
                           />
@@ -230,7 +230,7 @@ export default function BuyerModal({
                             value={pic_phone}
                             onChange={(e) => setPic_phone(e.target.value)}
                             className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
-                            placeholder="Masukan Telepon PIC"
+                            placeholder="08123XXX"
                             id="username"
                             type="number"
                           />

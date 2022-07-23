@@ -129,7 +129,7 @@ export default function ProductModal({
                             value={name}
                             className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
                             id="name"
-                            placeholder="Masukan Nama Produk"
+                            placeholder="Batu Vulkanik"
                             type="text"
                           />
                         </div>
@@ -143,6 +143,7 @@ export default function ProductModal({
                           <input
                             onChange={(e) => setPrice_m3(e.target.value)}
                             value={price_m3}
+                            placeholder="300XXX"
                             id="price"
                             type="number"
                           />
@@ -161,7 +162,7 @@ export default function ProductModal({
                             onChange={(e) => setDescription(e.target.value)}
                             value={description}
                             className="border border-gray focus:border-primary focus:outline-none w-full rounded py-2 px-3"
-                            placeholder="Masukan Keterangan"
+                            placeholder="Batu vulkanik daerah..."
                           >
                             {description}
                           </textarea>
